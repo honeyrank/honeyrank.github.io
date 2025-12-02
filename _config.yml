@@ -1,7 +1,7 @@
 # Site
 name: "꿀랭킹"
 title: "꿀랭킹"
-description: "다양한 제품의 인기순위, 가격, 평점과 함께 똑똑한 소비를 돕는 랭킹 전문 블로그입니다."
+description: "똑똑한 소비를 돕는 꿀랭킹"
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
 baseurl: ''
