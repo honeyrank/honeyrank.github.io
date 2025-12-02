@@ -1,21 +1,43 @@
 {% if paginator.total_pages > 1 %}
 <div class="pagination">
+  {%- comment -%} Previous button {%- endcomment -%}
   {% if paginator.previous_page %}
     <a class="ml-1 mr-1" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; </a>
   {% else %}
     <span>&laquo; </span>
   {% endif %}
 
+  {%- comment -%}
+    현재 페이지 기준 앞뒤 2개만 노출하고,
+    항상 1페이지 / 마지막 페이지는 보여줍니다.
+    중간이 많이 떨어져 있으면 "…" 으로 축약합니다.
+  {%- endcomment -%}
+  {% assign window_start = paginator.page | minus: 2 %}
+  {% assign window_end = paginator.page | plus: 2 %}
+
   {% for page in (1..paginator.total_pages) %}
     {% if page == paginator.page %}
       <span class="ml-1 mr-1">{{ page }}</span>
+
     {% elsif page == 1 %}
-      <a class="ml-1 mr-1" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
-    {% else %}
+      {%- comment -%} 첫 페이지는 루트로 이동 {%- endcomment -%}
+      <a class="ml-1 mr-1" href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+
+    {% elsif page == paginator.total_pages %}
       <a class="ml-1 mr-1" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+
+    {% elsif page >= window_start and page <= window_end %}
+      <a class="ml-1 mr-1" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+
+    {% elsif page == 2 and paginator.page > 4 %}
+      <span class="ml-1 mr-1">…</span>
+
+    {% elsif page == paginator.total_pages | minus: 1 and paginator.page < paginator.total_pages | minus: 3 %}
+      <span class="ml-1 mr-1">…</span>
     {% endif %}
   {% endfor %}
 
+  {%- comment -%} Next button {%- endcomment -%}
   {% if paginator.next_page %}
     <a class="ml-1 mr-1" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"> &raquo;</a>
   {% else %}
