@@ -2,7 +2,7 @@
 <div class="pagination">
   {%- comment -%} Previous button {%- endcomment -%}
   {% if paginator.previous_page %}
-    <a class="ml-1 mr-1" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; </a>
+    <a class="ml-1 mr-1" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" rel="prev">&laquo; </a>
   {% else %}
     <span>&laquo; </span>
   {% endif %}
@@ -39,7 +39,7 @@
 
   {%- comment -%} Next button {%- endcomment -%}
   {% if paginator.next_page %}
-    <a class="ml-1 mr-1" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"> &raquo;</a>
+    <a class="ml-1 mr-1" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" rel="next"> &raquo;</a>
   {% else %}
     <span> &raquo;</span>
   {% endif %}
