@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://honeyrank.co.kr/sitemap.xml
+Sitemap: https://honeyranking.com/sitemap.xml
