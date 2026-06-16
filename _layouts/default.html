@@ -145,5 +145,20 @@
 <script id="dsq-count-scr" src="//{{site.disqus}}.disqus.com/count.js"></script>
 {% endif %}
 
+<!-- 제휴 링크 클릭을 GA4 이벤트(affiliate_click)로 기록 — 전 페이지/전 글 공통, 위임 리스너라 빌드/글 수정 불필요 -->
+<script>
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href*="coupang.com"]');
+  if (!a) return;
+  if (typeof gtag === 'function') {
+    gtag('event', 'affiliate_click', {
+      link_url: a.href,
+      page_path: location.pathname,
+      page_title: document.title
+    });
+  }
+}, true);
+</script>
+
 </body>
 </html>
