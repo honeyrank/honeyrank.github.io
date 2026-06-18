@@ -8,6 +8,10 @@ baseurl: ''
 url: 'https://honeyranking.com'
 # 사이트 언어 (SEO 및 메타 태그용)
 language: ko
+# 소셜 공유 카드(jekyll-seo-tag): 카카오톡·X 등에서 링크가 큰 이미지 카드로 표시 → 공유 시 클릭률↑
+image: assets/images/logo.png
+twitter:
+  card: summary_large_image
 #google_analytics: 'UA-xxxxxxxx-1'
 #disqus: 'demowebsite'
 #mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'

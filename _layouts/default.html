@@ -57,10 +57,16 @@
 <div id="blackover-nav" class="blackover"></div>
 <nav id="menu">
     <ul>
-        <h3>HoneyRanking</h3>
-        <li><a href="{{ site.baseurl }}/">Home</a></li>
-        <li><a href="{{ site.baseurl }}/about">About</a></li>     
-    </ul>   
+        <h3>꿀랭킹</h3>
+        <li><a href="{{ site.baseurl }}/">홈</a></li>
+        <li><a href="{{ site.baseurl }}/all/">전체 글</a></li>
+        <li><a href="{{ site.baseurl }}/about">소개</a></li>
+        <li style="margin-top:10px;opacity:.6;font-size:13px;">카테고리</li>
+        {% assign menuCats = site.categories | sort %}
+        {% for cat in menuCats %}
+        <li><a href="{{ site.baseurl }}/category/{{ cat[0] }}/">{{ cat[0] }}</a></li>
+        {% endfor %}
+    </ul>
 </nav>
 
 {% include search-lunr.html %}
