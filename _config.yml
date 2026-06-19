@@ -27,9 +27,9 @@ authors:
     avatar: 'assets/images/avatar.png'
     #gravatar: e56154546cf4be74e393c62d1ae9f9d4
     email: ggulrank@gmail.com
-    #web: https://www.wowthemes.net/donate/
+    web: '/about'
     #twitter: https://twitter.com/wowthemesnet
-    description: "꿀랭킹"
+    description: "꿀랭킹은 쿠팡에서 판매 중인 인기 상품을 카테고리별로 모아 가격·순위와 함께 비교하고, 카테고리별 '고르는 법'과 자주 묻는 질문을 정리해 똑똑한 소비를 돕는 쇼핑 정보 사이트입니다. 표시 가격은 작성 시점 기준이며 실제 가격은 쿠팡에서 변동될 수 있습니다."
  
 # Plugins
 plugins:
@@ -68,7 +68,7 @@ adsense-data-ad-slot: "1363087678"
 lazyimages: "enabled"
 
 # Post Author Box ("enabled" or "disabled")
-authorbox: "disabled"
+authorbox: "enabled"
 
 # Sass
 sass:

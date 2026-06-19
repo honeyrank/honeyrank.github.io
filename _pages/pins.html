@@ -1,0 +1,25 @@
+---
+layout: page
+title: "핀 이미지 모음 (운영용)"
+permalink: /pins/
+sitemap: false
+description: "핀터레스트 업로드용 핀 이미지 모음(운영자 전용)."
+---
+
+<p style="max-width:760px;margin:0 auto 16px;line-height:1.7;color:#555;">
+핀터레스트에 올릴 세로 이미지입니다. 이미지를 저장(클릭 → 다운로드)해 핀으로 올리고,
+링크는 <b>각 글의 주소</b>(쿠팡 링크 아님)를 붙이세요. 핀 설명에는 "쿠팡 파트너스 활동의 일환" 표시를 함께 넣으세요.
+</p>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:18px;">
+{% for post in site.posts %}
+  {% assign slug = post.url | remove_first: '/' | remove: '/' %}
+  <div style="font-size:13px;">
+    <a href="{{ site.baseurl }}/assets/pins/{{ slug }}.png" target="_blank" rel="noopener">
+      <img src="{{ site.baseurl }}/assets/pins/{{ slug }}.png" loading="lazy" alt="{{ post.title }} 핀 이미지" style="width:100%;border:1px solid #eee;border-radius:8px;">
+    </a>
+    <div style="margin-top:6px;"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></div>
+    <div style="color:#999;word-break:break-all;">{{ site.url }}{{ post.url }}</div>
+  </div>
+{% endfor %}
+</div>
