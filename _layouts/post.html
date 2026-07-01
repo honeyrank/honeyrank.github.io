@@ -30,6 +30,16 @@ post_class: post-template
     {% endif %}
 </div>
 
+<!-- HTML 브레드크럼 (JSON-LD BreadcrumbList와 일치, UX+내부링크) -->
+{% unless page.categories == empty %}
+{% assign bcat = page.categories | first %}
+<nav aria-label="breadcrumb" style="font-size:14px;color:#888;margin:14px 0;">
+    <a href="{{ site.baseurl }}/" style="color:#888;">홈</a>
+    &rsaquo; <a href="{{ site.baseurl }}/category/{{ bcat }}/" style="color:#888;">{{ bcat }}</a>
+    &rsaquo; <span>{{ page.title }}</span>
+</nav>
+{% endunless %}
+
 <!-- Adsense under title if enabled from _config.yml (change your pub id and slot) -->
 {% if site.adsense == "enabled" %}
     {% include adsense-under-header.html %}
@@ -40,6 +50,9 @@ post_class: post-template
 
 <!-- Content -->
 {% include article.html %}
+
+<!-- 본문 내 문맥형 내부링크 -->
+{% include inline-related.html %}
 
 <!-- Rating -->
 {% if page.rating %}

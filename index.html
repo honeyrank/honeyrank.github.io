@@ -3,6 +3,17 @@ layout: default
 title: "꿀랭킹 - 똑똑한 소비를 위한 인기순위"
 ---
 
+<!-- 카테고리 허브 가시 링크 (1페이지에만) — 홈 링크주스를 카테고리/전체글 허브로 전달 -->
+{% if paginator.page == 1 or paginator.page == nil %}
+<nav aria-label="카테고리" style="max-width:1000px;margin:0 auto 24px;text-align:center;line-height:2.2;">
+    <a href="{{ site.baseurl }}/all/" class="badge badge-dark" style="margin:0 4px;">전체 글</a>
+    {% assign homeCats = site.categories | sort %}
+    {% for cat in homeCats %}
+    <a href="{{ site.baseurl }}/category/{{ cat[0] }}/" class="badge badge-primary" style="margin:0 4px;">{{ cat[0] }}</a>
+    {% endfor %}
+</nav>
+{% endif %}
+
 <!-- Posts Index
 ================================================== -->
 <div class="blog-grid-container">

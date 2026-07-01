@@ -9,7 +9,9 @@
 <title>{{ page.title }} | {{site.name}}</title>
 
 {% seo %}
-    
+
+{% if page.noindex %}<meta name="robots" content="noindex,follow">{% endif %}
+
 <link href="{{ site.baseurl }}/assets/css/prism.css" rel="stylesheet">
 
 <link href="{{ site.baseurl }}/assets/css/theme.css" rel="stylesheet">
@@ -28,13 +30,12 @@
   gtag('config', 'G-4E1HQTNWCD');
 </script>
 
-<!-- 사이트 수준 구조화 데이터 (검색 사이트링크/브랜드 인식, AEO) -->
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"{{ site.name }}","url":"{{ site.url }}{{ site.baseurl }}/"}
-</script>
+<!-- Organization만 홈에서 출력 (WebSite는 jekyll-seo-tag가 담당 — 중복 방지) -->
+{% if page.url == '/' %}
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"{{ site.name }}","url":"{{ site.url }}{{ site.baseurl }}/","logo":"{{ site.url }}{{ site.baseurl }}/{{ site.logo }}"}
 </script>
+{% endif %}
 
 </head>
 

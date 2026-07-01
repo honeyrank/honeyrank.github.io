@@ -1,0 +1,18 @@
+<!-- 본문 내 문맥형 내부링크(같은 카테고리 글). boilerplate 하단 위젯보다 크롤/링크 가중치 유리 -->
+{% unless page.categories == empty %}
+{% assign icat = page.categories | first %}
+{% assign icnt = 0 %}
+<div class="inline-related" style="max-width:680px;margin:28px auto;padding:16px 20px;background:#f7f9ff;border:1px solid #e6ecff;border-radius:8px;font-size:15px;line-height:1.9;text-align:left;">
+<b style="display:block;margin-bottom:6px;">📌 함께 보면 좋은 {{ icat }} 추천 글</b>
+<ul style="margin:0;padding-left:18px;">
+{% for p in site.posts %}
+  {% if p.url != page.url and icnt < 4 %}
+    {% if p.categories contains icat %}
+    <li><a href="{{ site.baseurl }}{{ p.url }}">{{ p.title }}</a></li>
+    {% assign icnt = icnt | plus: 1 %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+</ul>
+</div>
+{% endunless %}
