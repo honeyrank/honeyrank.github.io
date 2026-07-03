@@ -1,0 +1,21 @@
+---
+layout: page
+title: "카테고리 — 상품 추천·순위 모음"
+permalink: /categories/
+description: "꿀랭킹의 상품 추천·순위 글을 카테고리별로 모았습니다. 뷰티·가전·디지털·식품·생활·육아 등 원하는 분야에서 인기 상품과 가격을 비교하세요."
+---
+
+<p style="max-width:760px;margin:0 auto 24px;line-height:1.7;color:#555;text-align:center;">
+관심 있는 카테고리를 선택하면 해당 분야의 인기 상품 추천·순위 글을 볼 수 있습니다.
+</p>
+
+<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:820px;margin:0 auto;">
+{% assign cats = site.categories | sort %}
+{% for cat in cats %}
+  <a href="{{ site.baseurl }}/category/{{ cat[0] }}/" style="display:inline-block;padding:12px 22px;background:#346aff;color:#fff;border-radius:24px;text-decoration:none;font-size:16px;">
+    {{ cat[0] }} <span style="opacity:.7;font-size:13px;">({{ cat[1] | size }})</span>
+  </a>
+{% endfor %}
+</div>
+
+<p style="text-align:center;margin-top:28px;"><a href="{{ site.baseurl }}/all/">전체 글 목록 보기 →</a></p>

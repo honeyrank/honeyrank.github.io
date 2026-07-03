@@ -10,12 +10,14 @@ sitemap: false
     <priority>1.0</priority>
   </url>
 {% for post in site.posts %}
+{% unless post.canonical_url %}
   <url>
     <loc>{{ site.url }}{{ site.baseurl }}{{ post.url }}</loc>
     <lastmod>{% if post.last_modified_at %}{{ post.last_modified_at | date_to_xmlschema }}{% else %}{{ post.date | date_to_xmlschema }}{% endif %}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+{% endunless %}
 {% endfor %}
 {% for cat_hash in site.categories %}
   <url>
@@ -27,7 +29,7 @@ sitemap: false
 {% endfor %}
 {% for page in site.pages %}
   {% if page.sitemap != false and page.name != '404.html' %}
-    {% if page.url == '/about' or page.url == '/all/' %}
+    {% if page.url == '/about' or page.url == '/all/' or page.url == '/categories/' %}
   <url>
     <loc>{{ site.url }}{{ site.baseurl }}{{ page.url }}</loc>
     <changefreq>weekly</changefreq>
