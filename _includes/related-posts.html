@@ -16,7 +16,7 @@
     {% assign maxRelatedCounter = 0 %}
     <div class="blog-grid-container">
         {% for post in site.posts %}
-            {% if post.url != page.url %}
+            {% if post.url != page.url and post.canonical_url == nil %}
                 {% assign isRelated = false %}
                 {% for category in post.categories %}
                     {% if page.categories contains category %}

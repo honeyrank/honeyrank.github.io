@@ -6,7 +6,7 @@
 <b style="display:block;margin-bottom:6px;">📌 함께 보면 좋은 {{ icat }} 추천 글</b>
 <ul style="margin:0;padding-left:18px;">
 {% for p in site.posts %}
-  {% if p.url != page.url and icnt < 4 %}
+  {% if p.url != page.url and p.canonical_url == nil and icnt < 4 %}
     {% if p.categories contains icat %}
     <li><a href="{{ site.baseurl }}{{ p.url }}">{{ p.title }}</a></li>
     {% assign icnt = icnt | plus: 1 %}

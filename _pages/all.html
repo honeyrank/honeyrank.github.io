@@ -17,8 +17,8 @@ description: "꿀랭킹의 모든 상품 추천·순위 글을 카테고리별�
     <span style="font-size:14px;color:#999;font-weight:normal;">({{ cat[1] | size }})</span>
   </h2>
   <ul style="line-height:1.9;">
-    {% for post in cat[1] %}
-    <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+    {% for post in cat[1] %}{% unless post.canonical_url %}
+    <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>{% endunless %}
     {% endfor %}
   </ul>
 </section>
