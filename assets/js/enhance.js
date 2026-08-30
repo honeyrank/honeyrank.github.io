@@ -15,6 +15,11 @@
   /* ---------- 1. 상품 블록 → 카드 ---------- */
   function buildCards() {
     if (!article) return [];
+
+    // 생성기가 마크업에 .hny-card를 직접 넣은 새 글은 그대로 사용(중복 래핑 방지)
+    var existing = article.querySelectorAll('.hny-card');
+    if (existing.length) return Array.prototype.slice.call(existing);
+
     var cards = [];
     var headings = Array.prototype.slice.call(article.querySelectorAll('h2'));
 

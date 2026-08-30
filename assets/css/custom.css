@@ -55,6 +55,39 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* --- 2-b. 링크 색 접근성 -----------------------------------
+   테마 기본 링크색(민트 #00c5a1)은 흰 배경 대비 2.19로 WCAG AA(4.5) 미달이었다.
+   브랜드 계열은 유지하되 명도만 낮춰 4.5 이상을 확보한다. */
+a {
+  color: #0a7f6a; /* on #fff = 4.89 */
+}
+a:hover,
+a:focus {
+  color: #065f4f;
+}
+/* 배지·버튼처럼 자체 배경을 가진 요소는 테마 색을 유지 */
+a.badge,
+a .hny-more-btn,
+.hny-sticky-cta a,
+.navbar-brand,
+nav[aria-label="breadcrumb"] a {
+  color: inherit;
+}
+a.badge { color: #fff; }
+a.badge.badge-primary { color: #212529; }
+
+/* 햄버거 메뉴 링크: 기존 rgb(142,154,167) = 2.84 → 4.5 이상으로 */
+#menu ul li a {
+  color: #2f3740; /* 11.96 */
+}
+#menu h3 { color: #1f2328; }
+
+@media (prefers-color-scheme: dark) {
+  a { color: #4fe0c8; } /* on #0f1216 = 11.47 */
+  a:hover, a:focus { color: #7ff0de; }
+  #menu ul li a { color: var(--hny-text); }
+}
+
 /* --- 3. 본문 타이포그래피 ---------------------------------- */
 .article-post {
   font-size: 17px;
@@ -133,10 +166,22 @@ body {
   .author-meta {
     color: var(--hny-text-soft) !important;
   }
+  /* 인라인으로 박힌 어두운 회색 텍스트 전반 (#333/#555/#3D3B3B 등)
+     — 특히 푸터 제휴 고지문은 표시 의무 대상이라 반드시 읽혀야 한다 */
+  [style*="color:#555"],
+  [style*="color: #555"],
+  [style*="color:#3D3B3B"],
+  [style*="color: #3D3B3B"],
+  footer .col-md-6 {
+    color: var(--hny-text-soft) !important;
+  }
   hr { border-color: var(--hny-border); }
   #menu, .sidebar { background: var(--hny-surface); }
   #menu a, #menu h3 { color: var(--hny-text); }
 }
+
+/* 보조 텍스트: 라이트/다크 모두 4.5 이상 유지 */
+.hny-muted { color: var(--hny-text-soft) !important; }
 
 /* 읽기 시간 배지 */
 .hny-readtime {

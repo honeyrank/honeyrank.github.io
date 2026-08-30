@@ -7,11 +7,11 @@ layout: default
     <h1 class="posttitle">{{ page.title }}</h1>
 
     {% if page.intro %}
-    <p style="max-width:760px;margin:16px auto 8px;line-height:1.7;color:#555;text-align:center;">{{ page.intro }}</p>
+    <p style="max-width:760px;margin:16px auto 8px;line-height:1.7;text-align:center;">{{ page.intro }}</p>
     {% endif %}
 
     {% assign catPosts = site.posts | where_exp: "post", "post.categories contains page.category" | where_exp: "post", "post.canonical_url == nil" %}
-    <p style="text-align:center;color:#888;font-size:14px;margin-bottom:24px;">총 {{ catPosts | size }}개의 글</p>
+    <p class="hny-muted" style="text-align:center;font-size:14px;margin-bottom:24px;">총 {{ catPosts | size }}개의 글</p>
 
     <div class="blog-grid-container">
         {% for post in catPosts %}
