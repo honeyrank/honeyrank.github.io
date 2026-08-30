@@ -12,5 +12,14 @@
     </div>
     {% endif %}
     <!-- End Toc -->
-    {{content}}
+    {%- comment -%}
+      본문 이미지 지연 로딩: 상품 이미지가 10장이라 그대로 두면 초기 로딩이 수 MB에 달한다.
+      마크다운(300여 편)에는 loading 속성이 없고, JS로 나중에 붙이면 브라우저가 이미
+      내려받기를 시작한 뒤라 효과가 없다 → 빌드 시 HTML 소스에 직접 주입한다.
+      첫 이미지(1위 = LCP 후보)만 즉시 로드 + 우선순위 상향.
+    {%- endcomment -%}
+    {%- assign body = content
+        | replace: '<img ', '<img loading="lazy" decoding="async" '
+        | replace_first: '<img loading="lazy" decoding="async" ', '<img fetchpriority="high" decoding="async" ' -%}
+    {{ body }}
 </div>
