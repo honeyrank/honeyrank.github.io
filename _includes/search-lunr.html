@@ -1,14 +1,10 @@
-<script src="{{site.baseurl}}/assets/js/lunr.js"></script>
-
-<style>
-    
-</style>
-
+<!-- 검색 UI. 인덱스(lunr + 전 글 본문)는 1.6MB 규모라 모든 페이지에서 즉시 로드하지 않고,
+     사용자가 검색을 시작할 때만 동적으로 불러온다(초기 로딩·INP 개선). -->
 <div class="wrap-search">
     <div class="d-flex align-items-center ml-auto">
         <i class="fas fa-search show-search"></i>
-        <form class="bd-search ml-3" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
-            <input type="text" class="form-control bigradius text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+        <form class="bd-search ml-3" id="hny-search-form" onSubmit="return hnySearchSubmit(this);">
+            <input type="text" class="form-control bigradius text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="검색어를 입력하세요"/>
         </form>
     </div>
 </div>
@@ -17,4 +13,49 @@
     <ul></ul>
 </div>
 
-<script src="{{site.baseurl}}/assets/js/lunrsearchengine.js"></script>
+<script>
+(function () {
+  var base = "{{ site.baseurl }}";
+  var loading = null;
+
+  function loadScript(src) {
+    return new Promise(function (resolve, reject) {
+      var s = document.createElement('script');
+      s.src = src;
+      s.onload = resolve;
+      s.onerror = reject;
+      document.head.appendChild(s);
+    });
+  }
+
+  // lunr → 검색엔진(인덱스 포함) 순서대로 1회만 로드
+  function loadSearch() {
+    if (!loading) {
+      loading = loadScript(base + '/assets/js/lunr.js').then(function () {
+        return loadScript(base + '/assets/js/lunrsearchengine.js');
+      });
+    }
+    return loading;
+  }
+
+  // 검색창을 만지는 순간 미리 받아두면 체감 지연이 사라진다
+  var input = document.getElementById('lunrsearch');
+  if (input) {
+    ['focus', 'pointerdown'].forEach(function (ev) {
+      input.addEventListener(ev, function () { loadSearch(); }, { once: true, passive: true });
+    });
+  }
+  var icon = document.querySelector('.show-search');
+  if (icon) icon.addEventListener('pointerdown', function () { loadSearch(); }, { once: true, passive: true });
+
+  window.hnySearchSubmit = function (form) {
+    var q = (document.getElementById('lunrsearch') || {}).value || '';
+    var results = document.querySelector('#lunrsearchresults ul');
+    if (results && !window.lunr_search) results.innerHTML = '<li>검색 준비 중…</li>';
+    loadSearch()
+      .then(function () { if (window.lunr_search) window.lunr_search(q); })
+      .catch(function () { if (results) results.innerHTML = '<li>검색을 불러오지 못했습니다.</li>'; });
+    return false;
+  };
+})();
+</script>

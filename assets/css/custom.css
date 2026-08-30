@@ -1,0 +1,475 @@
+/* ===========================================================
+   꿀랭킹 UI/UX 개선 레이어 (theme.css 뒤에 로드)
+   본문 마크업은 300여 개 .md에 인라인 스타일로 박제되어 있어
+   여기서 오버라이드로 개선한다. JS(enhance.js)가 카드/목차를 보강.
+   =========================================================== */
+
+/* --- 1. 디자인 토큰 (라이트/다크) --------------------------- */
+:root {
+  --hny-bg: #fefefe;
+  --hny-surface: #ffffff;
+  --hny-text: #1f2328;
+  --hny-text-soft: #5b6570;
+  --hny-border: #e6e9ef;
+  --hny-brand: #346aff;
+  --hny-brand-ink: #ffffff;
+  --hny-accent: #ffb200;
+  --hny-price: #b61800;
+  --hny-shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 8px 24px rgba(16, 24, 40, .06);
+  --hny-radius: 14px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --hny-bg: #0f1216;
+    --hny-surface: #171b21;
+    --hny-text: #e7ebf0;
+    --hny-text-soft: #a2acb8;
+    --hny-border: #262c35;
+    --hny-brand: #5b87ff;
+    --hny-price: #ff7a6b;
+    --hny-shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .35);
+  }
+}
+
+/* --- 2. 한국어 웹폰트 (Pretendard) -------------------------- */
+/* 한글 본문 가독성: 기존 Sen은 라틴 전용이라 한글이 시스템 폰트로 폴백됐다.
+   폰트 자체는 default.html에서 dynamic-subset CSS로 로드한다
+   (통짜 가변폰트는 1MB급이라 LCP를 해치고, 해당 woff2 직링크는 404) */
+body,
+input,
+button,
+select,
+optgroup,
+textarea {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+    'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif;
+  word-break: keep-all; /* 한국어 어절 단위 줄바꿈 */
+  overflow-wrap: break-word; /* keep-all 단독이면 긴 영문 모델명이 넘침 */
+}
+
+body {
+  background: var(--hny-bg);
+  color: var(--hny-text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* --- 3. 본문 타이포그래피 ---------------------------------- */
+.article-post {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--hny-text);
+  letter-spacing: -0.003em;
+}
+
+.article-post p {
+  margin-bottom: 1.15em;
+}
+
+.posttitle {
+  font-size: 30px;
+  line-height: 1.32;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .posttitle {
+    font-size: 38px;
+  }
+}
+
+.article-post h2 {
+  letter-spacing: -0.015em;
+}
+
+/* 다크모드: 인라인으로 박제된 본문 색/배경 보정 */
+@media (prefers-color-scheme: dark) {
+  .article-post [style*="color:#333"],
+  .article-post [style*="color: #333"] {
+    color: var(--hny-text) !important;
+  }
+  .article-post [style*="background:#f7f9ff"] {
+    background: #1b2130 !important;
+    border-color: #2b3550 !important;
+  }
+  .article-post [style*="background:#fff8e1"] {
+    background: #2a2413 !important;
+    color: #e8d9a8 !important;
+  }
+  .article-post [style*="color:#888"],
+  .article-post [style*="color: #878787"] {
+    color: var(--hny-text-soft) !important;
+  }
+  .card,
+  .blog-grid-item .card {
+    background: var(--hny-surface);
+    border-color: var(--hny-border);
+  }
+  .card-title a,
+  .card-text {
+    color: var(--hny-text) !important;
+  }
+  footer.footer {
+    background: var(--hny-surface);
+    color: var(--hny-text-soft);
+  }
+
+  /* Bootstrap 유틸리티가 강제하는 밝은 색 보정
+     (.text-dark → 다크 배경에서 거의 안 보임, .bg-white → 흰 블록으로 남음) */
+  .text-dark,
+  a.text-dark,
+  .entry-header a {
+    color: var(--hny-text) !important;
+  }
+  .bg-white,
+  .card-footer.bg-white,
+  .card-footer {
+    background-color: var(--hny-surface) !important;
+    border-color: var(--hny-border) !important;
+  }
+  .text-muted,
+  .post-date,
+  .author-meta {
+    color: var(--hny-text-soft) !important;
+  }
+  hr { border-color: var(--hny-border); }
+  #menu, .sidebar { background: var(--hny-surface); }
+  #menu a, #menu h3 { color: var(--hny-text); }
+}
+
+/* 읽기 시간 배지 */
+.hny-readtime {
+  display: inline-block;
+  margin-left: 6px;
+  color: var(--hny-text-soft);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* --- 4. 상품 카드 (enhance.js가 감싼 .hny-card) -------------- */
+.hny-card {
+  background: var(--hny-surface);
+  border: 1px solid var(--hny-border);
+  border-radius: var(--hny-radius);
+  box-shadow: var(--hny-shadow);
+  padding: 22px 18px 20px;
+  margin: 22px 0;
+  position: relative;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+@media (hover: hover) {
+  .hny-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(16, 24, 40, .06), 0 14px 32px rgba(16, 24, 40, .1);
+  }
+}
+
+.hny-card img {
+  border-radius: 10px;
+  aspect-ratio: 1 / 1; /* CLS 방지 */
+  object-fit: contain;
+  width: 100%;
+  max-width: 320px;
+  background: #fff;
+}
+
+/* 순위 배지: 기존 "N위" h2를 배지로 */
+.hny-card .hny-rank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 11px;
+  border-radius: 999px;
+  background: var(--hny-brand);
+  color: #fff !important;
+  font-size: 15px !important;
+  font-weight: 700;
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(52, 106, 255, .35);
+}
+
+/* 상위 3위 강조 */
+.hny-card[data-rank="1"] .hny-rank { background: linear-gradient(135deg, #ffb200, #ff8a00); box-shadow: 0 2px 10px rgba(255, 160, 0, .45); }
+.hny-card[data-rank="2"] .hny-rank { background: linear-gradient(135deg, #9aa7b8, #7d8b9e); box-shadow: none; }
+.hny-card[data-rank="3"] .hny-rank { background: linear-gradient(135deg, #c98b5e, #a86a3f); box-shadow: none; }
+.hny-card[data-rank="1"] { border-color: rgba(255, 178, 0, .45); }
+
+/* 상품명 가독성 */
+.hny-card h3 {
+  font-size: 17px !important;
+  line-height: 1.5 !important;
+  margin: 12px 0 6px !important;
+  font-weight: 600 !important;
+}
+.hny-card h3 a { color: var(--hny-text) !important; }
+
+/* 가격 강조 */
+.hny-card [style*="color: #b61800"] {
+  color: var(--hny-price) !important;
+  font-size: 23px !important;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* JS가 카드를 못 만들어도 이미지 치수를 예약해 CLS를 막는다 */
+.article-post img[src*="ads-partners.coupang.com"] {
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+}
+
+/* 긴 영문 모델명이 카드를 넘지 않도록 */
+.article-post h3,
+.hny-card h3 { overflow-wrap: anywhere; }
+
+/* 제목·문단 줄 고르기 (미지원 브라우저는 무시) */
+.posttitle,
+.article-post h2 { text-wrap: balance; }
+.article-post p { text-wrap: pretty; }
+
+/* --- 5. CTA 버튼 (터치 타깃·전환율) ------------------------- */
+/* 버튼 폭이 먹으려면 부모 a/center도 블록이어야 한다 */
+.hny-card center:has(.hny-more-btn),
+.hny-card a:has(.hny-more-btn) {
+  display: block;
+}
+
+.hny-more-btn {
+  min-height: 52px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px !important;
+  border-radius: 12px !important;
+  background-color: var(--hny-brand) !important;
+  border-color: var(--hny-brand) !important;
+  font-size: 16px !important;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  box-shadow: 0 4px 14px rgba(52, 106, 255, .28);
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+  width: min(100%, 320px);
+}
+
+@media (hover: hover) {
+  .hny-more-btn:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(52, 106, 255, .38);
+  }
+}
+.hny-more-btn:active { transform: translateY(0); }
+
+/* --- 6. 모바일 스티키 CTA -------------------------------- */
+.hny-sticky-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--hny-surface) 92%, transparent);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-top: 1px solid var(--hny-border);
+  transform: translateY(110%);
+  transition: transform .25s ease;
+}
+.hny-sticky-cta.is-visible { transform: translateY(0); }
+.hny-sticky-cta a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 50px;
+  border-radius: 12px;
+  background: var(--hny-brand);
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none !important;
+}
+@media (min-width: 768px) {
+  .hny-sticky-cta { display: none; }
+}
+
+/* --- 7. 목차 (본문 상단 점프 내비) -------------------------- */
+.hny-toc {
+  max-width: 680px;
+  margin: 24px auto;
+  padding: 16px 18px;
+  border: 1px solid var(--hny-border);
+  border-radius: var(--hny-radius);
+  background: var(--hny-surface);
+  font-size: 15px;
+}
+.hny-toc > summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--hny-text);
+  list-style: none;
+}
+.hny-toc > summary::-webkit-details-marker { display: none; }
+.hny-toc > summary::after {
+  content: '▾';
+  float: right;
+  transition: transform .2s ease;
+  color: var(--hny-text-soft);
+}
+.hny-toc[open] > summary::after { transform: rotate(180deg); }
+.hny-toc ol {
+  margin: 12px 0 0;
+  padding-left: 20px;
+  color: var(--hny-text-soft);
+  line-height: 2;
+}
+.hny-toc a { color: var(--hny-text); text-decoration: none; }
+.hny-toc a:hover { color: var(--hny-brand); text-decoration: underline; }
+
+/* --- 8. 읽기 진행바 & 맨 위로 ------------------------------ */
+.hny-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, var(--hny-accent), var(--hny-brand));
+  z-index: 90;
+  transition: width .1s linear;
+}
+
+.hny-top {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--hny-border);
+  background: var(--hny-surface);
+  color: var(--hny-text);
+  box-shadow: var(--hny-shadow);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 55;
+}
+.hny-top.is-visible { display: flex; }
+@media (max-width: 767px) {
+  .hny-top { bottom: 84px; } /* 스티키 CTA와 겹침 방지 */
+}
+
+/* --- 8-b. 검색 UI 복구 --------------------------------------
+   기존 라이브에서 .wrap-search가 position:relative로 떨어져 검색창이
+   본문 최상단에 펼쳐진 채 햄버거 버튼과 겹쳐 있었다.
+   테마 의도(아이콘 고정 → 클릭 시 펼침)대로 되돌린다. */
+.wrap-search {
+  position: fixed !important;
+  left: 16px;
+  bottom: 16px;
+  z-index: 1026;
+  max-width: calc(100vw - 32px);
+}
+/* 부트스트랩 ml-auto가 아이콘을 오른쪽 끝으로 밀어 back-to-top과 겹치므로 해제 */
+.wrap-search .ml-auto { margin-left: 0 !important; }
+@media (max-width: 767px) {
+  /* 모바일 스티키 CTA(약 71px)에 가리지 않도록 */
+  .wrap-search { bottom: 84px; }
+}
+.wrap-search .show-search {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--hny-surface);
+  border: 1px solid var(--hny-border);
+  box-shadow: var(--hny-shadow);
+  color: var(--hny-text);
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+.bd-search {
+  visibility: hidden;
+  opacity: 0;
+  width: 0;
+  transition: opacity .25s ease, width .25s ease;
+}
+.bd-search.search--show,
+body.active-side .bd-search {
+  visibility: visible;
+  opacity: 1;
+  width: min(60vw, 260px);
+}
+.bd-search .form-control {
+  background: var(--hny-surface);
+  border: 1px solid var(--hny-border);
+  color: var(--hny-text);
+  height: 44px;
+}
+#lunrsearchresults {
+  position: fixed;
+  left: 16px;
+  bottom: 70px;
+  z-index: 1026;
+  max-width: min(92vw, 420px);
+  max-height: 60vh;
+  overflow-y: auto;
+  background: var(--hny-surface);
+  color: var(--hny-text);
+  border-radius: var(--hny-radius);
+  box-shadow: var(--hny-shadow);
+}
+#lunrsearchresults:empty,
+#lunrsearchresults ul:empty { display: none; }
+#lunrsearchresults ul:not(:empty) { padding: 14px 18px; margin: 0; }
+#lunrsearchresults .title { color: var(--hny-text) !important; }
+
+/* --- 9. 접근성 / 성능 ------------------------------------- */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--hny-brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .hny-card:hover { transform: none; }
+}
+
+html { scroll-behavior: smooth; }
+
+/* 카테고리 배지 터치 타깃 */
+.badge {
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 999px;
+}
+
+/* 브레드크럼/관련글 다크 대응 */
+@media (prefers-color-scheme: dark) {
+  .hny-toc, .inline-related { background: var(--hny-surface) !important; }
+  nav[aria-label="breadcrumb"] a,
+  nav[aria-label="breadcrumb"] span { color: var(--hny-text-soft) !important; }
+}

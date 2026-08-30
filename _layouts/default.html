@@ -12,11 +12,23 @@
 
 {% if page.noindex %}<meta name="robots" content="noindex,follow">{% endif %}
 
-<link href="{{ site.baseurl }}/assets/css/prism.css" rel="stylesheet">
+<meta name="theme-color" content="#346aff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1216" media="(prefers-color-scheme: dark)">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<!-- 상품 이미지 CDN (LCP 요소가 이 도메인에 있음) -->
+<link rel="preconnect" href="https://ads-partners.coupang.com" crossorigin>
+<link rel="dns-prefetch" href="//ads-partners.coupang.com">
+
+<!-- 한글 본문 폰트: unicode-range 분할 서브셋(필요한 청크만 내려받음) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 
 <link href="{{ site.baseurl }}/assets/css/theme.css" rel="stylesheet">
 
-<script src="{{ site.baseurl }}/assets/js/jquery.min.js"></script>
+<!-- UI/UX 개선 레이어 (theme 뒤에 로드해 오버라이드) -->
+<link href="{{ site.baseurl }}/assets/css/custom.css" rel="stylesheet">
+
+<script src="{{ site.baseurl }}/assets/js/jquery.min.js" defer></script>
 
 <meta name="naver-site-verification" content="28ffae2f53391f9a70b4d2269ecb1be51e9eb414" />
 
@@ -42,8 +54,8 @@
 {% capture layout %}{% if page.layout %}layout-{{ page.layout }}{% endif %}{% endcapture %}
 <body>
 	<!-- defer loading of font and font awesome -->
+	<!-- Sen(라틴 전용)은 Pretendard로 대체되어 제거. FontAwesome은 검색 아이콘에 사용 -->
 	<noscript id="deferred-styles">
-		<link href="https://fonts.googleapis.com/css?family=Sen:400,700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 	</noscript>
 
@@ -140,16 +152,13 @@
 <!-- Scripts (if you need bootstrap.js, please add it yourself. I didn't use it for performance reasons, it was not needed in this theme)
 ================================================== -->
 
-<script src="{{ site.baseurl }}/assets/js/prism.js"></script>
+<script src="{{ site.baseurl }}/assets/js/theme.js" defer></script>
 
-<script src="{{ site.baseurl }}/assets/js/theme.js"></script>
+<!-- UI 보강(카드·목차·스티키 CTA·진행바). 실패해도 페이지는 정상 동작 -->
+<script src="{{ site.baseurl }}/assets/js/enhance.js" defer></script>
 
 {% if site.lazyimages == "enabled" %}
-<script src="{{ site.baseurl }}/assets/js/lazyload.js"></script>
-{% endif %}
-
-{% if page.layout == 'post' %}
-<script id="dsq-count-scr" src="//{{site.disqus}}.disqus.com/count.js"></script>
+<script src="{{ site.baseurl }}/assets/js/lazyload.js" defer></script>
 {% endif %}
 
 <!-- 제휴 링크 클릭을 GA4 이벤트(affiliate_click)로 기록 — 전 페이지/전 글 공통, 위임 리스너라 빌드/글 수정 불필요 -->
