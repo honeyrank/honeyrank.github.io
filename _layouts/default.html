@@ -40,7 +40,10 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-4E1HQTNWCD');
+  // Keep local build previews out of production reports.
+  if (location.hostname === 'honeyranking.com' || location.hostname === 'www.honeyranking.com') {
+    gtag('config', 'G-4E1HQTNWCD');
+  }
 </script>
 
 <!-- Organization만 홈에서 출력 (WebSite는 jekyll-seo-tag가 담당 — 중복 방지) -->
@@ -165,11 +168,16 @@
 <!-- 제휴 링크 클릭을 GA4 이벤트(affiliate_click)로 기록 — 전 페이지/전 글 공통, 위임 리스너라 빌드/글 수정 불필요 -->
 <script>
 document.addEventListener('click', function (e) {
-  var a = e.target.closest && e.target.closest('a[href*="coupang.com"]');
+  if (location.hostname !== 'honeyranking.com' && location.hostname !== 'www.honeyranking.com') return;
+  var a = e.target.closest && e.target.closest('a[href]');
   if (!a) return;
+  var url;
+  try { url = new URL(a.href); } catch (_) { return; }
+  if (!/(^|\.)coupang\.com$/.test(url.hostname)) return;
   if (typeof gtag === 'function') {
     gtag('event', 'affiliate_click', {
       link_url: a.href,
+      product_id: url.searchParams.get('pageKey') || '',
       page_path: location.pathname,
       page_title: document.title
     });

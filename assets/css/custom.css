@@ -518,3 +518,17 @@ html { scroll-behavior: smooth; }
   nav[aria-label="breadcrumb"] a,
   nav[aria-label="breadcrumb"] span { color: var(--hny-text-soft) !important; }
 }
+
+/* Factual summary and HTML comparison table (also usable without JavaScript). */
+.hny-comparison { max-width: 780px; margin: 28px auto; padding: 22px; border: 1px solid var(--hny-border); border-radius: var(--hny-radius); background: var(--hny-surface); color: var(--hny-text); }
+.hny-comparison h2 { font-size: 1.35rem; margin: 0 0 16px; }
+.hny-comparison .hny-answer { line-height: 1.8; }
+.hny-comparison-note { color: var(--hny-text-soft); font-size: .875rem; }
+.hny-table-scroll { overflow-x: auto; }
+.hny-table-scroll:focus-visible { outline: 2px solid var(--hny-brand); outline-offset: 3px; }
+.hny-comparison table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.hny-comparison caption { caption-side: top; color: var(--hny-text-soft); }
+.hny-comparison th, .hny-comparison td { padding: 12px 10px; border-bottom: 1px solid var(--hny-border); text-align: left; vertical-align: top; }
+.hny-comparison tbody th { font-weight: 400; }
+.hny-comparison td { white-space: nowrap; text-align: right; font-variant-numeric: tabular-nums; }
+@media (max-width: 480px) { .hny-comparison { padding: 14px; } .hny-comparison th, .hny-comparison td { padding: 10px 6px; } }

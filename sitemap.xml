@@ -20,9 +20,14 @@ sitemap: false
 {% endunless %}
 {% endfor %}
 {% for cat_hash in site.categories %}
+{% assign latest_update = 0 %}
+{% for post in cat_hash[1] %}{% unless post.canonical_url %}
+{% assign updated = post.last_modified_at | default: post.date | date: '%s' | plus: 0 %}
+{% if updated > latest_update %}{% assign latest_update = updated %}{% endif %}
+{% endunless %}{% endfor %}
   <url>
     <loc>{{ site.url }}{{ site.baseurl }}/category/{{ cat_hash[0] }}/</loc>
-    <lastmod>{{ cat_hash[1].first.date | date_to_xmlschema }}</lastmod>
+    <lastmod>{{ latest_update | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>

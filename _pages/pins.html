@@ -14,13 +14,20 @@ description: "핀터레스트 업로드용 핀 이미지 모음(운영자 전용
 
 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:18px;">
 {% for post in site.posts %}
-  {% assign slug = post.url | remove_first: '/' | remove: '/' %}
+{% unless post.canonical_url %}
+  {% assign slug = post.slug %}
+  {% assign pin_path = '/assets/pins/' | append: slug | append: '.png' %}
+  {% assign pin = site.static_files | where: 'path', pin_path | first %}
+  {% if pin %}
   <div style="font-size:13px;">
     <a href="{{ site.baseurl }}/assets/pins/{{ slug }}.png" target="_blank" rel="noopener">
       <img src="{{ site.baseurl }}/assets/pins/{{ slug }}.png" loading="lazy" alt="{{ post.title }} 핀 이미지" style="width:100%;border:1px solid #eee;border-radius:8px;">
     </a>
     <div style="margin-top:6px;"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></div>
-    <div style="color:#999;word-break:break-all;">{{ site.url }}{{ post.url }}</div>
+    <div style="color:#999;word-break:break-all;">{{ site.url }}{{ post.url }}?utm_source=pinterest&amp;utm_medium=social&amp;utm_campaign=buying_guides</div>
+    <p>{{ post.title }} — 가격과 구매 기준을 비교하세요. 쿠팡 파트너스 활동의 일환으로 구매 시 수수료를 받을 수 있습니다.</p>
   </div>
+  {% endif %}
+{% endunless %}
 {% endfor %}
 </div>

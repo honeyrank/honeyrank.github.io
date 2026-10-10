@@ -9,6 +9,7 @@ url: 'https://honeyranking.com'
 # 사이트 언어 (SEO 및 메타 태그용). jekyll-seo-tag는 site.lang로 og:locale 생성.
 language: ko
 lang: ko_KR
+timezone: Asia/Seoul
 # 소셜 공유 카드(jekyll-seo-tag): 카카오톡·X 등에서 링크가 큰 이미지 카드로 표시 → 공유 시 클릭률↑
 image: assets/images/logo.png
 twitter:
@@ -38,16 +39,6 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-archives
-  - jekyll-figure
-    
-# Archives
-jekyll-archives:
-  enabled:
-    - categories
-  layout: archive
-  permalinks:
-    category: '/category/:name/'
     
 # Pagination 
 paginate: 6
@@ -76,4 +67,4 @@ sass:
   sass_dir: _sass
   style: compressed
 
-exclude: [changelog.md, LICENSE.txt, README.md, Gemfile, Gemfile.lock]
+exclude: [changelog.md, LICENSE.txt, README.md, Gemfile, Gemfile.lock, _config_test.yml]
