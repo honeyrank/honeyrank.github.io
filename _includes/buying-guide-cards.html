@@ -1,0 +1,6 @@
+<div class="hny-guide-grid">
+{% for guide in site.data.buying_guides %}
+{% if include.hub == nil or guide.hub == include.hub %}
+<article class="hny-guide-card"><p class="hny-eyebrow">{{ guide.keyword }}</p><h3><a href="{{ guide.url | relative_url }}">{{ guide.intent }}</a></h3><p>{{ guide.title }}</p><a class="hny-text-link" href="{{ guide.url | relative_url }}">비교 기준과 상품 보기 <span aria-hidden="true">→</span></a></article>
+{% endif %}{% endfor %}
+</div>

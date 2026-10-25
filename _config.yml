@@ -1,7 +1,7 @@
 # Site
 name: "꿀랭킹"
 title: "꿀랭킹"
-description: "꿀랭킹, 똑똑한 소비를 위한 인기순위"
+description: "구성·단가와 기기·규격으로 고르는 구매 가이드"
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
 baseurl: ''
@@ -31,7 +31,7 @@ authors:
     email: ggulrank@gmail.com
     web: '/about'
     #twitter: https://twitter.com/wowthemesnet
-    description: "꿀랭킹은 쿠팡에서 판매 중인 인기 상품을 카테고리별로 모아 가격·순위와 함께 비교하고, 카테고리별 '고르는 법'과 자주 묻는 질문을 정리해 똑똑한 소비를 돕는 쇼핑 정보 사이트입니다. 표시 가격은 작성 시점 기준이며 실제 가격은 쿠팡에서 변동될 수 있습니다."
+    description: "꿀랭킹은 상품 자료를 바탕으로 구성·단가와 기기 규격을 비교합니다. 가격 수집일과 가이드 수정일을 구분하며, 실사용 시험이나 판매량 순위로 소개하지 않습니다."
  
 # Plugins
 plugins:

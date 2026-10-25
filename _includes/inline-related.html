@@ -1,3 +1,8 @@
+{% if page.editorial_hub %}
+<section class="hny-guide-note"><h2>같은 기준으로 더 비교해 보세요</h2><p><a href="/guides/{{ page.editorial_hub }}/">이 주제의 구매 가이드 모음</a> · <a href="/tools/unit-price/">단가 계산기</a></p><ul>
+{% for guide in site.data.buying_guides %}{% if guide.hub == page.editorial_hub and guide.id != page.editorial_topic %}<li><a href="{{ guide.url }}">{{ guide.intent }}</a></li>{% endif %}{% endfor %}
+</ul></section>
+{% else %}
 <!-- 본문 내 문맥형 내부링크(같은 카테고리 글). boilerplate 하단 위젯보다 크롤/링크 가중치 유리 -->
 {% unless page.categories == empty %}
 {% assign icat = page.categories | first %}
@@ -16,3 +21,5 @@
 </ul>
 </div>
 {% endunless %}
+
+{% endif %}

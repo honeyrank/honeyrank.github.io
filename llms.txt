@@ -15,6 +15,9 @@ sitemap: false
 
 ## 운영 및 주요 페이지
 - [소개 및 문의]({{ site.url }}/about): 꿀랭킹 운영 방식, 상품 선정 기준, 제휴 안내
+- [구매 가이드]({{ site.url }}/guides/)
+- [선정·계산·갱신 기준]({{ site.url }}/methodology/)
+- [단가 계산기]({{ site.url }}/tools/unit-price/)
 - [전체 글]({{ site.url }}/all/)
 - [카테고리]({{ site.url }}/categories/)
 - [사이트맵]({{ site.url }}/sitemap.xml)
@@ -26,6 +29,6 @@ sitemap: false
 ### {{ category[0] }}
 [카테고리 전체]({{ site.url }}/category/{{ category[0] | uri_escape }}/)
 {% assign count = 0 %}{% for post in category[1] %}{% unless post.canonical_url %}{% unless post.noindex %}
-- [{{ post.title | replace: '[', '(' | replace: ']', ')' }}]({{ site.url }}{{ post.url | uri_escape }}): 가격 수집 {{ post.date | date: '%Y-%m-%d' }}{% if post.last_modified_at %}, 본문 수정 {{ post.last_modified_at | date: '%Y-%m-%d' }}{% endif %}
+- [{{ post.title | replace: '[', '(' | replace: ']', ')' }}]({{ site.url }}{{ post.url | uri_escape }}): 가격 수집 {{ post.price_checked_at | default: post.date | date: '%Y-%m-%d' }}{% if post.last_modified_at %}, 본문 수정 {{ post.last_modified_at | date: '%Y-%m-%d' }}{% endif %}
 {% assign count = count | plus: 1 %}{% if count == 5 %}{% break %}{% endif %}{% endunless %}{% endunless %}{% endfor %}
 {% endfor %}

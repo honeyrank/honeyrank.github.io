@@ -532,3 +532,42 @@ html { scroll-behavior: smooth; }
 .hny-comparison tbody th { font-weight: 400; }
 .hny-comparison td { white-space: nowrap; text-align: right; font-variant-numeric: tabular-nums; }
 @media (max-width: 480px) { .hny-comparison { padding: 14px; } .hny-comparison th, .hny-comparison td { padding: 10px 6px; } }
+
+/* Reviewed buying guides: scoped styles, readable tables and keyboard targets. */
+.hny-home-intro { max-width: 860px; margin: 24px auto 36px; }
+.hny-home-intro h1 { font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1.2; letter-spacing: -.035em; }
+.hny-eyebrow { color: var(--hny-brand); font-size: .85rem; font-weight: 750; letter-spacing: .02em; margin-bottom: 12px; }
+.hny-lead { font-size: 1.15rem; line-height: 1.8; color: var(--hny-text-soft); }
+.hny-guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin: 24px 0 36px; }
+.hny-guide-card, .hny-guide-note, .hny-editorial, .hny-calculator { background: var(--hny-surface); color: var(--hny-text); border: 1px solid var(--hny-border); border-radius: 16px; padding: 24px; }
+.hny-guide-card { display: block; text-decoration: none; min-width: 0; }
+.hny-guide-card h2, .hny-guide-card h3 { font-size: 1.3rem; line-height: 1.5; margin-bottom: 16px; }
+.hny-guide-card p { line-height: 1.7; }
+.hny-guide-card a, a.hny-guide-card { color: inherit; }
+.hny-text-link { display: inline-block; padding: 10px 0; font-weight: 650; }
+.hny-guide-note { margin: 28px 0; line-height: 1.8; }
+.hny-guide-note h2, .hny-editorial h2 { font-size: 1.45rem; }
+.hny-guide-steps { padding-left: 26px; line-height: 1.9; }
+.hny-guide-steps li { padding: 8px 0; }
+.hny-editorial { max-width: 780px; margin: 28px auto; line-height: 1.85; }
+.hny-editorial h3 { font-size: 1.1rem; margin-top: 26px; }
+.hny-editorial li { margin-bottom: 12px; }
+.hny-shortlist { list-style: none; padding: 0; }
+.hny-shortlist li { border-top: 1px solid var(--hny-border); padding: 14px 0; }
+.hny-shortlist span { display: block; font-size: .9rem; color: var(--hny-text-soft); }
+.hny-disclosure { padding: 14px 20px; background: var(--hny-surface); border-left: 3px solid var(--hny-brand); font-size: .9rem; line-height: 1.7; }
+.hny-facts-table { min-width: 660px; }
+.hny-comparison .hny-facts-table th:first-child { width: 33%; }
+.hny-comparison .hny-facts-table td { white-space: normal; text-align: left; min-width: 110px; }
+.hny-purchase { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 22px; border: 0; border-radius: 10px; background: #2459db; color: #fff !important; font-size: 1rem; font-weight: 650; text-align: center; text-decoration: none; cursor: pointer; }
+.hny-card > img { display: block; max-width: 100%; height: auto; max-height: 360px; object-fit: contain; margin: 18px auto; }
+.hny-card .hny-price { font-size: 1.15rem; font-weight: 650; }
+.hny-card > .hny-purchase { display: flex; }
+.hny-calculator { max-width: 680px; margin: 24px auto; }
+.hny-calculator label { display: block; font-weight: 650; margin: 20px 0 8px; }
+.hny-calculator input, .hny-calculator select { display: block; width: 100%; min-height: 48px; padding: 10px; border: 1px solid var(--hny-border); border-radius: 8px; background: var(--hny-bg); color: var(--hny-text); font-size: 1rem; }
+.hny-calculator button { margin-top: 24px; width: 100%; }
+.hny-calculator output { display: block; padding: 20px 0 0; font-size: 1.15rem; font-weight: 700; }
+#unit-error { color: #c84b46; }
+.hny-guide-card:focus-visible, .hny-purchase:focus-visible { outline: 3px solid var(--hny-brand); outline-offset: 4px; }
+@media (max-width: 700px) { .hny-guide-grid { grid-template-columns: 1fr; gap: 14px; } .hny-guide-card, .hny-editorial, .hny-guide-note, .hny-calculator { padding: 18px; } .hny-home-intro { margin-top: 12px; } }

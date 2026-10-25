@@ -1,7 +1,15 @@
 ---
 layout: default
-title: "꿀랭킹 - 똑똑한 소비를 위한 인기순위"
+title: "꿀랭킹 - 구성·단가와 기기·규격으로 고르는 구매 가이드"
+description: "식품·생활용품의 단가와 기기 규격을 확인하고, 내 조건에 맞는 상품을 비교하세요."
 ---
+
+{% if paginator.page == 1 or paginator.page == nil %}
+<section class="hny-home-intro"><p class="hny-eyebrow">꿀랭킹 구매 가이드</p><h1>가격만 보기 전에,<br>나에게 맞는 조건부터.</h1><p class="hny-lead">구성과 총량, 정확한 기기 규격을 확인하면 상품을 고르기 쉬워집니다.</p><p><a class="hny-purchase" href="/guides/">구매 가이드 찾기</a> <a class="hny-text-link" href="/tools/unit-price/">단가 계산하기 →</a></p></section>
+{% include buying-paths.html %}
+<section class="hny-guide-note"><h2>무엇을 기준으로 비교하나요?</h2><p>수집 시점 가격과 확인된 상품 정보를 비교합니다. 실사용 시험·판매량 순위와 구분하고, 모르는 정보는 확인 대상으로 남깁니다.</p><a href="/methodology/">자료와 편집 기준 보기 →</a></section>
+<h2>보강한 대표 비교 글</h2>
+{% endif %}
 
 <!-- 카테고리 허브 가시 링크 (1페이지에만) — 홈 링크주스를 카테고리/전체글 허브로 전달 -->
 {% if paginator.page == 1 or paginator.page == nil %}
@@ -17,9 +25,12 @@ title: "꿀랭킹 - 똑똑한 소비를 위한 인기순위"
 <!-- Posts Index
 ================================================== -->
 <div class="blog-grid-container">
-    {% for post in paginator.posts %}
-        {% include postbox.html %}
-    {% endfor %}
+    {% if paginator.page == 1 or paginator.page == nil %}
+      {% assign reviewedPosts = site.posts | where_exp: "p", "p.editorial_topic != nil" %}
+      {% for post in reviewedPosts limit:6 %}{% include postbox.html %}{% endfor %}
+    {% else %}
+      {% for post in paginator.posts %}{% include postbox.html %}{% endfor %}
+    {% endif %}
 </div>
 
 <!-- Pagination

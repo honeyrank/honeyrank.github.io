@@ -34,7 +34,7 @@ sitemap: false
 {% endfor %}
 {% for page in site.pages %}
   {% if page.sitemap != false and page.name != '404.html' %}
-    {% if page.url == '/about' or page.url == '/all/' or page.url == '/categories/' %}
+    {% if page.url == '/about' or page.url == '/all/' or page.url == '/categories/' or page.discovery_page == true %}
   <url>
     <loc>{{ site.url }}{{ site.baseurl }}{{ page.url }}</loc>
     <changefreq>weekly</changefreq>

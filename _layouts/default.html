@@ -27,7 +27,7 @@
 <link href="{{ site.baseurl }}/assets/css/theme.css" rel="stylesheet">
 
 <!-- UI/UX 개선 레이어 (theme 뒤에 로드해 오버라이드) -->
-<link href="{{ site.baseurl }}/assets/css/custom.css" rel="stylesheet">
+<link href="{{ site.baseurl }}/assets/css/custom.css?v=20261026-growth" rel="stylesheet">
 
 <script src="{{ site.baseurl }}/assets/js/jquery.min.js" defer></script>
 
@@ -66,6 +66,8 @@
     <ul>
         <h3>꿀랭킹</h3>
         <li><a href="{{ site.baseurl }}/">홈</a></li>
+        <li><a href="{{ site.baseurl }}/guides/">구매 가이드</a></li>
+        <li><a href="{{ site.baseurl }}/tools/unit-price/">단가 계산기</a></li>
         <li><a href="{{ site.baseurl }}/all/">전체 글</a></li>
         <li><a href="{{ site.baseurl }}/about">소개</a></li>
         <li style="margin-top:10px;opacity:.6;font-size:13px;">카테고리</li>
@@ -96,11 +98,7 @@
 
     <!-- Site Tag
     ================================================== -->
-    {% if page.url == '/' %}
-        <p class="sitetag">
-            {{ site.description }}
-        </p>
-    {% endif %}
+    <!-- The homepage introduces its buying paths in the main content. -->
 
     <!-- Content
     ================================================== -->
