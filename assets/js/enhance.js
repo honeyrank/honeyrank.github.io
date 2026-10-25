@@ -11,6 +11,7 @@
 
   var article = document.querySelector('.article-post');
   var isPost = !!article && !!document.querySelector('.entry-header');
+  var comparisonOnly = !!article && !!article.querySelector('[data-hny-comparison-only]');
 
   /* ---------- 1. 상품 블록 → 카드 ---------- */
   function buildCards() {
@@ -117,7 +118,7 @@
       // 상품 목록으로 가는 점프 링크를 두 번째 위치에 삽입
       items.splice(Math.min(1, items.length), 0, {
         id: 'rank-1',
-        text: '상품 순위 TOP ' + cardCount + ' 바로 보기',
+        text: comparisonOnly ? '상품 ' + cardCount + '개 구성 바로 보기' : '상품 순위 TOP ' + cardCount + ' 바로 보기',
       });
     }
 
@@ -161,7 +162,7 @@
     a.rel = 'sponsored nofollow';
     a.target = '_blank';
     // 이모지는 일부 환경에서 두부(□)로 깨질 수 있어 텍스트로만 구성
-    a.textContent = '1위 상품 쿠팡 최저가 확인하기';
+    a.textContent = comparisonOnly ? '첫 상품 쿠팡 옵션·가격 확인' : '1위 상품 쿠팡 최저가 확인하기';
     bar.appendChild(a);
     document.body.appendChild(bar);
     return bar;
