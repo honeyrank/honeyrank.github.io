@@ -24,5 +24,9 @@
         | replace: ' fetchpriority="high"', ''
         | replace: '<img ', '<img loading="lazy" decoding="async" '
         | replace_first: '<img loading="lazy" decoding="async" ', '<img fetchpriority="high" decoding="async" ' -%}
+    {% if page.editorial_topic == 'cereal' %}
+      {% capture portion_guide %}{% include cereal-portions.html %}{% endcapture %}
+      {% assign body = body | replace_first: '<!-- hny-rich -->', portion_guide %}
+    {% endif %}
     {{ body }}
 </div>
