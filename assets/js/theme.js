@@ -12,7 +12,7 @@ jQuery(document).ready(function($){
       }, 1);
 
       // taken from: https://css-tricks.com/snippets/jquery/smooth-scrolling/
-      $('a[href*=\\#]:not([href=\\#])').click(function() {
+      $('a[href*=\\#]:not([href=\\#])').not('[href^="#gear-option-"]').click(function() {
         if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
           smoothScrollTo($(this.hash));
           return false;
