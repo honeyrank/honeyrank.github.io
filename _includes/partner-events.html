@@ -1,15 +1,15 @@
 {% assign event_category = include.category | default: page.category %}
 {% assign offers = site.data.partner_events | where: "category", event_category %}
 {% if offers.size > 0 %}
-<section hidden data-partner-events data-placement="{{ include.placement | default: 'category_campaigns' }}" class="hny-guide-note" aria-label="쿠팡 기획전">
-  <h2>함께 볼 쿠팡 기획전</h2>
-  <p>이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
+<section hidden data-partner-events data-placement="{{ include.placement | default: 'category_campaigns' }}" class="hny-partner-events" aria-label="쿠팡 기획전">
+  <h2>함께 살펴볼 {{ event_category }} 기획전</h2>
   <ul>
     {% for offer in offers %}
-    <li hidden data-through="{{ offer.through | escape }}"><a data-campaign-id="{{ offer.url | split: '/' | last | escape }}" href="{{ offer.url | escape }}" rel="sponsored nofollow noopener" target="_blank">{{ offer.title | escape }}</a> · <time datetime="{{ offer.through }}">{{ offer.through | date: "%-m월 %-d일" }}</time>까지</li>
+    <li hidden data-through="{{ offer.through | escape }}"><a data-campaign-id="{{ offer.url | split: '/' | last | escape }}" href="{{ offer.url | escape }}" rel="sponsored nofollow noopener" target="_blank">{{ offer.title | escape }} <span class="hny-new-window">(새 창)</span></a><span class="hny-event-date"><time datetime="{{ offer.through }}">{{ offer.through | date: "%-m월 %-d일" }}</time>까지</span></li>
     {% endfor %}
   </ul>
-  <p>카테고리가 같은 행사입니다. 본문의 특정 상품·옵션이 행사 대상이라는 뜻은 아닙니다. 대상 상품과 회원별 혜택은 행사 페이지에서 확인하세요.</p>
+  <p class="hny-event-scope">본문 상품과 옵션의 행사 포함 여부, 회원별 혜택은 행사 페이지에서 확인하세요.</p>
+  <p class="hny-affiliate-note">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
 </section>
 <script src="{{ '/assets/js/partner-events.js' | relative_url }}" defer></script>
 {% endif %}

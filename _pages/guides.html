@@ -1,16 +1,27 @@
 ---
 layout: page
-title: "구매 가이드: 차박 공간·생활용품 단가·기기 규격"
+title: "구매 가이드"
 permalink: /guides/
-description: "상품을 고르기 전에 풀어야 할 질문부터 시작하세요. 차박 공간·용량과 묶음 단가·기기 규격에 맞춰 비교 글과 계산 도구를 안내합니다."
+description: "용량과 묶음 수, 기기 규격, 사용할 공간까지. 상품을 고를 때 확인할 기준과 분야별 비교 글, 계산 도구를 안내합니다."
 discovery_page: true
 comments: false
 ---
-<p class="hny-lead">가격표를 보기 전에, 내게 필요한 조건부터 정해 보세요.</p>
-{% include buying-paths.html %}
-<section class="hny-guide-note"><h2>가격 비교에 필요한 정보가 있나요?</h2><p>최종 결제 금액과 총 수량·용량을 알고 있다면 같은 단위로 계산할 수 있습니다. 정보가 빠져 있으면 추정하지 않고 판매 옵션에서 먼저 확인하세요.</p><a class="hny-purchase" href="/tools/unit-price/">단가 계산기 열기</a></section>
-<h2>대표 구매 가이드</h2>
-{% include buying-guide-cards.html %}
-<p><a href="/methodology/">상품 선정·자료 확인·갱신 기준</a> · <a href="/all/">전체 상품 글</a></p>
-
-<p><a href="/subscribe/">새 구매 가이드 RSS로 받아보기 →</a></p>
+<link rel="stylesheet" href="{{ '/assets/css/home.css?v=20261105' | relative_url }}">
+<div class="hny-discover">
+  <p class="hny-lead">상품은 정했는데 어떤 옵션을 고를지 고민이라면, 나에게 필요한 조건부터 확인해 보세요.</p>
+  <section aria-labelledby="guide-questions-heading"><h2 id="guide-questions-heading">어떤 점이 궁금하세요?</h2>{% include buying-paths.html %}</section>
+  <section class="hny-home-section" aria-labelledby="guide-comparisons-heading">
+    <h2 id="guide-comparisons-heading">상품별로 비교하기</h2>
+    <p>각 상품의 구성과 규격을 어떤 기준으로 살펴볼지 안내합니다.</p>
+    {% include buying-guide-cards.html %}
+  </section>
+  <section class="hny-home-utility" aria-labelledby="guide-tool-heading" data-placement="guides_tools">
+    <div><h2 id="guide-tool-heading">단가가 헷갈리면 직접 계산해 보세요.</h2><p>최종 결제 금액과 총 수량·용량을 입력해 같은 단위로 비교할 수 있습니다.</p></div>
+    <a class="hny-home-action hny-home-action-secondary" href="{{ '/tools/unit-price/' | relative_url }}">단가 계산기 열기 <span aria-hidden="true">→</span></a>
+  </section>
+  <section class="hny-home-section" aria-labelledby="guide-category-heading">
+    <div class="hny-home-section-heading"><div><h2 id="guide-category-heading">다른 상품을 찾고 있나요?</h2><p>분야를 고르면 해당 상품의 비교 글을 볼 수 있어요.</p></div><a class="hny-home-section-link" href="{{ '/all/' | relative_url }}">전체 상품 보기 <span aria-hidden="true">→</span></a></div>
+    {% include home-categories.html %}
+  </section>
+  <div class="hny-home-method"><a href="{{ '/methodology/' | relative_url }}">상품 비교에 사용한 자료와 기준</a><a href="{{ '/subscribe/' | relative_url }}">RSS로 새 글 받아보기 <span aria-hidden="true">→</span></a></div>
+</div>

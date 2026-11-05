@@ -2,17 +2,10 @@
 layout: default
 ---
 
-<div class="page-single">
-    <div class="entry-header">       
-        <h1 class="posttitle">{{ page.title }}</h1>        
-    </div>
-</div>
+<header class="entry-header hny-page-header">
+    <h1 class="posttitle">{{ page.title }}</h1>
+</header>
 
-<!-- Featured Image -->
 {% include featured-image.html %}
-
-<!-- Content -->
 {% include article.html %}
-
-<!-- Comments if not disabled with comments: false -->
 {% include comments.html %}

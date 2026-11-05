@@ -1,38 +1,29 @@
-<!-- Related Posts (같은 카테고리 글 내부링크 — 체류·탐색 및 크롤 깊이 향상)
-================================================== -->
-{% unless page.categories == empty %}
-<div class="related-posts" style="max-width:1100px;margin:48px auto 0;">
-
-    <h2 class="text-center mb-4">이런 글도 함께 보세요</h2>
-
-    <div class="d-flex justify-content-center align-items-center mb-4 flex-wrap">
-    {% assign sortedCategories = page.categories | sort %}
-    {% for category in sortedCategories %}
-    <a class="badge badge-primary" style="margin:0 4px;" href="{{ site.baseurl }}/category/{{ category }}/">{{ category }}</a>
-    {% endfor %}
-    </div>
-
-    {% assign maxRelated = 6 %}
-    {% assign maxRelatedCounter = 0 %}
-    <div class="blog-grid-container">
-        {% for post in site.posts %}
-            {% if post.url != page.url and post.canonical_url == nil %}
-                {% assign isRelated = false %}
-                {% for category in post.categories %}
-                    {% if page.categories contains category %}
-                        {% assign isRelated = true %}
-                    {% endif %}
-                {% endfor %}
-                {% if isRelated %}
-                    {% include postbox.html %}
-                    {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
-                    {% if maxRelatedCounter >= maxRelated %}
-                        {% break %}
-                    {% endif %}
-                {% endif %}
-            {% endif %}
-        {% endfor %}
-    </div>
-
-</div>
+{% unless page.categories == empty or page.editorial_hub %}
+{% assign current_path = page.canonical_url | default: page.url | remove: site.url %}
+{% assign maxRelatedCounter = 0 %}
+{% capture related_cards %}
+  {% for post in site.posts %}
+    {% if post.url != current_path and post.canonical_url == nil %}
+      {% assign isRelated = false %}
+      {% for category in post.categories %}
+        {% if page.categories contains category %}{% assign isRelated = true %}{% endif %}
+      {% endfor %}
+      {% if isRelated %}
+        {% include postbox.html %}
+        {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
+        {% if maxRelatedCounter >= 3 %}{% break %}{% endif %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endcapture %}
+{% if maxRelatedCounter > 0 %}
+<section class="related-posts hny-reading-related" aria-labelledby="related-comparisons">
+  <div class="hny-reading-section-heading">
+    <h2 id="related-comparisons">함께 볼 상품 비교</h2>
+    {% assign related_category = page.categories | first %}
+    <a class="hny-section-link" href="{{ site.baseurl }}/category/{{ related_category }}/">{{ related_category }} 전체 보기 <span aria-hidden="true">→</span></a>
+  </div>
+  <div class="blog-grid-container">{{ related_cards }}</div>
+</section>
+{% endif %}
 {% endunless %}

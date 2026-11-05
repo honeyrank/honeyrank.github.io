@@ -1,0 +1,42 @@
+[
+  {
+    "name": "생활",
+    "description": "화장지·청소포·건전지",
+    "feature": true
+  },
+  {
+    "name": "식품",
+    "description": "시리얼·라면·조미김",
+    "feature": true
+  },
+  {
+    "name": "디지털",
+    "description": "저장장치·폰케이스·키보드",
+    "feature": true
+  },
+  {
+    "name": "가전",
+    "description": "청소기·전기히터·가습기",
+    "feature": true
+  },
+  {
+    "name": "뷰티",
+    "description": "샴푸·클렌징·스킨케어",
+    "feature": true
+  },
+  {
+    "name": "리빙",
+    "description": "가구·침구·디퓨저",
+    "feature": false
+  },
+  {
+    "name": "주방",
+    "description": "조리도구·식기·텀블러",
+    "feature": false
+  },
+  {
+    "name": "레저",
+    "description": "캠핑·자전거·야외용품",
+    "feature": true
+  }
+]

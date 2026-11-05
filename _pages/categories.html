@@ -1,21 +1,25 @@
 ---
 layout: page
-title: "카테고리 — 상품 추천·순위 모음"
+title: "어떤 상품을 찾으세요?"
 permalink: /categories/
-description: "꿀랭킹의 상품 추천·순위 글을 카테고리별로 모았습니다. 뷰티·가전·디지털·식품·생활·육아 등 원하는 분야에서 인기 상품과 가격을 비교하세요."
+description: "생활·식품·가전·디지털·뷰티·육아 등 꿀랭킹의 상품 비교를 카테고리별로 찾아보세요."
+toc: false
 ---
 
-<p class="hny-muted" style="max-width:760px;margin:0 auto 24px;line-height:1.7;text-align:center;">
-관심 있는 카테고리를 선택하면 해당 분야의 인기 상품 추천·순위 글을 볼 수 있습니다.
-</p>
-
-<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:820px;margin:0 auto;">
-{% assign cats = site.categories | sort %}
-{% for cat in cats %}
-  <a href="{{ site.baseurl }}/category/{{ cat[0] }}/" style="display:inline-block;padding:12px 22px;background:#346aff;color:#fff;border-radius:24px;text-decoration:none;font-size:16px;">
-    {{ cat[0] }} <span style="opacity:.85;font-size:13px;">({{ cat[1] | size }})</span>
-  </a>
-{% endfor %}
+<div class="hny-directory">
+  <p class="hny-directory-intro">관심 있는 분야를 선택하고, 상품의 구성·규격과 구매 조건을 비교해 보세요.</p>
+  <div class="hny-category-directory">
+  {% assign cats = site.categories | sort %}
+  {% for cat in cats %}
+    {% assign category_posts = cat[1] | where_exp: "post", "post.canonical_url == nil" %}
+    {% if category_posts.size > 0 %}
+    <a class="hny-category-link" href="{{ site.baseurl }}/category/{{ cat[0] }}/">
+      <span class="hny-category-name">{{ cat[0] }}</span>
+      <span class="hny-category-count">상품 비교 {{ category_posts | size }}개</span>
+      <span class="hny-category-arrow" aria-hidden="true">→</span>
+    </a>
+    {% endif %}
+  {% endfor %}
+  </div>
+  <p class="hny-directory-link"><a href="{{ '/all/' | relative_url }}">전체 글 목록 보기 <span aria-hidden="true">→</span></a></p>
 </div>
-
-<p style="text-align:center;margin-top:28px;"><a href="{{ site.baseurl }}/all/">전체 글 목록 보기 →</a></p>

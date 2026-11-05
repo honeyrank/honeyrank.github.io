@@ -66,6 +66,7 @@
   const aSummary = document.getElementById('unit-option-a');
   const comparison = document.getElementById('unit-comparison');
   const saveStatus = document.getElementById('unit-save-status');
+  const extra = document.getElementById('unit-extra');
   const won = n => Math.round(n).toLocaleString('ko-KR') + '원';
   let optionA = null, currentInput = null;
   function track(name) { try { if (typeof window.hnyTrack === 'function') window.hnyTrack(name, {tool_name:'unit_price'}); } catch (_) {} }
@@ -111,6 +112,7 @@
       const saved=readSaved(window.localStorage.getItem(storageKey));
       if(!saved)return;
       fields.forEach(field=>{form.elements[field].value=saved.input[field];});optionA=saved.optionA;updateA();
+      if(extra && ['shipping','coupon','daily'].some(field => saved.input[field] !== '' && Number(saved.input[field]) !== 0)) extra.open=true;
       saveStatus.textContent='이 브라우저에 저장한 입력과 A를 불러왔습니다. 현재 가격·조건을 확인하고 다시 계산하세요.';
     } catch(_){}
   }
@@ -123,7 +125,7 @@
     try {
       const input=formInput(),value=calculate(input);currentInput=input;
       result.textContent=summary(value);pin.disabled=false;renderComparison(input);track('tool_result');
-    } catch(err){currentInput=null;pin.disabled=true;result.textContent='';comparison.replaceChildren();error.textContent=err.message;}
+    } catch(err){currentInput=null;pin.disabled=true;result.textContent='';comparison.replaceChildren();error.textContent=err.message;if(extra)extra.open=true;}
   });
   pin.addEventListener('click',function(){
     if(!currentInput)return;

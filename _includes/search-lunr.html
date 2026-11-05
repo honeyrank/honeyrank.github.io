@@ -1,13 +1,12 @@
 <!-- 대표 글·구매 도구의 검색 자료는 검색을 시작할 때만 불러옵니다. -->
-<div class="wrap-search">
-    <div class="d-flex align-items-center ml-auto">
-        <button type="button" class="show-search" aria-label="사이트 검색창 열기">검색</button>
-        <form class="bd-search ml-3" id="hny-search-form" role="search" onSubmit="return hnySearchSubmit(this);">
-            <input type="search" class="form-control bigradius text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" aria-label="상품명 또는 구매 질문 검색" placeholder="상품명·구매 질문 검색" autocomplete="off"/>
-        </form>
-    </div>
+<div class="hny-header-search">
+    <form class="hny-search-form" id="hny-search-form" role="search" onsubmit="return hnySearchSubmit(this);">
+        <label class="hny-visually-hidden" for="lunrsearch">상품명 또는 구매 질문 검색</label>
+        <input type="search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="상품명·구매 질문 검색" autocomplete="off" aria-controls="lunrsearchresults">
+        <button type="submit">검색</button>
+    </form>
+    <div id="lunrsearchresults" role="region" aria-label="사이트 검색 결과" hidden></div>
 </div>
-<div id="lunrsearchresults" role="region" aria-label="사이트 검색 결과" hidden></div>
 <script>
 (function () {
   var base = {{ site.baseurl | jsonify }};
@@ -16,7 +15,7 @@
     if (!loading) {
       loading = new Promise(function (resolve, reject) {
         var script = document.createElement('script');
-        script.src = base + '/assets/js/lunrsearchengine.js?v=20261105b';
+        script.src = base + '/assets/js/lunrsearchengine.js?v=ux20261105';
         script.onload = resolve;
         script.onerror = function () { script.remove(); loading = null; reject(new Error('search-load')); };
         document.head.appendChild(script);
@@ -31,14 +30,12 @@
       input.addEventListener(event, preload, { once: true, passive: true });
     });
   }
-  var icon = document.querySelector('.show-search');
-  if (icon) icon.addEventListener('pointerdown', preload, { once: true, passive: true });
   window.hnySearchSubmit = function () {
     var query = (document.getElementById('lunrsearch') || {}).value || '';
     var root = document.getElementById('lunrsearchresults');
-    if (root && !window.lunr_search) { root.hidden = false; root.textContent = '검색 준비 중…'; }
-    loadSearch().then(function () { window.lunr_search(query); }).catch(function () {
-      if (root) { root.hidden = false; root.textContent = '검색을 불러오지 못했습니다. 다시 검색해 주세요.'; }
+    if (root && !window.lunr_search) { root.hidden = false; root.setAttribute('aria-busy', 'true'); root.textContent = '검색 준비 중…'; }
+    loadSearch().then(function () { if (root) root.removeAttribute('aria-busy'); window.lunr_search(query); }).catch(function () {
+      if (root) { root.removeAttribute('aria-busy'); root.hidden = false; root.textContent = '검색을 불러오지 못했습니다. 다시 검색해 주세요.'; }
     });
     return false;
   };

@@ -25,14 +25,15 @@
 <link href="{{ site.baseurl }}/assets/css/theme.css" rel="stylesheet">
 
 <!-- UI/UX 개선 레이어 (theme 뒤에 로드해 오버라이드) -->
-<link href="{{ site.baseurl }}/assets/css/custom.css?v=20261104-gear" rel="stylesheet">
+<link href="{{ site.baseurl }}/assets/css/custom.css?v=ux20261105" rel="stylesheet">
 
-<script src="{{ site.baseurl }}/assets/js/jquery.min.js" defer></script>
+<link href="{{ site.baseurl }}/assets/css/navigation.css?v=ux20261105" rel="stylesheet">
+<link href="{{ site.baseurl }}/assets/css/reading.css?v=ux20261105" rel="stylesheet">
 
 <meta name="naver-site-verification" content="28ffae2f53391f9a70b4d2269ecb1be51e9eb414" />
 
 <!-- Decide whether this browser is an operator before loading any analytics. -->
-<script src="{{ site.baseurl }}/assets/js/analytics.js?v=20261105"></script>
+<script src="{{ site.baseurl }}/assets/js/analytics.js?v=ux20261105"></script>
 
 <!-- Organization만 홈에서 출력 (WebSite는 jekyll-seo-tag가 담당 — 중복 방지) -->
 {% if page.url == '/' %}
@@ -44,67 +45,33 @@
 </head>
 
 {% capture layout %}{% if page.layout %}layout-{{ page.layout }}{% endif %}{% endcapture %}
-<body>
-	<!-- defer loading of font and font awesome -->
-	<!-- Sen(라틴 전용)은 Pretendard로 대체되어 제거. FontAwesome은 검색 아이콘에 사용 -->
-	<noscript id="deferred-styles">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-	</noscript>
-
-<!-- Begin Sidebar Navigation
-================================================== -->
-
-<div class="sidebar">    
-</div>   
-<div class="nav-icon">
-    <div class="hamburger-bar"></div>
-</div>
-<div id="blackover-nav" class="blackover"></div>
-<nav id="menu">
-    <ul>
-        <h3>꿀랭킹</h3>
-        <li><a href="{{ site.baseurl }}/">홈</a></li>
-        <li><a href="{{ site.baseurl }}/guides/">구매 가이드</a></li>
-        <li><a href="{{ site.baseurl }}/guides/camping/">차박 공간·규격 가이드</a></li>
-        <li><a href="{{ site.baseurl }}/tools/camping-fit/">차박 치수 비교 도구</a></li>
-        <li><a href="{{ site.baseurl }}/tools/unit-price/">단가 계산기</a></li>
-        <li><a href="{{ site.baseurl }}/all/">전체 글</a></li>
-        <li><a href="{{ site.baseurl }}/about">소개</a></li>
-        <li style="margin-top:10px;opacity:.6;font-size:13px;">카테고리</li>
-        {% assign menuCats = site.categories | sort %}
-        {% for cat in menuCats %}
-        <li><a href="{{ site.baseurl }}/category/{{ cat[0] }}/">{{ cat[0] }}</a></li>
-        {% endfor %}
-    </ul>
-</nav>
-
-{% include search-lunr.html %}
-
-
-<!-- End Sidebar Navigation
-================================================== -->
+<body class="{{ layout | strip }}">
+<a class="hny-skip-link" href="#main-content">본문으로 바로 가기</a>
+<header class="hny-site-header">
+    <div class="hny-header-inner">
+        <a class="hny-brand" href="{{ site.baseurl }}/" aria-label="꿀랭킹 홈">
+            <img src="{{ site.baseurl }}/{{ site.logo }}" alt="" width="42" height="42">
+            <span><strong>꿀랭킹</strong><small>상품 비교 · 구매 가이드</small></span>
+        </a>
+        <button class="hny-menu-toggle" type="button" aria-controls="hny-primary-nav" aria-expanded="false" hidden>메뉴</button>
+        <nav class="hny-primary-nav" id="hny-primary-nav" aria-label="주요 메뉴">
+            <a href="{{ site.baseurl }}/all/"{% if page.url == '/all/' %} aria-current="page"{% endif %}>상품 비교</a>
+            <a href="{{ site.baseurl }}/categories/"{% if page.url == '/categories/' or page.url contains '/category/' %} aria-current="page"{% endif %}>카테고리</a>
+            <a href="{{ site.baseurl }}/guides/"{% if page.url contains '/guides/' %} aria-current="page"{% endif %}>구매 가이드</a>
+            <a href="{{ site.baseurl }}/tools/unit-price/"{% if page.url == '/tools/unit-price/' %} aria-current="page"{% endif %}>단가 계산기</a>
+        </nav>
+        {% include search-lunr.html %}
+    </div>
+</header>
 
 <div class="site-content {% if page.url == '/' %} firstpage {% endif %}">
-
 <div class="container">
-
-    <!-- Site Logo/Name
-    ================================================== -->
-   
-    <a class="navbar-brand" href="{{ site.baseurl }}/">
-        <img src="{{ site.baseurl }}/{{ site.logo }}" alt="{{ site.name }}">
-    </a>  
-   
-
-    <!-- Site Tag
-    ================================================== -->
-    <!-- The homepage introduces its buying paths in the main content. -->
 
     <!-- Content
     ================================================== -->
-    <div class="main-content">
+    <main class="main-content" id="main-content" tabindex="-1">
         {{ content }}
-    </div>
+    </main>
 
     {% if site.mailchimp-list %}
     <!-- Newsletter
@@ -124,17 +91,19 @@
 
 <!-- Begin Footer
 ================================================== -->
-<footer class="footer">
-<p><a href="/subscribe/">새 구매 가이드 RSS</a> · <a href="/guides/camping/">차박 공간·치수</a> · <a href="/tools/unit-price/">단가 비교</a></p>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-sm-12 text-center text-lg-left">
-                Copyright {{ site.time | date: "%Y" }} {{ site.name }}
-            </div>
-            <div class="col-md-6 col-sm-12 text-center text-lg-right" style="color:#3D3B3B; font-size:13px">
-                컨텐츠 내용 중 링크를 통한 물품 구매시, </br> 파트너스 활동으로 일정 수수료를 제공받을 수 있습니다.
-            </div>
+<footer class="footer hny-site-footer">
+    <div class="hny-footer-inner">
+        <div class="hny-footer-intro">
+            <strong>꿀랭킹</strong>
+            <p>다양한 상품의 구성과 규격을 비교하고, 나에게 맞는 구매 기준을 찾아보세요.</p>
         </div>
+        <nav class="hny-footer-links" aria-label="사이트 안내">
+            <a href="{{ site.baseurl }}/about">사이트 소개</a>
+            <a href="{{ site.baseurl }}/methodology/">비교 기준</a>
+            <a href="{{ site.baseurl }}/subscribe/">새 글 받아보기</a>
+        </nav>
+        <p class="hny-footer-disclosure">쿠팡 파트너스 활동의 일환으로, 링크를 통해 구매하면 일정액의 수수료를 제공받습니다.</p>
+        <p class="hny-copyright">© {{ site.time | date: "%Y" }} {{ site.name }}</p>
     </div>
 </footer>
 <!-- End Footer
@@ -145,10 +114,10 @@
 <!-- Scripts (if you need bootstrap.js, please add it yourself. I didn't use it for performance reasons, it was not needed in this theme)
 ================================================== -->
 
-<script src="{{ site.baseurl }}/assets/js/theme.js" defer></script>
+<script src="{{ site.baseurl }}/assets/js/navigation.js?v=ux20261105" defer></script>
 
 <!-- UI 보강(카드·목차·스티키 CTA·진행바). 실패해도 페이지는 정상 동작 -->
-<script src="{{ site.baseurl }}/assets/js/enhance.js?v=20261105" defer></script>
+<script src="{{ site.baseurl }}/assets/js/enhance.js?v=ux20261105" defer></script>
 
 {% if site.lazyimages == "enabled" %}
 <script src="{{ site.baseurl }}/assets/js/lazyload.js" defer></script>

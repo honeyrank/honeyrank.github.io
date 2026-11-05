@@ -1,48 +1,66 @@
 ---
 layout: default
-title: "꿀랭킹 - 차박 치수·생활용품 단가 비교 가이드"
-description: "차박 침낭 치수와 생활용품 단가를 직접 계산하고, 확인된 상품 자료로 내 조건에 맞는 옵션을 비교하세요."
+title: "꿀랭킹 — 상품 비교와 구매 가이드"
+description: "생활용품부터 식품, 디지털, 가전, 뷰티까지. 상품의 구성·가격·규격을 비교하고 나에게 맞는 구매 기준을 찾아보세요."
 ---
+<link rel="stylesheet" href="{{ '/assets/css/home.css?v=20261105' | relative_url }}">
 
 {% if paginator.page == 1 or paginator.page == nil %}
-<section class="hny-home-intro" data-placement="home_intro"><p class="hny-eyebrow">꿀랭킹 구매 가이드</p><h1>가격만 보기 전에,<br>나에게 맞는 조건부터.</h1><p class="hny-lead">차박 공간과 침낭 치수를 맞춰 보고, 생활용품은 실제 구매할 구성의 단가로 비교하세요.</p><p><a class="hny-purchase" href="/guides/">구매 가이드 찾기</a> <a class="hny-text-link" href="/tools/unit-price/">단가 계산하기 →</a></p></section>
-{% include buying-paths.html %}
-<section class="hny-guide-note"><h2>무엇을 기준으로 비교하나요?</h2><p>수집 시점 가격과 확인된 상품 정보를 비교합니다. 실사용 시험·판매량 순위와 구분하고, 모르는 정보는 확인 대상으로 남깁니다.</p><a href="/methodology/">자료와 편집 기준 보기 →</a></section>
-{% assign newGuides = site.posts | where: "editorial_kind", "new_topic" %}
-{% if newGuides.size > 0 %}
-<section aria-label="새 구매 가이드"><h2>새 구매 가이드</h2>
-<ul>{% for guide in newGuides limit:3 %}<li><a href="{{ guide.url | relative_url }}">{{ guide.title | escape }}</a></li>{% endfor %}</ul>
+<div class="hny-home">
+  <section class="hny-home-hero" data-placement="home_intro" aria-labelledby="home-heading">
+    <p class="hny-eyebrow">상품 비교 · 구매 가이드</p>
+    <h1 id="home-heading">무엇을 살지 고민될 때,<br>비교할 기준부터.</h1>
+    <p class="hny-home-lead">생활용품부터 식품, 디지털, 가전까지.<br class="hny-home-wide-break"> 구성과 가격, 내게 맞는 규격을 한곳에서 살펴보세요.</p>
+    <div class="hny-home-actions">
+      <a class="hny-home-action hny-home-action-primary" href="#home-categories">상품별 비교 찾기 <span aria-hidden="true">↓</span></a>
+      <a class="hny-home-action hny-home-action-secondary" href="{{ '/guides/' | relative_url }}">구매 가이드 보기 <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <section class="hny-home-section" id="home-categories" aria-labelledby="home-categories-heading">
+    <div class="hny-home-section-heading">
+      <div><h2 id="home-categories-heading">어떤 상품을 찾으세요?</h2><p>관심 있는 분야에서 상품별 비교 글을 찾아보세요.</p></div>
+      <a class="hny-home-section-link" href="{{ '/all/' | relative_url }}">전체 상품 보기 <span aria-hidden="true">→</span></a>
+    </div>
+    {% include home-categories.html %}
+  </section>
+
+  <section class="hny-home-section" aria-labelledby="home-comparisons-heading" data-placement="home_comparisons">
+    <div class="hny-home-section-heading">
+      <div><h2 id="home-comparisons-heading">분야별 상품 비교</h2><p>상품마다 다른 구성과 선택 조건을 확인해 보세요.</p></div>
+      <a class="hny-home-section-link" href="{{ '/all/' | relative_url }}">모든 비교 글 <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="blog-grid-container">
+      {% for category in site.data.home_categories %}{% if category.feature %}
+        {% assign category_posts = site.categories[category.name] | where_exp: 'p', 'p.canonical_url == nil' %}
+        {% for post in category_posts limit:1 %}{% include postbox.html %}{% endfor %}
+      {% endif %}{% endfor %}
+    </div>
+  </section>
+
+  <section class="hny-home-section" aria-labelledby="home-guides-heading">
+    <div class="hny-home-section-heading">
+      <div><h2 id="home-guides-heading">무엇부터 비교하면 좋을까요?</h2><p>구매 전 자주 생기는 질문부터 차근차근 확인하세요.</p></div>
+      <a class="hny-home-section-link" href="{{ '/guides/' | relative_url }}">구매 가이드 모아보기 <span aria-hidden="true">→</span></a>
+    </div>
+    {% include buying-paths.html %}
+  </section>
+
+  <section class="hny-home-utility" aria-labelledby="home-tool-heading" data-placement="home_tools">
+    <div><p class="hny-eyebrow">직접 비교해 보기</p><h2 id="home-tool-heading">가격과 수량을 알면, 단가로 비교하세요.</h2><p>묶음 수나 용량이 다른 상품도 같은 단위로 계산할 수 있어요.</p></div>
+    <a class="hny-home-action hny-home-action-secondary" href="{{ '/tools/unit-price/' | relative_url }}">단가 계산하기 <span aria-hidden="true">→</span></a>
+  </section>
+
+  <section class="hny-home-method" aria-labelledby="home-method-heading">
+    <div><h2 id="home-method-heading">비교에 사용한 자료를 함께 알려드려요.</h2><p>상품 안내에 표시된 구성·규격과 수집 당시 가격을 바탕으로 비교합니다. 현재 판매 옵션과 최종 가격은 구매 전에 확인해 주세요.</p></div>
+    <a class="hny-home-section-link" href="{{ '/methodology/' | relative_url }}">상품 비교 기준 <span aria-hidden="true">→</span></a>
+  </section>
+</div>
+{% else %}
+<section class="hny-home hny-home-archive" aria-labelledby="archive-heading">
+  <p class="hny-eyebrow">상품 비교</p><h1 id="archive-heading">상품 비교 더 보기</h1>
+  <p>찾는 상품이 있다면 분야별 전체 목록에서 확인하세요.</p>
+  <div class="hny-home-actions"><a class="hny-home-action hny-home-action-primary" href="{{ '/all/' | relative_url }}">전체 상품 보기 <span aria-hidden="true">→</span></a><a class="hny-home-action hny-home-action-secondary" href="{{ '/' | relative_url }}">홈으로</a></div>
+  <div class="blog-grid-container">{% for post in paginator.posts %}{% unless post.canonical_url %}{% include postbox.html %}{% endunless %}{% endfor %}</div>
 </section>
 {% endif %}
-<h2>보강한 대표 비교 글</h2>
-{% endif %}
-
-<!-- 카테고리 허브 가시 링크 (1페이지에만) — 홈 링크주스를 카테고리/전체글 허브로 전달 -->
-{% if paginator.page == 1 or paginator.page == nil %}
-<nav aria-label="카테고리" style="max-width:1000px;margin:0 auto 24px;text-align:center;line-height:2.2;">
-    <a href="{{ site.baseurl }}/all/" class="badge badge-dark" style="margin:0 4px;">전체 글</a>
-    {% assign homeCats = site.categories | sort %}
-    {% for cat in homeCats %}
-    <a href="{{ site.baseurl }}/category/{{ cat[0] }}/" class="badge badge-primary" style="margin:0 4px;">{{ cat[0] }}</a>
-    {% endfor %}
-</nav>
-{% endif %}
-
-<!-- Posts Index
-================================================== -->
-<div class="blog-grid-container">
-    {% if paginator.page == 1 or paginator.page == nil %}
-      {% assign reviewedPosts = site.posts | where_exp: "p", "p.editorial_topic != nil" %}
-      {% for post in reviewedPosts limit:6 %}{% include postbox.html %}{% endfor %}
-    {% else %}
-      {% for post in paginator.posts %}{% include postbox.html %}{% endfor %}
-    {% endif %}
-</div>
-
-<!-- Pagination
-================================================== -->
-<div class="bottompagination">
-<span class="navigation" role="navigation">
-    {% include pagination.html %}
-</span>
-</div>

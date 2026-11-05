@@ -1,0 +1,98 @@
+/* Shared navigation and search: usable without scripts, no floating search controls. */
+.hny-visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+.hny-skip-link {
+  position: fixed; left: 16px; top: -100px; z-index: 2000;
+  padding: 12px 18px; border-radius: 10px; background: var(--hny-surface); color: var(--hny-text);
+}
+.hny-skip-link:focus { top: 12px; }
+.hny-site-header { border-bottom: 1px solid var(--hny-border); background: var(--hny-surface); }
+.hny-header-inner {
+  max-width: 1140px; margin: 0 auto; padding: 20px 24px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px;
+}
+.hny-brand { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 10px; color: var(--hny-text); text-decoration: none; }
+.hny-brand:hover { color: var(--hny-text); text-decoration: none; }
+.hny-brand img { width: 42px; height: 42px; object-fit: contain; }
+.hny-brand strong { display: block; font-size: 23px; line-height: 1.2; letter-spacing: -.03em; }
+.hny-brand small { display: block; color: var(--hny-text-soft); font-size: 12px; line-height: 1.5; margin-top: 3px; }
+.hny-primary-nav { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+.hny-primary-nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 12px; color: var(--hny-text); font-size: 15px; font-weight: 600; border-radius: 8px; }
+.hny-primary-nav a:hover, .hny-primary-nav a[aria-current] { background: var(--hny-bg); text-decoration: none; color: var(--hny-brand); }
+.hny-primary-nav a[aria-current] { box-shadow: inset 0 -2px var(--hny-brand); }
+.hny-menu-toggle { display: none; }
+.hny-header-search { position: relative; width: 100%; min-width: 0; }
+.hny-search-form { display: flex; align-items: stretch; width: 100%; gap: 8px; margin: 0; }
+.hny-search-form input {
+  min-width: 0; flex: 1; height: 46px; padding: 10px 15px; border: 1px solid var(--hny-border);
+  border-radius: 10px; background: var(--hny-bg); color: var(--hny-text); font-size: 16px; line-height: 1.5;
+}
+.hny-search-form input::placeholder { color: var(--hny-text-soft); opacity: 1; }
+.hny-search-form button {
+  flex: 0 0 auto; min-width: 66px; padding: 10px 16px; border: 0; border-radius: 10px;
+  background: #2453d6; color: #fff; font-weight: 700; cursor: pointer;
+}
+.hny-search-form input:focus-visible { outline: 3px solid var(--hny-brand); outline-offset: 2px; }
+#lunrsearchresults {
+  position: absolute; top: calc(100% + 8px); right: 0; bottom: auto !important; left: 0;
+  z-index: 1100; width: 100%; max-width: none; max-height: min(65vh, 640px);
+  margin: 0; padding: 0; border: 1px solid var(--hny-border); border-radius: 12px;
+  overflow-y: auto; overscroll-behavior: contain; background: var(--hny-surface);
+  color: var(--hny-text); box-shadow: 0 12px 40px rgba(0, 0, 0, .18);
+}
+#lunrsearchresults[hidden] { display: none; }
+#lunrsearchresults > .p-3 { padding: 16px !important; border-bottom: 1px solid var(--hny-border); }
+#lunrsearchresults > .p-3 p { font-size: 15px; font-weight: 700; margin: 0 0 10px; }
+#lunrsearchresults button { min-width: 0; min-height: 36px; padding: 6px 12px; font-size: 13px; border-radius: 7px; }
+#lunrsearchresults ul:not(:empty) { list-style: none; margin: 0; padding: 0; }
+#lunrsearchresults li { padding: 0; margin: 0; }
+#lunrsearchresults li + li { border-top: 1px solid var(--hny-border); }
+#lunrsearchresults li > a { display: block; padding: 16px; }
+#lunrsearchresults li > a:hover { background: var(--hny-bg); }
+#lunrsearchresults .title { font-size: 17px; line-height: 1.5; margin-bottom: 5px; }
+#lunrsearchresults small { color: var(--hny-text-soft); font-size: 13px; line-height: 1.6; }
+#lunrsearchresults li:not(.lunrsearchresult) { padding: 16px; font-size: 14px; }
+.site-content { padding-top: 0; }
+.site-content > .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 32px 24px 0; }
+.main-content:focus { outline: none; }
+.hny-site-footer { margin-top: 72px; padding: 40px 0 32px; border-color: var(--hny-border); background: var(--hny-surface); color: var(--hny-text); }
+.hny-footer-inner { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+.hny-footer-intro strong { font-size: 20px; }
+.hny-footer-intro p { color: var(--hny-text-soft); font-size: 14px; margin: 8px 0 20px; }
+.hny-footer-links { display: flex; gap: 10px 24px; flex-wrap: wrap; margin-bottom: 24px; }
+.hny-footer-links a { min-height: 36px; display: inline-flex; align-items: center; font-size: 14px; }
+.hny-footer-disclosure, .hny-copyright { font-size: 12px; color: var(--hny-text-soft); margin: 8px 0 0; line-height: 1.7; }
+@media (max-width: 767px) {
+  .hny-header-inner { gap: 14px; }
+  .hny-brand strong { font-size: 21px; }
+  .hny-brand img { width: 38px; height: 38px; }
+  .hny-menu-toggle:not([hidden]) { display: inline-flex; align-items: center; justify-content: center; margin-left: auto; min-height: 44px; min-width: 58px; padding: 8px 12px; border: 1px solid var(--hny-border); border-radius: 9px; background: var(--hny-surface); color: var(--hny-text); font-size: 14px; font-weight: 600; cursor: pointer; }
+  .hny-primary-nav { order: 2; width: 100%; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; border-top: 1px solid var(--hny-border); padding-top: 10px; }
+  .hny-primary-nav[hidden] { display: none; }
+  .hny-primary-nav a { padding: 10px 12px; font-size: 14px; }
+  .hny-header-search { order: 3; }
+  #lunrsearchresults { max-height: 58vh; }
+  .hny-site-footer { margin-top: 48px; }
+  .layout-post .hny-site-footer { padding-bottom: 100px; }
+}
+@media (max-width: 600px) {
+  .hny-header-inner { padding: 16px 18px; }
+  .site-content > .container { padding: 24px 18px 0; }
+  .hny-footer-inner { padding: 0 18px; }
+}
+@media (min-width: 1100px) {
+  .hny-header-inner { gap: 20px; }
+  .hny-primary-nav { gap: 0; }
+  .hny-primary-nav a { padding: 8px 10px; }
+  .hny-header-search { width: 280px; margin-left: 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hny-site-header *, .hny-toc *, .hny-progress, .hny-sticky-cta { transition: none !important; }
+}
+@media print {
+  .hny-site-header, .hny-skip-link, .hny-footer-links, .hny-top, .hny-progress, .hny-sticky-cta { display: none !important; }
+  .site-content > .container { max-width: none; padding: 0; }
+  .hny-site-footer { padding: 12px 0; margin-top: 24px; }
+}

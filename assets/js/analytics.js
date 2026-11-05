@@ -39,7 +39,7 @@
     if (!enabled || !['tool_result', 'tool_save', 'tool_share'].includes(name)) return;
     var tool = values && values.tool_name;
     if (!['camping_fit', 'unit_price'].includes(tool)) return;
-    window.gtag('event', name, {tool_name: tool, page_path: page.pathname, content_version: 'growth-20261105'});
+    window.gtag('event', name, {tool_name: tool, page_path: page.pathname, content_version: 'ux-20261105'});
   };
   function attr(node, name) { return node && node.getAttribute ? node.getAttribute(name) || '' : ''; }
   function ancestor(node, selector) { return node && node.closest ? node.closest(selector) : null; }
@@ -68,7 +68,7 @@
     var placement = attr(a, 'data-placement') || attr(context, 'data-placement') ||
       (ancestor(a, '.hny-comparison') ? 'comparison_table' : ancestor(a, '.hny-card') ? 'product_card' : 'article_link');
     if (url.origin === page.origin && /^\/(guides|tools)\//.test(url.pathname)) {
-      window.gtag('event', 'guide_click', {destination_path: url.pathname, placement: placement, content_version: 'growth-20261105'});
+      window.gtag('event', 'guide_click', {destination_path: url.pathname, placement: placement, content_version: 'ux-20261105'});
       return;
     }
     if (!/(^|\.)coupang\.com$/.test(url.hostname)) return;
@@ -79,7 +79,7 @@
       page_title: document.title,
       placement: placement,
       campaign_id: attr(a, 'data-campaign-id'),
-      content_version: 'growth-20261105'
+      content_version: 'ux-20261105'
     });
   }, true);
 }());

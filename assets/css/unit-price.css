@@ -1,0 +1,17 @@
+#unit-price-form { max-width: 760px; }
+.unit-fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; padding: 0; border: 0; margin: 0; min-width: 0; }
+.unit-fields legend { width: 100%; float: none; font-size: 1.1rem; font-weight: 750; margin-bottom: 20px; }
+.unit-full { grid-column: 1 / -1; }
+.unit-field { min-width: 0; }
+#unit-price-form .unit-field label { margin: 0 0 8px; font-size: .95rem; }
+#unit-price-form .unit-field input, #unit-price-form .unit-field select { box-sizing: border-box; }
+#unit-price-form .hny-comparison-note { margin: 0; }
+.unit-extra { border-top: 1px solid var(--hny-border); margin-top: 24px; padding-top: 18px; }
+.unit-extra summary { min-height: 44px; cursor: pointer; font-size: .95rem; font-weight: 650; }
+.unit-extra summary span { color: var(--hny-text-soft); font-size: .8rem; }
+.unit-extra[open] .unit-fields { margin-top: 16px; }
+#unit-result { font-size: 1rem; line-height: 1.8; }
+#unit-error:empty { display: none; }
+#unit-error { margin: 18px 0 0; }
+@media(max-width: 380px) { .unit-fields { gap: 16px 12px; } .unit-field { grid-column: 1 / -1; } }
+@media(prefers-color-scheme:dark) { #unit-error { color: #ffb09e; } }

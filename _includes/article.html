@@ -1,13 +1,13 @@
 <!-- Post, Page Content
 ================================================== -->
-<div class="article-post">
+<div class="article-post"{% if page.toc == false %} data-auto-toc="false"{% endif %}>
     <!-- Toc if any -->
     {% if page.toc %}
     {% if page.beforetoc %}
         <p><em>{{page.beforetoc}}</em></p>
     {% endif %}
     <div class="toc mt-4 mb-4 lead">
-        <h3 class="font-weight-bold">Summary</h3>
+        <h3 class="font-weight-bold">내용 바로가기</h3>
         {% include toc.html html=content %}
     </div>
     {% endif %}
@@ -27,6 +27,11 @@
     {% if page.editorial_topic == 'cereal' %}
       {% capture portion_guide %}{% include cereal-portions.html %}{% endcapture %}
       {% assign body = body | replace_first: '<!-- hny-rich -->', portion_guide %}
+    {% endif %}
+    {% if page.layout == 'post' %}
+      {% capture greeting %}<p style="text-align: center;">안녕하세요. 꿀랭킹입니다 :)</p>{% endcapture %}
+      {% capture repeated_title %}<p style="text-align: center;">이번 비교 주제는 {{ page.title }} 입니다.</p>{% endcapture %}
+      {% assign body = body | remove_first: greeting | remove_first: repeated_title %}
     {% endif %}
     {{ body }}
 </div>

@@ -118,7 +118,7 @@ var documents = [
       item.appendChild(link);
       list.appendChild(item);
     });
-    if (!results.length && normalize(term)) list.appendChild(element('li', '일치하는 대표 글이 없습니다. 상품명이나 용도를 짧게 입력해 보세요.'));
+    if (!results.length && normalize(term)) list.appendChild(element('li', '일치하는 글이나 가이드가 없습니다. 상품명이나 용도를 짧게 입력해 보세요.'));
     root.appendChild(list);
     return false;
   };

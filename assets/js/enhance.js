@@ -10,7 +10,7 @@
   'use strict';
 
   var article = document.querySelector('.article-post');
-  var isPost = !!article && !!document.querySelector('.entry-header');
+  var isPost = !!article && !!document.querySelector('.entry-header') && !document.querySelector('.page-single, .hny-page-header');
 
   /* ---------- 1. 상품 블록 → 카드 ---------- */
   function buildCards() {
@@ -87,21 +87,20 @@
 
   /* ---------- 1-c. 읽기 시간 (신뢰·기대치 신호) ---------- */
   function addReadingTime() {
-    var header = document.querySelector('.entry-header .d-flex');
+    var header = document.querySelector('.hny-post-meta');
     if (!header || !article) return;
     var chars = (article.innerText || '').replace(/\s/g, '').length;
     if (!chars) return;
     var min = Math.max(1, Math.round(chars / 500)); // 한국어 분당 약 500자
     var span = document.createElement('span');
     span.className = 'hny-readtime';
-    span.textContent = '· 읽는 시간 약 ' + min + '분';
-    var box = header.querySelector('div:last-child');
-    if (box) box.appendChild(span);
+    span.textContent = '읽는 시간 약 ' + min + '분';
+    header.appendChild(span);
   }
 
   /* ---------- 2. 목차 ---------- */
   function buildToc(cardCount) {
-    if (!article) return;
+    if (!article || article.getAttribute('data-auto-toc') === 'false') return;
     var items = [];
 
     Array.prototype.slice.call(article.querySelectorAll('h2')).forEach(function (h2) {
@@ -111,7 +110,14 @@
       if (!h2.id) {
         h2.id = 'sec-' + items.length + '-' + text.replace(/\s+/g, '-').slice(0, 20);
       }
-      items.push({ id: h2.id, text: text });
+      var label = text;
+      var productNumber = text.match(/^(?:비교|상품)\s*(\d+)$/);
+      var productHeading = h2.nextElementSibling;
+      if (productNumber && productHeading && productHeading.tagName === 'H3') {
+        var productName = (productHeading.textContent || '').replace(/\s+/g, ' ').trim();
+        if (productName) label = '상품 ' + productNumber[1] + ' · ' + productName.slice(0, 40) + (productName.length > 40 ? '…' : '');
+      }
+      items.push({ id: h2.id, text: label });
     });
 
     if (cardCount > 0) {
@@ -126,7 +132,7 @@
 
     var toc = document.createElement('details');
     toc.className = 'hny-toc';
-    toc.open = true;
+    toc.open = !window.matchMedia('(max-width: 767px)').matches;
 
     var summary = document.createElement('summary');
     summary.textContent = '이 글의 목차';
@@ -175,13 +181,66 @@
     top.className = 'hny-top';
     top.type = 'button';
     top.setAttribute('aria-label', '맨 위로 이동');
-    top.innerHTML = '↑';
+    top.textContent = '↑';
     top.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     });
     document.body.appendChild(top);
 
     return { bar: bar, top: top };
+  }
+
+  /* ---------- 5. 가로 비교표 안내 ---------- */
+  function enhanceTableScrolling() {
+    var records = new WeakMap();
+    var pending = false;
+    function update() {
+      pending = false;
+      document.querySelectorAll('.hny-table-scroll, .gear-scroll, .fit-table-wrap, .unit-table').forEach(function (wrap) {
+        var record = records.get(wrap);
+        if (!record) {
+          var hint = document.createElement('p');
+          hint.className = 'hny-table-scroll-hint';
+          hint.textContent = '표를 좌우로 움직여 비교하세요.';
+          hint.style.cssText = 'font-size:13px;line-height:1.6;color:var(--hny-text-soft);margin:10px 0 6px;';
+          hint.hidden = true;
+          wrap.parentNode.insertBefore(hint, wrap);
+          record = { hint: hint, addedTabIndex: false };
+          records.set(wrap, record);
+          if (!wrap.hasAttribute('role')) wrap.setAttribute('role', 'region');
+          if (!wrap.hasAttribute('aria-label') && !wrap.hasAttribute('aria-labelledby')) {
+            var caption = wrap.querySelector('caption');
+            var captionText = caption ? (caption.textContent || '').trim().slice(0, 90) : '';
+            wrap.setAttribute('aria-label', captionText || '상품 비교표');
+          }
+        }
+        var overflow = wrap.scrollWidth > wrap.clientWidth + 1;
+        record.hint.hidden = !overflow;
+        if (overflow && !wrap.hasAttribute('tabindex')) {
+          wrap.setAttribute('tabindex', '0');
+          record.addedTabIndex = true;
+        } else if (!overflow && record.addedTabIndex) {
+          wrap.removeAttribute('tabindex');
+          record.addedTabIndex = false;
+        }
+      });
+    }
+    function schedule() {
+      if (pending) return;
+      pending = true;
+      window.requestAnimationFrame(update);
+    }
+    update();
+    window.addEventListener('resize', schedule, { passive: true });
+    window.addEventListener('load', schedule, { once: true });
+    // Only the two calculator output containers need to be observed. Form values,
+    // the rest of the document and analytics are untouched.
+    if (window.MutationObserver) {
+      ['fit-results', 'unit-comparison'].forEach(function (id) {
+        var output = document.getElementById(id);
+        if (output) new window.MutationObserver(schedule).observe(output, { childList: true });
+      });
+    }
   }
 
   /* ---------- 실행 ---------- */
@@ -195,6 +254,7 @@
 
     var sticky = isPost ? buildStickyCta(cards) : null;
     var ui = buildScrollUi();
+    enhanceTableScrolling();
 
     var ticking = false;
     function onScroll() {

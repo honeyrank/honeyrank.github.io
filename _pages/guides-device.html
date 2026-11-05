@@ -2,12 +2,17 @@
 layout: page
 title: "기기·규격 확인 가이드"
 permalink: /guides/device/
-description: "저렴한 옵션보다 내 기기에 맞는 옵션을 먼저 찾으세요. 모델·규격이 확인되지 않으면 비교를 멈추는 것이 좋습니다."
+description: "휴대폰 기종, 저장장치 연결 방식, 건전지 규격처럼 내 기기에 맞는 상품을 고르기 위해 확인할 조건을 안내합니다."
 discovery_page: true
 comments: false
 ---
-<p><a href="/guides/">구매 가이드</a> / 기기·규격 확인 가이드</p>
-<p class="hny-lead">저렴한 옵션보다 내 기기에 맞는 옵션을 먼저 찾으세요. 모델·규격이 확인되지 않으면 비교를 멈추는 것이 좋습니다.</p>
-<ol class="hny-guide-steps"><li>사용 기기의 정확한 모델명·포트·필요 규격을 적습니다.</li><li>상품명에 여러 기종이나 용량이 나열되면 선택된 옵션을 따로 확인합니다.</li><li>표기된 기능과 실제 성능 시험을 구분하고, 필요한 보증·사용 지침을 확인합니다.</li></ol>
-{% include buying-guide-cards.html hub="device" %}
-<p><a href="/tools/unit-price/">단가 계산기</a> · <a href="/methodology/">자료와 비교 기준</a></p>
+<link rel="stylesheet" href="{{ '/assets/css/home.css?v=20261105' | relative_url }}">
+<div class="hny-discover">
+<nav class="hny-guide-breadcrumb" aria-label="현재 위치"><a href="{{ '/guides/' | relative_url }}">구매 가이드</a><span aria-hidden="true">/</span><span aria-current="page">기기·규격</span></nav>
+<p class="hny-lead">같은 상품명이라도 기종과 연결 방식에 따라 사용할 수 있는 옵션이 달라집니다. 가격을 비교하기 전에 내 기기와 맞는지 먼저 확인하세요.</p>
+<section aria-labelledby="device-steps-heading"><h2 id="device-steps-heading">이 순서로 확인하세요</h2>
+<ol class="hny-guide-steps"><li>사용 기기의 정확한 모델명·포트·필요 규격을 적습니다.</li><li>상품명에 여러 기종이나 용량이 나열되면 선택된 옵션을 따로 확인합니다.</li><li>표기된 기능과 실제 성능 시험을 구분하고, 필요한 보증·사용 지침을 확인합니다.</li></ol></section>
+<section class="hny-home-section" aria-labelledby="device-examples-heading"><h2 id="device-examples-heading">어떤 규격을 확인해야 할까요?</h2>
+{% include buying-guide-cards.html hub="device" %}</section>
+<div class="hny-home-method"><a href="{{ '/guides/' | relative_url }}">다른 구매 가이드 보기</a><a href="{{ '/methodology/' | relative_url }}">자료와 비교 기준</a></div>
+</div>

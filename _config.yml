@@ -1,7 +1,7 @@
 # Site
 name: "꿀랭킹"
 title: "꿀랭킹"
-description: "구성·단가와 기기·규격으로 고르는 구매 가이드"
+description: "생활·식품·디지털·가전·뷰티 등 다양한 상품의 구성·가격·규격을 비교하는 구매 가이드"
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
 baseurl: ''

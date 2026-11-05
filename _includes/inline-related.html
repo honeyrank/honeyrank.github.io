@@ -1,25 +1,19 @@
 {% if page.editorial_hub %}
-<section class="hny-guide-note"><h2>같은 기준으로 더 비교해 보세요</h2><p><a href="/guides/{{ page.editorial_hub }}/">이 주제의 구매 가이드 모음</a> · <a href="/tools/unit-price/">단가 계산기</a></p><ul>
-{% for guide in site.data.buying_guides %}{% if guide.hub == page.editorial_hub and guide.id != page.editorial_topic %}<li><a href="{{ guide.url }}">{{ guide.intent }}</a></li>{% endif %}{% endfor %}
-</ul></section>
-{% else %}
-<!-- 본문 내 문맥형 내부링크(같은 카테고리 글). boilerplate 하단 위젯보다 크롤/링크 가중치 유리 -->
-{% unless page.categories == empty %}
-{% assign icat = page.categories | first %}
-{% assign icnt = 0 %}
-<div class="inline-related" style="max-width:680px;margin:28px auto;padding:16px 20px;background:#f7f9ff;border:1px solid #e6ecff;border-radius:8px;font-size:15px;line-height:1.9;text-align:left;">
-<b style="display:block;margin-bottom:6px;">📌 함께 보면 좋은 {{ icat }} 추천 글</b>
-<ul style="margin:0;padding-left:18px;">
-{% for p in site.posts %}
-  {% if p.url != page.url and p.canonical_url == nil and icnt < 4 %}
-    {% if p.categories contains icat %}
-    <li><a href="{{ site.baseurl }}{{ p.url }}">{{ p.title }}</a></li>
-    {% assign icnt = icnt | plus: 1 %}
-    {% endif %}
+{% assign current_path = page.canonical_url | default: page.url | remove: site.url %}
+{% assign guide_count = 0 %}
+{% capture related_guides %}
+{% for guide in site.data.buying_guides %}
+  {% if guide.hub == page.editorial_hub and guide.url != current_path and guide_count < 3 %}
+  <li><a href="{{ guide.url | relative_url }}">{{ guide.intent }}</a></li>
+  {% assign guide_count = guide_count | plus: 1 %}
   {% endif %}
 {% endfor %}
-</ul>
-</div>
-{% endunless %}
-
+{% endcapture %}
+{% if guide_count > 0 %}
+<section class="hny-reading-related" aria-labelledby="related-buying-questions">
+  <h2 id="related-buying-questions">이런 구매 질문도 확인해 보세요</h2>
+  <ul>{{ related_guides }}</ul>
+  <a class="hny-section-link" href="{{ site.baseurl }}/guides/{{ page.editorial_hub }}/">관련 구매 가이드 모두 보기 <span aria-hidden="true">→</span></a>
+</section>
+{% endif %}
 {% endif %}

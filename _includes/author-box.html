@@ -1,18 +1,6 @@
-<!-- Author Box -->
-{% if page.author %}
-{% if site.authorbox == "enabled" %}
-<div class="d-flex authorbox align-items-center">
-    <div class="col-md-2 mr-4 text-center">
-        {% if author.avatar %}
-        <img class="author-thumb" src="{{site.baseurl}}/{{ author.avatar }}" alt="{{ author.display_name }}">
-        {% else %}
-        <img class="author-thumb" src="https://www.gravatar.com/avatar/{{ author.gravatar }}?s=250&d=mm&r=x" alt="{{ author.display_name }}">
-        {% endif %}
-    </div>
-    <div class="col-md-10">
-        <a target="_blank" class="text-dark h4" href="/methodology/">{{ author.display_name }}의 자료·편집 기준</a>
-        <span class="author-description d-block mt-2">{{ author.description }}</span>
-    </div>
-</div>
-{% endif %}
+{% if page.author and site.authorbox == "enabled" %}
+<aside class="hny-author-note" aria-label="상품 비교 안내">
+  <span>꿀랭킹은 상품 자료와 확인 날짜를 바탕으로 비교합니다.</span>
+  <a href="{{ '/methodology/' | relative_url }}">자료·비교 기준 보기 <span aria-hidden="true">→</span></a>
+</aside>
 {% endif %}

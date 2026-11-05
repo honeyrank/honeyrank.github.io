@@ -5,40 +5,24 @@ archive: false
 post_class: post-template
 ---
 
-<div class="entry-header">
-    <!-- Post Title -->
+{% assign author = site.authors[page.author] %}
+<header class="entry-header hny-post-header">
+    {% unless page.categories == empty %}
+    {% assign bcat = page.categories | first %}
+    <nav class="hny-breadcrumb" aria-label="현재 위치">
+        <a href="{{ '/' | relative_url }}">홈</a><span aria-hidden="true">/</span>
+        <a href="{{ site.baseurl }}/category/{{ bcat }}/">{{ bcat }}</a>
+    </nav>
+    {% endunless %}
     <h1 class="posttitle">{{ page.title }}</h1>
-    <!-- Author & Date  Box -->
-    {% assign author = site.authors[page.author] %}
-    {% if page.author %}
-    <div class="d-flex align-items-center mt-4">
-        <div>
-            {% if author.avatar %}
-            <img class="author-thumb" src="{{site.baseurl}}/{{ author.avatar }}" alt="{{ author.display_name }}">
-            {% else %}
-            <img class="author-thumb" src="https://www.gravatar.com/avatar/{{ author.gravatar }}?s=250&d=mm&r=x" alt="{{ author.display_name }}">
-            {% endif %}
-        </div>            
-        <div>
-        Written by <a target="_blank" class="text-dark" href="{{ author.web }}">{{ author.display_name }}</a> on 
-        <span class="post-date"><time class="post-date" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time></span>           
+    <div class="hny-post-meta">
+        {% if author %}<a href="{{ '/about' | relative_url }}">{{ author.display_name }}</a>{% endif %}
+        <span>작성 <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y.%m.%d" }}</time></span>
         {% if page.last_modified_at %}
-        (Updated: <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%b %-d, %Y" }}</time>)
+        <span>내용 수정 <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%Y.%m.%d" }}</time></span>
         {% endif %}
-        </div>            
     </div>
-    {% endif %}
-</div>
-
-<!-- HTML 브레드크럼 (JSON-LD BreadcrumbList와 일치, UX+내부링크) -->
-{% unless page.categories == empty %}
-{% assign bcat = page.categories | first %}
-<nav aria-label="breadcrumb" style="font-size:14px;color:#888;margin:14px 0;">
-    <a href="{{ site.baseurl }}/" style="color:#888;">홈</a>
-    &rsaquo; <a href="{{ site.baseurl }}/category/{{ bcat }}/" style="color:#888;">{{ bcat }}</a>
-    &rsaquo; <span>{{ page.title }}</span>
-</nav>
-{% endunless %}
+</header>
 
 <!-- Adsense under title if enabled from _config.yml (change your pub id and slot) -->
 {% if site.adsense == "enabled" %}
@@ -66,7 +50,7 @@ post_class: post-template
 <!-- Rating -->
 {% if page.rating %}
 <div class="rating mt-4 mb-4 d-flex align-items-center">
-    <strong class="mr-1">Rating:</strong> {% include star_rating.html %}
+    <strong class="mr-1">평점:</strong> {% include star_rating.html %}
 </div>
 {% endif %}
 

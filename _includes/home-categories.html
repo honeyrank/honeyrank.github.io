@@ -1,0 +1,15 @@
+<div class="hny-home-category-grid" data-placement="home_categories">
+  {% for category in site.data.home_categories %}
+  <a class="hny-home-category" href="{{ site.baseurl }}/category/{{ category.name }}/">
+    <span class="hny-home-category-name">{{ category.name }} <span aria-hidden="true">↗</span></span>
+    <span class="hny-home-category-description">{{ category.description }}</span>
+  </a>
+  {% endfor %}
+</div>
+{% assign highlighted_categories = site.data.home_categories | map: 'name' %}
+{% assign all_categories = site.categories | sort %}
+<div class="hny-home-more-categories" aria-label="다른 분야">
+  {% for category in all_categories %}{% unless highlighted_categories contains category[0] %}
+  <a href="{{ site.baseurl }}/category/{{ category[0] }}/">{{ category[0] }}</a>
+  {% endunless %}{% endfor %}
+</div>
