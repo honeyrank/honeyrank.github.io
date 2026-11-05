@@ -1,5 +1,8 @@
 {% assign event_category = include.category | default: page.category %}
 {% assign offers = site.data.partner_events | where: "category", event_category %}
+{% if include.placement == 'article_campaigns' %}
+{% assign offers = offers | where_exp: "offer", "offer.category_only != true" %}
+{% endif %}
 {% if offers.size > 0 %}
 <section hidden data-partner-events data-placement="{{ include.placement | default: 'category_campaigns' }}" class="hny-partner-events" aria-label="쿠팡 기획전">
   <h2>함께 살펴볼 {{ event_category }} 기획전</h2>
