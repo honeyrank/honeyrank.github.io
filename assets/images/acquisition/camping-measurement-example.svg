@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1000" viewBox="0 0 1200 1000" role="img" aria-labelledby="title desc">
+<title id="title">차박 공간과 침낭 외부 치수 비교 예시</title>
+<desc id="desc">가상 바닥 공간은 폭 155센티미터와 길이 215센티미터. 침낭 외부 치수 예시는 150 곱하기 210센티미터로 폭과 길이의 전체 차이가 각각 5센티미터다. 이는 차량 호환, 내부 길이, 두 사람의 편안함을 확인한 결과가 아니며 실제 공간을 측정해야 한다.</desc>
+<defs><style>text{font-family:"Apple SD Gothic Neo","Noto Sans KR",sans-serif;fill:#182c34}.small{font-size:23px}.muted{fill:#435a63}.strong{font-weight:700}</style><marker id="arrow" markerWidth="7" markerHeight="7" refX="3" refY="3" orient="auto-start-reverse"><path d="M0,0 L6,3 L0,6Z" fill="#435a63"/></marker></defs>
+<rect width="1200" height="1000" fill="#f8f5ec"/>
+<text x="64" y="76" font-size="26" class="strong">꿀랭킹 · 차박 침낭 치수 비교</text>
+<text x="64" y="143" font-size="45" class="strong">내 차의 평평한 바닥부터 재세요</text>
+<text x="64" y="187" class="small muted">아래는 가상 공간 예시이며 특정 차량의 실제 치수가 아닙니다.</text>
+<rect x="64" y="224" width="510" height="590" rx="20" fill="#fff" stroke="#ccd7d6" stroke-width="2"/>
+<text x="96" y="267" font-size="25" class="strong">가상 바닥 155 × 215cm</text>
+<line x1="140" y1="314" x2="450" y2="314" stroke="#435a63" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<text x="241" y="304" class="small">폭 155cm</text>
+<rect x="140" y="340" width="310" height="430" fill="#f0ede1" stroke="#435a63" stroke-width="2"/>
+<rect x="145" y="345" width="300" height="420" rx="22" fill="#dce8da" stroke="#537664" stroke-width="2"/>
+<text x="295" y="530" font-size="27" text-anchor="middle" class="strong">침낭 외부 치수</text>
+<text x="295" y="576" font-size="30" text-anchor="middle" class="strong">150 × 210cm</text>
+<text x="295" y="621" class="small muted" text-anchor="middle">직사각형으로 펼친 예시</text>
+<line x1="482" y1="340" x2="482" y2="770" stroke="#435a63" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<text x="516" y="555" class="small" transform="rotate(90 516 555)" text-anchor="middle">길이 215cm</text>
+<text x="620" y="282" font-size="30" class="strong">① 가장 좁은 유효 폭</text>
+<text x="620" y="325" class="small">매트가 놓일 높이에서 재고,</text>
+<text x="620" y="361" class="small">휠하우스·문 쪽의 작은 값을 씁니다.</text>
+<text x="620" y="430" font-size="30" class="strong">② 받쳐지는 바닥 길이</text>
+<text x="620" y="473" class="small">트렁크 문을 닫은 상태를 기준으로,</text>
+<text x="620" y="509" class="small">단차와 받침 없는 틈을 제외합니다.</text>
+<rect x="608" y="554" width="528" height="138" rx="15" fill="#e9efdf"/>
+<text x="632" y="597" font-size="27" class="strong">폭 차이 5cm · 길이 차이 5cm</text>
+<text x="632" y="639" class="small">전체 차이입니다.</text>
+<text x="632" y="674" class="small">한쪽마다 5cm 남는 뜻이 아닙니다.</text>
+<text x="620" y="743" class="small">짐·베개·지퍼를 움직일 여유는</text>
+<text x="620" y="779" class="small">별도로 확인하세요.</text>
+<text x="64" y="864" font-size="26" class="strong">치수 비교만으로 실제 차량 호환이나 편안함을 보장하지 않습니다.</text>
+<text x="64" y="907" class="small muted">제조사 외부 치수와 내부 유효 길이, 실제 설치 상태를 구분하세요.</text>
+<text x="64" y="956" class="small">honeyranking.com/tools/camping-fit/</text>
+</svg>

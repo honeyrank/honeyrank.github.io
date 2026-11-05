@@ -56,6 +56,14 @@
     "intent": "디퓨저 선물 세트와 대용량 묶음을 어떻게 비교할까?"
   },
   {
+    "id": "portable_ssd_usb",
+    "keyword": "외장 SSD",
+    "url": "/외장-ssd-usb-속도/",
+    "hub": "device",
+    "title": "T7·T9·XS1000 2TB의 USB 규격과 크기 비교",
+    "intent": "내 노트북에서 10Gbps·20Gbps SSD를 어떻게 고를까?"
+  },
+  {
     "id": "storage",
     "keyword": "외장하드",
     "url": "/2026-01-외장하드/",

@@ -1,0 +1,4 @@
+﻿확인일,제조사,모델,모델번호,용량(TB),USB규격,인터페이스(Gbps),제조사최대순차읽기(MB/s),제조사최대순차쓰기(MB/s),크기(mm),무게(g),공식출처,확인범위
+2026-11-05,Samsung,T7,MU-PC2T0T/WW,2,USB 3.2 Gen 2,10,1050,1000,85 × 57 × 8,58,https://www.samsung.com/sg/business/memory-storage/portable-ssd/portable-ssd-t7-mu-pc2t0t-ww/,제조사 표기. 실측·가격·재고 확인 아님. 실제 속도는 연결 환경에 따라 다름.
+2026-11-05,Samsung,T9,MU-PG2T0B/WW,2,USB 3.2 Gen 2x2,20,2000,1950,88 × 60 × 14,122,https://download.semiconductor.samsung.com/resources/data-sheet/samsung_portable_ssd_t9_datasheet_rev1_0.pdf,제조사 표기. 실측·가격·재고 확인 아님. 실제 속도는 연결 환경에 따라 다름.
+2026-11-05,Kingston,XS1000,SXS1000/2000G,2,USB 3.2 Gen 2,10,1050,1000,69.54 × 32.58 × 13.5,28.7,https://www.kingston.com/datasheets/SXS1000_en.pdf,제조사 표기. 실측·가격·재고 확인 아님. 실제 속도는 연결 환경에 따라 다름.

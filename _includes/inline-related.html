@@ -1,9 +1,10 @@
 {% if page.editorial_hub %}
-{% assign current_path = page.canonical_url | default: page.url | remove: site.url %}
+{% assign current_path = page.canonical_url | default: page.url | remove: site.url | url_decode %}
 {% assign guide_count = 0 %}
 {% capture related_guides %}
 {% for guide in site.data.buying_guides %}
-  {% if guide.hub == page.editorial_hub and guide.url != current_path and guide_count < 3 %}
+  {% assign guide_path = guide.url | url_decode %}
+  {% if guide.hub == page.editorial_hub and guide_path != current_path and guide_count < 3 %}
   <li><a href="{{ guide.url | relative_url }}">{{ guide.intent }}</a></li>
   {% assign guide_count = guide_count | plus: 1 %}
   {% endif %}

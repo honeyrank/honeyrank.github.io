@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">외장 SSD, 연결 규격부터 확인하세요</title>
+  <desc id="desc">노트북 포트의 규격과 케이블의 지원 규격을 확인한 다음 외장 SSD의 10Gbps 또는 20Gbps 조건을 비교하는 순서입니다.</desc>
+  <rect width="1200" height="630" rx="32" fill="#f6f5ef"/>
+  <g font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" fill="#18251e">
+    <text x="70" y="80" font-size="26" font-weight="700" fill="#456449">꿀랭킹 · 기기와 규격</text>
+    <text x="70" y="157" font-size="47" font-weight="800">외장 SSD, 연결 규격부터 확인하세요</text>
+    <text x="70" y="211" font-size="27" fill="#516159">USB-C 모양만으로 전송 속도를 정할 수 없습니다.</text>
+    <rect x="70" y="270" width="310" height="205" rx="20" fill="#ffffff" stroke="#bccbbb" stroke-width="2"/>
+    <rect x="445" y="270" width="310" height="205" rx="20" fill="#ffffff" stroke="#bccbbb" stroke-width="2"/>
+    <rect x="820" y="270" width="310" height="205" rx="20" fill="#e3eddc" stroke="#77916c" stroke-width="2"/>
+    <g font-size="22" fill="#456449" font-weight="700"><text x="100" y="311">01</text><text x="475" y="311">02</text><text x="850" y="311">03</text></g>
+    <g font-size="34" font-weight="800"><text x="100" y="367">노트북 포트</text><text x="475" y="367">연결 케이블</text><text x="850" y="367">외장 SSD</text></g>
+    <g font-size="24" fill="#516159"><text x="100" y="416">모델별 사양 확인</text><text x="475" y="416">지원 규격 확인</text><text x="850" y="416">10 / 20Gbps 비교</text></g>
+    <g stroke="#456449" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M396 372h30m-10-10 10 10-10 10"/><path d="M771 372h30m-10-10 10 10-10 10"/></g>
+    <text x="70" y="540" font-size="23" fill="#516159">제조사 규격 비교 · 실제 전송 속도는 기기와 사용 환경에 따라 달라집니다.</text>
+    <text x="70" y="585" font-size="22" fill="#456449">honeyranking.com/외장-ssd-usb-속도/</text>
+  </g>
+</svg>

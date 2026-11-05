@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="860" viewBox="0 0 1200 860" role="img" aria-labelledby="title desc">
+<title id="title">배송비와 쿠폰을 포함한 단가 비교 예시</title>
+<desc id="desc">현재 판매가가 아닌 가상 예시. A는 500그램 2개, 상품 12000원, 배송비 3000원, 할인 1000원으로 결제액 14000원과 100그램당 1400원. B는 400그램 3개, 상품 15000원, 배송비와 할인 없음으로 100그램당 1250원. B 단가가 150원 낮으며 A 대비 약 10.7퍼센트 차이.</desc>
+<defs><style>text{font-family:"Apple SD Gothic Neo","Noto Sans KR",sans-serif;fill:#182c34}.small{font-size:23px}.label{font-size:25px;fill:#435a63}.strong{font-weight:700}.muted{fill:#435a63}</style></defs>
+<rect width="1200" height="860" fill="#f8f5ec"/>
+<text x="64" y="76" font-size="26" class="strong">꿀랭킹 · 구매 전 계산</text>
+<text x="64" y="142" font-size="46" class="strong">묶음 가격은 같은 총량으로 비교하세요</text>
+<text x="64" y="185" class="small muted">계산 설명을 위한 가상 예시입니다. 현재 판매가가 아닙니다.</text>
+<rect x="64" y="224" width="1072" height="76" rx="16" fill="#e9efdf"/>
+<text x="92" y="272" font-size="30" class="strong">단가 = (상품 합계 + 배송비 − 할인액) ÷ 총량</text>
+<rect x="64" y="328" width="520" height="340" rx="20" fill="#fff" stroke="#ccd7d6" stroke-width="2"/>
+<rect x="608" y="328" width="528" height="340" rx="20" fill="#fff" stroke="#537664" stroke-width="3"/>
+<text x="96" y="381" font-size="34" class="strong">A · 500g × 2개</text>
+<text x="96" y="426" class="label">총량 1,000g</text>
+<text x="96" y="471" class="small">12,000 + 3,000 − 1,000원</text>
+<text x="96" y="516" font-size="29" class="strong">결제액 14,000원</text>
+<line x1="96" y1="548" x2="552" y2="548" stroke="#d9e0df"/>
+<text x="96" y="606" font-size="39" class="strong">100g당 1,400원</text>
+<text x="640" y="381" font-size="34" class="strong">B · 400g × 3개</text>
+<text x="640" y="426" class="label">총량 1,200g</text>
+<text x="640" y="471" class="small">15,000 + 0 − 0원</text>
+<text x="640" y="516" font-size="29" class="strong">결제액 15,000원</text>
+<line x1="640" y1="548" x2="1104" y2="548" stroke="#d9e0df"/>
+<text x="640" y="606" font-size="39" class="strong">100g당 1,250원</text>
+<text x="64" y="722" font-size="30" class="strong">B 단가가 150원 낮습니다 · A 대비 약 10.7%</text>
+<text x="64" y="765" class="small muted">같은 종류·형태끼리 비교하고 최종 주문 조건을 넣으세요.</text>
+<text x="64" y="817" class="small">honeyranking.com/tools/unit-price/</text>
+</svg>
