@@ -6,8 +6,6 @@
 
 <link rel="icon" href="{{ site.baseurl }}/assets/images/logo.png">
 
-<title>{{ page.title }} | {{site.name}}</title>
-
 {% seo %}
 
 {% if page.noindex %}<meta name="robots" content="noindex,follow">{% endif %}
@@ -34,7 +32,7 @@
 <meta name="naver-site-verification" content="28ffae2f53391f9a70b4d2269ecb1be51e9eb414" />
 
 <!-- Decide whether this browser is an operator before loading any analytics. -->
-<script src="{{ site.baseurl }}/assets/js/analytics.js"></script>
+<script src="{{ site.baseurl }}/assets/js/analytics.js?v=20261105"></script>
 
 <!-- Organization만 홈에서 출력 (WebSite는 jekyll-seo-tag가 담당 — 중복 방지) -->
 {% if page.url == '/' %}
@@ -67,6 +65,8 @@
         <h3>꿀랭킹</h3>
         <li><a href="{{ site.baseurl }}/">홈</a></li>
         <li><a href="{{ site.baseurl }}/guides/">구매 가이드</a></li>
+        <li><a href="{{ site.baseurl }}/guides/camping/">차박 공간·규격 가이드</a></li>
+        <li><a href="{{ site.baseurl }}/tools/camping-fit/">차박 치수 비교 도구</a></li>
         <li><a href="{{ site.baseurl }}/tools/unit-price/">단가 계산기</a></li>
         <li><a href="{{ site.baseurl }}/all/">전체 글</a></li>
         <li><a href="{{ site.baseurl }}/about">소개</a></li>
@@ -125,6 +125,7 @@
 <!-- Begin Footer
 ================================================== -->
 <footer class="footer">
+<p><a href="/subscribe/">새 구매 가이드 RSS</a> · <a href="/guides/camping/">차박 공간·치수</a> · <a href="/tools/unit-price/">단가 비교</a></p>
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-sm-12 text-center text-lg-left">
@@ -147,7 +148,7 @@
 <script src="{{ site.baseurl }}/assets/js/theme.js" defer></script>
 
 <!-- UI 보강(카드·목차·스티키 CTA·진행바). 실패해도 페이지는 정상 동작 -->
-<script src="{{ site.baseurl }}/assets/js/enhance.js?v=20261026" defer></script>
+<script src="{{ site.baseurl }}/assets/js/enhance.js?v=20261105" defer></script>
 
 {% if site.lazyimages == "enabled" %}
 <script src="{{ site.baseurl }}/assets/js/lazyload.js" defer></script>

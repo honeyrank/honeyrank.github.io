@@ -28,12 +28,21 @@
   window.gtag = function () { if (enabled) window.dataLayer.push(arguments); };
   if (enabled) {
     window.gtag('js', new Date());
-    window.gtag('config', id);
+    window.gtag('config', id, {page_location: page.origin + page.pathname + page.search});
     var tag = document.createElement('script');
     tag.async = true;
     tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
     document.head.appendChild(tag);
   }
+  // Only names and categorical values are accepted; never send calculator inputs.
+  window.hnyTrack = function (name, values) {
+    if (!enabled || !['tool_result', 'tool_save', 'tool_share'].includes(name)) return;
+    var tool = values && values.tool_name;
+    if (!['camping_fit', 'unit_price'].includes(tool)) return;
+    window.gtag('event', name, {tool_name: tool, page_path: page.pathname, content_version: 'growth-20261105'});
+  };
+  function attr(node, name) { return node && node.getAttribute ? node.getAttribute(name) || '' : ''; }
+  function ancestor(node, selector) { return node && node.closest ? node.closest(selector) : null; }
   document.addEventListener('DOMContentLoaded', function () {
     var status = document.getElementById('traffic-mode-status');
     if (status) status.textContent = internal ? '운영·점검 모드가 켜져 있습니다. 이 브라우저의 방문과 제휴 클릭은 GA4로 전송하지 않습니다.' : '일반 방문 모드입니다. 이 설정 페이지 자체는 집계하지 않습니다.';
@@ -55,12 +64,22 @@
     if (!a) return;
     var url;
     try { url = new URL(a.href); } catch (_) { return; }
+    var context = ancestor(a, '[data-placement]');
+    var placement = attr(a, 'data-placement') || attr(context, 'data-placement') ||
+      (ancestor(a, '.hny-comparison') ? 'comparison_table' : ancestor(a, '.hny-card') ? 'product_card' : 'article_link');
+    if (url.origin === page.origin && /^\/(guides|tools)\//.test(url.pathname)) {
+      window.gtag('event', 'guide_click', {destination_path: url.pathname, placement: placement, content_version: 'growth-20261105'});
+      return;
+    }
     if (!/(^|\.)coupang\.com$/.test(url.hostname)) return;
     window.gtag('event', 'affiliate_click', {
       link_url: a.href,
       product_id: url.searchParams.get('pageKey') || '',
       page_path: window.location.pathname,
-      page_title: document.title
+      page_title: document.title,
+      placement: placement,
+      campaign_id: attr(a, 'data-campaign-id'),
+      content_version: 'growth-20261105'
     });
   }, true);
 }());

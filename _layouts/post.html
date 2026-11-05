@@ -48,8 +48,17 @@ post_class: post-template
 <!-- Featured Image -->
 <!-- {% include featured-image.html %} -->
 
+{% include price-context.html %}
+
 <!-- Content -->
 {% include article.html %}
+
+{% if page.editorial_topic or page.editorial_kind == 'new_topic' or page.title contains '차박텐트' %}
+{% unless page.canonical_url %}
+{% assign event_category = page.categories | first %}
+{% include partner-events.html category=event_category placement="article_campaigns" %}
+{% endunless %}
+{% endif %}
 
 <!-- 본문 내 문맥형 내부링크 -->
 {% include inline-related.html %}

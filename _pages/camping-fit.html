@@ -1,0 +1,49 @@
+---
+layout: page
+title: "차박 침낭 크기 비교 계산기 | 내 차의 바닥 폭과 길이"
+permalink: /tools/camping-fit/
+description: "내 차의 평평한 바닥 폭·길이를 입력하고 제조사 치수가 확인된 더블 침낭 3종과 비교하세요. 부족한 치수와 추가 확인 조건을 구분합니다."
+discovery_page: true
+comments: false
+---
+<link rel="stylesheet" href="/assets/css/camping-fit.css?v=20261105">
+<div class="camping-fit">
+<p class="fit-breadcrumb"><a href="/guides/">구매 가이드</a> / <a href="/guides/camping/">차박 공간·규격</a></p>
+<p class="fit-lead">차종 이름 대신, 실제로 잠잘 바닥을 재서 비교하세요.</p>
+<p>접은 좌석과 트렁크에서 <strong>평평하게 받쳐지는 가장 좁은 폭과 사용 가능한 길이</strong>를 입력하세요. 침낭을 구기거나 비스듬히 놓지 않고 직사각형으로 펼치는 계산입니다.</p>
+<div class="fit-layout">
+<form id="camping-fit-form" class="fit-form" novalidate>
+<h2>내 차 바닥 입력</h2>
+<label for="fit-width">가장 좁은 유효 폭 (cm)</label>
+<input id="fit-width" name="width" type="number" min="0.1" max="1000" step="any" inputmode="decimal" required placeholder="예: 155" aria-describedby="fit-width-help">
+<p id="fit-width-help" class="fit-help">매트가 놓일 높이에서 휠하우스 사이와 뒷문 쪽을 재고 더 작은 값을 쓰세요.</p>
+<label for="fit-length">평평하게 사용할 수 있는 길이 (cm)</label>
+<input id="fit-length" name="length" type="number" min="0.1" max="1000" step="any" inputmode="decimal" required placeholder="예: 215" aria-describedby="fit-length-help">
+<p id="fit-length-help" class="fit-help">잠잘 때의 앞좌석 위치와 닫힌 트렁크 문을 기준으로 재세요. 받침 없는 틈과 단차는 빼세요.</p>
+<label for="fit-margin">폭·길이에 각각 더할 전체 여유 (cm, 선택)</label>
+<input id="fit-margin" name="margin" type="number" min="0" max="1000" step="any" inputmode="decimal" placeholder="0" aria-describedby="fit-margin-help">
+<p id="fit-margin-help" class="fit-help">5를 입력하면 제품 폭 + 5cm, 길이 + 5cm가 필요합니다. 한쪽마다 5cm가 아닙니다. 이 값은 직접 정하는 공간 여유이며 제조사 권장값이 아닙니다.</p>
+<label class="fit-save"><input id="fit-save" name="save" type="checkbox"> 이 브라우저에 입력 치수 저장</label>
+<p class="fit-help">체크하고 계산할 때만 저장합니다. 차량 이름·개인정보는 받지 않습니다.</p>
+<div class="fit-actions"><button class="fit-primary" type="submit">침낭 3종과 비교하기</button><button type="reset">입력·저장값 지우기</button></div>
+<p id="fit-error" role="alert"></p><p id="fit-storage-status" role="status" class="fit-help"></p>
+</form>
+<aside class="fit-limit"><h2>치수로 알 수 있는 범위</h2><p><strong>폭·길이의 공간 부족 여부</strong>를 확인할 수 있습니다.</p><p>실제 차량 호환, 두 사람의 편안함, 내부 유효 길이, 지퍼 사용 공간, 보온성은 이 계산으로 판단하지 않습니다. 차 안의 곡면·틈·문 닫힘 상태와 실제 매트까지 확인하세요.</p><p>숫자가 딱 맞으면 여유는 0cm입니다. 공간이 남더라도 실물 배치를 확인한 뒤 선택하세요.</p><a href="#fit-checklist">측정 체크리스트 보기 ↓</a></aside>
+</div>
+<section id="fit-results" class="fit-results" aria-live="polite" tabindex="-1"><h2>비교 결과</h2><p>치수를 입력하고 비교 버튼을 누르면 각 침낭에 필요한 폭과 길이를 보여줍니다.</p></section>
+<div class="fit-actions fit-output-actions"><button type="button" id="fit-share">입력 치수로 비교 주소 만들기</button><button type="button" id="fit-print">체크리스트·결과 인쇄</button></div>
+<div id="fit-share-box" hidden><label for="fit-share-url">공유할 주소</label><input id="fit-share-url" type="text" readonly><p class="fit-help">폭·길이·여유 숫자만 주소에 포함됩니다. 주소를 받는 사람도 이 값을 볼 수 있습니다. 복사해서 원하는 곳에 직접 공유하세요.</p></div>
+<p id="fit-action-status" role="status" class="fit-help"></p>
+<noscript><p class="fit-limit">자동 계산에는 자바스크립트가 필요합니다. 아래 표에서 제품 폭·길이에 원하는 여유를 각각 더한 뒤 내 차의 치수와 비교할 수 있습니다.</p></noscript>
+<section class="fit-reference"><h2>계산에 쓰는 제조사 표기</h2><p>규격 확인일 {{ site.data.camping_fit.checkedAt }}. {{ site.data.camping_fit.measurementBasis }}입니다. 가격·재고·현재 판매 옵션은 별도로 확인해야 합니다.</p>
+<div class="fit-table-wrap" role="region" aria-label="제조사 침낭 치수 표" tabindex="0"><table><caption>두 사람이 함께 사용하는 침낭 상태의 치수</caption><thead><tr><th scope="col">모델</th><th scope="col">폭 × 길이</th><th scope="col">수납·중량</th><th scope="col">원자료·확인할 점</th></tr></thead><tbody>
+{% for product in site.data.camping_fit.products %}<tr><th scope="row">{{ product.name }}{% if product.model %}<br><small>{{ product.model }}</small>{% endif %}</th><td>{{ product.widthCm }} × {{ product.lengthCm }}cm</td><td>{{ product.packed }}<br>{{ product.weightKg }}kg</td><td><a href="{{ product.sourceUrl }}" target="_blank" rel="noopener">{{ product.sourceLabel }}</a><br>{{ product.note }}</td></tr>{% endfor %}
+</tbody></table></div>
+<p><a class="fit-link" href="/차박용-2인-침낭/">3종의 구성 차이와 모델별 판매 옵션 확인 →</a></p></section>
+<section id="fit-checklist" class="fit-checklist"><h2>차량과 장비 측정 체크리스트</h2>
+<p>차량의 연식·트림·좌석 배치가 달라지면 다시 재세요. 아래는 필요한 측정 항목이며 특정 차량·텐트의 호환을 보장하지 않습니다.</p>
+<ul><li>□ 잠잘 때의 앞좌석 위치, 접은 좌석의 틈과 단차 확인</li><li>□ 매트 높이에서 가장 좁은 바닥 폭 측정: ______ cm</li><li>□ 트렁크 문을 닫았을 때 평평한 유효 길이 측정: ______ cm</li><li>□ 베개·짐·신발·지퍼를 여닫을 여유 별도 확인</li><li>□ 도킹할 때 열린 후면 문 최고 높이와 연결 부위 폭 측정: ______ / ______ cm</li><li>□ 텐트의 도킹 방식·연결 허용 치수를 제조사에 대조</li><li>□ 범퍼 뒤로 확보되는 설치 공간과 옆 여유 측정: ______ / ______ cm</li><li>□ 캠핑장 구획, 출입 동선, 제조사 설치·사용 지침 확인</li></ul>
+<p><a href="/2026-01-차박텐트/#gear-comparison">차박텐트의 도킹 방식·설치 공간 비교</a> · <a href="/guides/camping/">차박 구매 순서로 돌아가기</a></p></section>
+</div>
+<script id="camping-fit-data" type="application/json">{{ site.data.camping_fit | jsonify }}</script>
+<script src="/assets/js/camping-fit.js?v=20261105" defer></script>

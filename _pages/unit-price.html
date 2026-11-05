@@ -2,10 +2,13 @@
 layout: page
 title: "단가 계산기: 묶음 상품의 100g·100ml·개당 비용"
 permalink: /tools/unit-price/
-description: "배송비와 쿠폰을 반영한 100g당 가격을 비교하세요. 하루 섭취량이나 사용량을 입력하면 하루 비용과 며칠분인지도 계산합니다."
+description: "배송비·쿠폰을 반영한 두 구성의 100g·100ml·개당 가격을 같은 기준으로 비교하세요. 하루 비용과 소진 기간도 계산합니다."
 discovery_page: true
 comments: false
 ---
+<style>
+.unit-options{max-width:680px;margin:24px auto}.unit-options h2{font-size:1.3rem}.unit-actions{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}.unit-actions button{font:inherit;border:1px solid #a1b0bb;border-radius:8px;padding:10px 15px;min-height:44px;background:var(--hny-surface,#fff);color:var(--hny-text,#182c3e);cursor:pointer}.unit-actions button:disabled{opacity:.5;cursor:not-allowed}.unit-actions button:focus-visible{outline:3px solid #346aff;outline-offset:3px}.unit-table{overflow-x:auto}.unit-table table{width:100%;min-width:360px;border-collapse:collapse}.unit-table th,.unit-table td{padding:12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--hny-border,#ccc)}.unit-table thead{background:var(--hny-bg,#edf3f8)}.unit-help{font-size:.9rem;color:var(--hny-muted,#526273)}#unit-save-status{min-height:1.5em}#unit-option-a{padding:12px 15px;border-left:3px solid #346aff;background:var(--hny-bg,#edf3f8)}@media(max-width:480px){.unit-actions button{flex:1 1 170px}}@media print{.sidebar,.nav-icon,#menu,#blackover-nav,#lunrsearch,.navbar-brand,.footer,.unit-actions,#unit-save-status{display:none!important}#unit-price-form input,#unit-price-form label,#unit-price-form select,#unit-price-form button,#unit-price-form .hny-comparison-note{display:none!important}.hny-calculator{border:0;padding:0}.unit-table{overflow:visible}.unit-table table{min-width:0}.unit-options,.unit-checklist{break-inside:avoid}}
+</style>
 <p class="hny-lead">가격과 묶음 크기가 다를 때, 같은 양을 사는 데 드는 비용을 계산하세요.</p>
 <p>묶음 전체의 상품 가격을 입력하세요. 이미 할인과 배송비를 반영한 결제액을 입력했다면 배송비와 쿠폰 칸을 비워 두세요.</p>
 <form id="unit-price-form" class="hny-calculator" novalidate>
@@ -20,7 +23,18 @@ comments: false
 <button class="hny-purchase" type="submit">단가 계산하기</button>
 <p id="unit-error" role="alert"></p><output id="unit-result" aria-live="polite">금액과 총량을 입력하면 결과가 표시됩니다.</output>
 </form>
+<section class="unit-options" aria-labelledby="unit-options-heading">
+<h2 id="unit-options-heading">두 구성을 같은 기준으로 비교</h2>
+<p>첫 구성을 계산한 뒤 <strong>A로 고정</strong>하세요. 위 입력을 다른 구성 B로 바꾸고 다시 계산하면, 같은 단위끼리 현재 선택한 기준량으로 맞춰 비교합니다.</p>
+<div class="unit-actions"><button id="unit-pin-a" type="button" disabled>계산한 구성을 A로 고정</button><button id="unit-clear-a" type="button">A 고정 해제</button></div>
+<p id="unit-option-a">아직 고정한 A가 없습니다.</p>
+<div id="unit-comparison" aria-live="polite"></div>
+<div class="unit-actions"><button id="unit-save" type="button">현재 입력·A를 이 브라우저에 저장</button><button id="unit-clear-saved" type="button">이 브라우저 저장값 삭제</button><button id="unit-print" type="button">결과·체크리스트 인쇄</button></div>
+<p class="unit-help">저장 버튼을 눌렀을 때만 숫자와 단위, A 구성을 이 브라우저에 저장합니다. 상품명·개인정보는 받지 않으며 입력값은 서버로 보내지 않습니다. 저장값은 이 브라우저를 함께 쓰는 사람이 볼 수 있습니다.</p>
+<p id="unit-save-status" role="status" class="unit-help"></p>
+</section>
 <noscript><p>자바스크립트를 켜면 자동 계산을 사용할 수 있습니다. 직접 계산할 때는 금액 ÷ (한 묶음 총량 × 묶음 수) × 기준량을 사용하세요.</p></noscript>
-<section class="hny-guide-note"><h2>계산 예시</h2><p>20,900원에 400g 3봉이면 총 1,200g입니다. 20,900 ÷ 1,200 × 100 = 약 1,742원/100g입니다. 예를 들어 배송비 3,000원, 쿠폰 2,000원을 적용하면 결제액은 21,900원이고 하루 40g씩 먹으면 하루 730원, 총 30일분입니다.</p><p>무게(g)와 부피(ml)는 다른 단위입니다. 같은 단위에서도 겹수·규격·포장 형태·배송 조건이 다르면 단가만으로 품질을 판단할 수 없습니다.</p><p>입력값은 서버로 보내거나 저장하지 않고 이 페이지에서 계산합니다.</p></section>
+<section class="hny-guide-note"><h2>계산 예시</h2><p>20,900원에 400g 3봉이면 총 1,200g입니다. 20,900 ÷ 1,200 × 100 = 약 1,742원/100g입니다. 예를 들어 배송비 3,000원, 쿠폰 2,000원을 적용하면 결제액은 21,900원이고 하루 40g씩 먹으면 하루 730원, 총 30일분입니다.</p><p>무게(g)와 부피(ml)는 다른 단위입니다. 같은 단위에서도 겹수·규격·포장 형태·배송 조건이 다르면 단가만으로 품질을 판단할 수 없습니다.</p><p>입력값은 이 페이지에서 계산합니다. 저장 버튼을 선택하면 이 브라우저에만 저장되며, 저장값 삭제 버튼으로 지울 수 있습니다.</p></section>
+<section class="hny-guide-note unit-checklist"><h2>구매 전 구성 확인 체크리스트</h2><ul><li>□ 같은 모델·맛·규격끼리 비교했는지 확인</li><li>□ 한 묶음의 총량과 묶음 수를 중복 계산하지 않았는지 확인</li><li>□ 실제 적용 가능한 쿠폰과 배송비를 각각 한 번만 반영</li><li>□ 개봉 후 소비 속도·보관 공간·사용 기한을 판매 옵션에서 확인</li><li>□ 단가가 낮더라도 필요 없는 구성을 함께 사는 것은 아닌지 확인</li></ul><p>소진 기간은 입력한 하루 사용량으로 나눈 계산일 뿐, 제품의 소비기한이나 안전한 보관 기간을 뜻하지 않습니다.</p></section>
 <p><a href="/2026-06-시리얼/#cereal-portions">시리얼 봉지·컵 한 끼 비용 비교</a> · <a href="/guides/unit/">구성·단가 비교 가이드</a> · <a href="/guides/device/">기기·규격 확인 가이드</a></p>
-<script src="/assets/js/unit-price.js?v=20261101" defer></script>
+<script src="/assets/js/unit-price.js?v=20261105" defer></script>

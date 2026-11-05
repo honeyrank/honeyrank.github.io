@@ -1,11 +1,11 @@
 ---
 layout: default
-title: "꿀랭킹 - 구성·단가와 기기·규격으로 고르는 구매 가이드"
-description: "식품·생활용품의 단가와 기기 규격을 확인하고, 내 조건에 맞는 상품을 비교하세요."
+title: "꿀랭킹 - 차박 치수·생활용품 단가 비교 가이드"
+description: "차박 침낭 치수와 생활용품 단가를 직접 계산하고, 확인된 상품 자료로 내 조건에 맞는 옵션을 비교하세요."
 ---
 
 {% if paginator.page == 1 or paginator.page == nil %}
-<section class="hny-home-intro"><p class="hny-eyebrow">꿀랭킹 구매 가이드</p><h1>가격만 보기 전에,<br>나에게 맞는 조건부터.</h1><p class="hny-lead">구성과 총량, 정확한 기기 규격을 확인하면 상품을 고르기 쉬워집니다.</p><p><a class="hny-purchase" href="/guides/">구매 가이드 찾기</a> <a class="hny-text-link" href="/tools/unit-price/">단가 계산하기 →</a></p></section>
+<section class="hny-home-intro" data-placement="home_intro"><p class="hny-eyebrow">꿀랭킹 구매 가이드</p><h1>가격만 보기 전에,<br>나에게 맞는 조건부터.</h1><p class="hny-lead">차박 공간과 침낭 치수를 맞춰 보고, 생활용품은 실제 구매할 구성의 단가로 비교하세요.</p><p><a class="hny-purchase" href="/guides/">구매 가이드 찾기</a> <a class="hny-text-link" href="/tools/unit-price/">단가 계산하기 →</a></p></section>
 {% include buying-paths.html %}
 <section class="hny-guide-note"><h2>무엇을 기준으로 비교하나요?</h2><p>수집 시점 가격과 확인된 상품 정보를 비교합니다. 실사용 시험·판매량 순위와 구분하고, 모르는 정보는 확인 대상으로 남깁니다.</p><a href="/methodology/">자료와 편집 기준 보기 →</a></section>
 {% assign newGuides = site.posts | where: "editorial_kind", "new_topic" %}

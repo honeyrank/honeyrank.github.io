@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-11-04",
+  "measurementBasis": "제조사가 표기한, 두 사람이 함께 사용하는 상태의 외부 폭과 전체 길이",
+  "products": [
+    {
+      "id": "buffalo-rami-double",
+      "name": "버팔로 라미 더블",
+      "widthCm": 150,
+      "lengthCm": 220,
+      "packed": "30 × 43cm",
+      "weightKg": 3.1,
+      "note": "300cm는 완전히 펼친 담요 폭입니다. 침낭 상태의 폭 150cm와 구분하세요.",
+      "sourceUrl": "https://ai.esmplus.com/buffalo76543/camping/sleepingbag/Rami_double_sleeping_bag/Rami_double_sleeping_bag.jpg",
+      "sourceLabel": "버팔로 제조사 제품 도면"
+    },
+    {
+      "id": "vinson-hypnos-double",
+      "name": "빈슨메시프 히프노스 더블",
+      "widthCm": 150,
+      "lengthCm": 210,
+      "packed": "33 × 45cm",
+      "weightKg": 3,
+      "note": "후드 끝까지의 전체 길이입니다. 몸이 들어가는 내부 길이와 같지 않을 수 있습니다.",
+      "sourceUrl": "https://mesacamp.speedgabia.com/product/double_8.jpg",
+      "sourceLabel": "빈슨메시프 제조사 제품 도면"
+    },
+    {
+      "id": "coleman-c10-2185658",
+      "name": "콜맨 패밀리 2 IN 1 C10 그레이지",
+      "model": "2185658",
+      "widthCm": 168,
+      "lengthCm": 190,
+      "packed": "32 × 48cm",
+      "weightKg": 3.8,
+      "note": "모델 2185658 기준입니다. C5 등 다른 제품과 치수·무게를 섞지 마세요.",
+      "sourceUrl": "https://www.coleman.co.jp/wp-content/uploads/2025/01/2025_coleman_catalog.pdf",
+      "sourceLabel": "콜맨 2025 공식 카탈로그 — 모델 2185658"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 /*!
  * 꿀랭킹 UI 보강 스크립트 (점진적 향상)
  * 본문 마크업은 .md에 인라인 스타일로 박제되어 있어, 렌더 후 DOM을 보강한다.
- * - 상품 블록(형제 나열)을 카드로 감싸고 순위 배지 부여
+ * - 상품 블록(형제 나열)을 카드로 감싸고 비교 번호 부여
  * - 목차(점프 내비) 생성
  * - 모바일 스티키 CTA / 읽기 진행바 / 맨 위로
  * 실패해도 페이지는 그대로 동작한다.
@@ -11,7 +11,6 @@
 
   var article = document.querySelector('.article-post');
   var isPost = !!article && !!document.querySelector('.entry-header');
-  var comparisonOnly = !!article && !!article.querySelector('[data-hny-comparison-only]');
 
   /* ---------- 1. 상품 블록 → 카드 ---------- */
   function buildCards() {
@@ -25,10 +24,11 @@
     var headings = Array.prototype.slice.call(article.querySelectorAll('h2'));
 
     headings.forEach(function (h2) {
-      var m = (h2.textContent || '').trim().match(/^(\d+)위$/);
+      var m = (h2.textContent || '').trim().match(/^(?:(\d+)위|상품\s*(\d+))$/);
       if (!m) return;
 
-      var rank = m[1];
+      var rank = m[1] || m[2];
+      h2.textContent = '상품 ' + rank;
       // 시작: 바로 앞 형제(상품 이미지 center), 없으면 h2부터
       var start = h2.previousElementSibling;
       if (!start || start.tagName !== 'CENTER' || !start.querySelector('img')) start = h2;
@@ -118,7 +118,7 @@
       // 상품 목록으로 가는 점프 링크를 두 번째 위치에 삽입
       items.splice(Math.min(1, items.length), 0, {
         id: 'rank-1',
-        text: comparisonOnly ? '상품 ' + cardCount + '개 구성 바로 보기' : '상품 순위 TOP ' + cardCount + ' 바로 보기',
+        text: '상품 ' + cardCount + '개 구성 바로 보기',
       });
     }
 
@@ -152,17 +152,14 @@
   /* ---------- 3. 스티키 CTA (모바일) ---------- */
   function buildStickyCta(cards) {
     if (!cards.length || window.matchMedia('(min-width: 768px)').matches) return null;
-    var firstLink = cards[0].querySelector('a[href*="coupang.com"]');
-    if (!firstLink) return null;
 
     var bar = document.createElement('div');
     bar.className = 'hny-sticky-cta';
     var a = document.createElement('a');
-    a.href = firstLink.href;
-    a.rel = 'sponsored nofollow';
-    a.target = '_blank';
+    a.href = '#' + cards[0].id;
+    a.setAttribute('data-hny-placement', 'sticky-comparison');
     // 이모지는 일부 환경에서 두부(□)로 깨질 수 있어 텍스트로만 구성
-    a.textContent = comparisonOnly ? '첫 상품 쿠팡 옵션·가격 확인' : '1위 상품 쿠팡 최저가 확인하기';
+    a.textContent = '상품별 옵션 비교로 이동';
     bar.appendChild(a);
     document.body.appendChild(bar);
     return bar;
