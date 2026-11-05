@@ -19,7 +19,7 @@ twitter:
 #mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
 include: ["_pages"]
 permalink: /:title/
-email: ggulrank@gmail.com
+email: ssokify@gmail.com
 
 # Authors
 authors:
@@ -28,7 +28,7 @@ authors:
     display_name: 꿀랭킹
     avatar: 'assets/images/avatar.png'
     #gravatar: e56154546cf4be74e393c62d1ae9f9d4
-    email: ggulrank@gmail.com
+    email: ssokify@gmail.com
     web: '/about'
     #twitter: https://twitter.com/wowthemesnet
     description: "꿀랭킹은 상품 자료를 바탕으로 구성·단가와 기기 규격을 비교합니다. 가격 수집일과 가이드 수정일을 구분하며, 실사용 시험이나 판매량 순위로 소개하지 않습니다."

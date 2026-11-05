@@ -22,6 +22,6 @@ description: "상품의 구성·단가와 기기·규격을 비교하는 꿀랭�
 
 ## 문의 및 오류 제보
 
-이메일: **ggulrank@gmail.com**
+이메일: [ssokify@gmail.com](mailto:ssokify@gmail.com)
 
 글 주소, 선택한 상품 옵션과 확인 자료를 알려 주시면 정정 시 참고합니다.
