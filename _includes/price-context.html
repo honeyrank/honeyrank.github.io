@@ -4,8 +4,13 @@
 {% assign today_seconds = site.time | date: '%s' | plus: 0 %}
 {% assign age = today_seconds | minus: snapshot_seconds | divided_by: 86400 %}
 <aside class="hny-price-context" aria-label="가격 확인 안내" data-placement="price_context">
-  <p><strong>가격 확인일 <time datetime="{{ snapshot | date: '%Y-%m-%d' }}">{{ snapshot | date: "%Y.%m.%d" }}</time></strong>{% if age > 90 %}<span class="hny-price-age">90일 이상 지난 가격 자료</span>{% endif %}</p>
-  <p>본문 가격은 당시 옵션 기준입니다. 현재 가격과 배송·할인 조건은 판매 페이지에서 확인하세요.</p>
+  {% if page.price_options_checked_at %}
+  <p><strong><time datetime="{{ page.price_options_checked_at | date: '%Y-%m-%d' }}">{{ page.price_options_checked_at | date: "%Y.%m.%d" }}</time>에 {{ page.price_option_count }}개 판매 옵션 중 {{ page.price_verified_count }}개의 가격을 확인했습니다.</strong></p>
+  <p>상품별 금액 옆에서 확인 날짜를 볼 수 있습니다. 배송비·할인과 최종 결제 금액은 판매 페이지에서 확인하세요.</p>
+  {% else %}
+  <p><strong>{% if page.price_checked_at %}가격 확인일{% else %}원문 발행일{% endif %} <time datetime="{{ snapshot | date: '%Y-%m-%d' }}">{{ snapshot | date: "%Y.%m.%d" }}</time></strong>{% if age > 90 %}<span class="hny-price-age">{% if page.price_checked_at %}90일 이상 지난 가격 자료{% else %}발행 후 90일 이상 경과{% endif %}</span>{% endif %}</p>
+  <p>{% unless page.price_checked_at %}아래 쿠팡 목록에는 최초 가격 확인일이 기록되어 있지 않습니다. {% endunless %}기존 목록의 가격은 당시 판매 옵션 기준입니다. 현재 가격과 배송·할인 조건은 판매 페이지에서 확인하세요.</p>
+  {% endif %}
   <details>
     <summary>가격을 비교할 때 확인할 점</summary>
     <p>글의 내용 수정일과 가격 확인일은 다를 수 있습니다. 같은 용량·묶음·옵션을 선택하고, 배송비와 쿠폰을 반영한 최종 결제액을 비교하세요.</p>

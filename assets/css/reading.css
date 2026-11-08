@@ -75,3 +75,13 @@
 }
 @media (max-width: 340px) { .hny-category-directory { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .hny-category-link { transition: none; } }
+
+.hny-verified-prices { max-width: 900px; margin: 0 auto 24px; color: var(--hny-text); }
+.hny-verified-prices h2 { font-size: 1.3rem; line-height: 1.4; margin: 0 0 8px; }
+.hny-verified-prices p { margin: 6px 0; line-height: 1.6; }
+.hny-verified-prices .hny-price-disclosure, .hny-price-archive-note { color: var(--hny-text-soft); font-size: .9rem; }
+.hny-verified-prices table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+.hny-verified-prices th, .hny-verified-prices td { text-align: left; padding: 10px 8px; vertical-align: top; border-bottom: 1px solid var(--hny-border); }
+.hny-verified-prices tbody th { font-weight: 500; overflow-wrap: anywhere; }
+.hny-verified-prices th:last-child, .hny-verified-prices td { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.hny-verified-prices tbody th small { display: block; font-weight: 400; color: var(--hny-text-soft); margin-top: 3px; }

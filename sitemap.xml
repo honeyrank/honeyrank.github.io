@@ -13,7 +13,11 @@ sitemap: false
 {% unless post.canonical_url %}
   <url>
     <loc>{{ site.url }}{{ site.baseurl }}{{ post.url }}</loc>
-    <lastmod>{% if post.last_modified_at %}{{ post.last_modified_at | date_to_xmlschema }}{% else %}{{ post.date | date_to_xmlschema }}{% endif %}</lastmod>
+    {% assign article_modified = post.last_modified_at | default: post.date | date: '%s' | plus: 0 %}
+    {% assign price_file = post.path | split: '/' | last %}
+    {% assign observations = site.data.verified_prices[price_file] %}
+    {% if observations %}{% assign table_modified = observations.day | date: '%s' | plus: 0 %}{% assign article_modified = article_modified | at_least: table_modified %}{% endif %}
+    <lastmod>{{ article_modified | date_to_xmlschema }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

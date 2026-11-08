@@ -1,0 +1,20 @@
+{% assign price_file = page.path | split: '/' | last %}
+{% assign offer_check = site.data.verified_prices[price_file] %}
+{% if offer_check %}
+  {% assign primary_date = page.price_checked_at | default: page.date | date: '%Y-%m-%d' %}
+  {% if offer_check.day >= primary_date %}
+<section class="hny-verified-prices" aria-labelledby="verified-prices-title" data-placement="verified_price_comparison" data-checked-at="{{ offer_check.day }}">
+  <h2 id="verified-prices-title">판매처별 옵션과 가격</h2>
+  <p><time datetime="{{ offer_check.day }}">{{ offer_check.day | date: '%Y.%m.%d' }}</time>에 각 판매처에서 확인했습니다. 아래 금액은 표에 적힌 구성 기준이며 배송비와 회원 혜택은 결제 조건에 따라 달라집니다.</p>
+  {% assign affiliate_offers = offer_check.options | where: 'affiliate', true %}
+  {% if affiliate_offers.size > 0 %}<p class="hny-price-disclosure">쿠팡 파트너스 링크를 통해 구매하면 꿀랭킹이 수수료를 받을 수 있습니다.</p>{% endif %}
+  <table><thead><tr><th scope="col">상품·판매 옵션</th><th scope="col">확인 가격</th></tr></thead>
+    <tbody>{% for offer in offer_check.options %}
+      <tr><th scope="row"><a href="{{ offer.url | escape }}" rel="{% if offer.affiliate %}sponsored nofollow {% endif %}noopener" target="_blank">{{ offer.name | escape }}</a><small>{{ offer.merchant | escape }} · {{ offer.variant | escape }}</small></th><td data-won="{{ offer.price }}">{{ offer.won | escape }}원</td></tr>
+    {% endfor %}</tbody>
+  </table>
+  {% for unavailable in offer_check.unavailable %}<p>{{ unavailable.day | date: '%Y.%m.%d' }} 쿠팡에서 <strong>{{ unavailable.name | escape }}</strong> 옵션은 품절로 표시되었습니다.</p>{% endfor %}
+  <p class="hny-price-archive-note">위 표는 판매처별 비교용입니다. 아래 글에 나오는 기존 쿠팡 옵션의 가격은 각 항목의 확인 시점을 참고하세요.</p>
+</section>
+  {% endif %}
+{% endif %}
