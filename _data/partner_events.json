@@ -1,27 +1,9 @@
 [
   {
-    "category": "레저",
-    "title": "스포츠·레저 와우 멤버스 데이",
-    "through": "2026-11-08",
-    "url": "https://link.coupang.com/a/ioNCWdwnGm"
-  },
-  {
-    "category": "자동차",
-    "title": "자동차용품 와우 멤버스 데이",
-    "through": "2026-11-08",
-    "url": "https://link.coupang.com/a/ioNFTOiKJw"
-  },
-  {
     "category": "자동차",
     "title": "쿠팡모터스 BIG SALE",
     "through": "2026-11-14",
     "url": "https://link.coupang.com/a/ioNGRqe16G"
-  },
-  {
-    "category": "반려동물",
-    "title": "반려동물용품 와우 멤버스 데이",
-    "through": "2026-11-08",
-    "url": "https://link.coupang.com/a/ioNFW8v3Gm"
   },
   {
     "category": "반려동물",
@@ -30,52 +12,10 @@
     "url": "https://link.coupang.com/a/ioNGUSuESa"
   },
   {
-    "category": "육아",
-    "title": "출산·유아동 와우 멤버스 데이",
-    "through": "2026-11-08",
-    "url": "https://link.coupang.com/a/ioNFZ8tLbM"
-  },
-  {
-    "category": "뷰티",
-    "title": "로켓뷰티 드럭스토어",
-    "through": "2026-11-08",
-    "url": "https://link.coupang.com/a/ioNF2t3xBI"
-  },
-  {
-    "category": "잡화",
-    "title": "로켓패션 BAG&ACC",
-    "through": "2026-11-08",
-    "url": "https://link.coupang.com/a/ioNF5aotPw"
-  },
-  {
     "category": "주방",
     "title": "김장하는 날 주방용품",
     "through": "2026-11-29",
     "url": "https://link.coupang.com/a/ioNF8JdjTE"
-  },
-  {
-    "category": "생활",
-    "title": "생활용품 와우 멤버스 데이",
-    "through": "2026-11-08",
-    "url": "https://link.coupang.com/a/ioNGyYHOlE"
-  },
-  {
-    "category": "식품",
-    "title": "스위트샵",
-    "through": "2026-11-08",
-    "url": "https://link.coupang.com/a/ioNGDLkDg4"
-  },
-  {
-    "category": "패션",
-    "title": "로켓패션 와우 멤버스 데이",
-    "through": "2026-11-08",
-    "url": "https://link.coupang.com/a/ioNGJexhIa"
-  },
-  {
-    "category": "문구",
-    "title": "문구·오피스 와우 멤버스 데이",
-    "through": "2026-11-08",
-    "url": "https://link.coupang.com/a/ioNGNEsceq"
   },
   {
     "category": "가전",
@@ -101,6 +41,48 @@
     "title": "토이 페어",
     "through": "2026-11-17",
     "url": "https://link.coupang.com/a/iqz6HS3x80",
+    "category_only": true
+  },
+  {
+    "category": "생활",
+    "title": "Black 생필품 위크",
+    "through": "2026-11-22",
+    "url": "https://link.coupang.com/a/ixbxtDA0Ae",
+    "category_only": true
+  },
+  {
+    "category": "육아",
+    "title": "우리 아이 육아템 특가",
+    "through": "2026-11-15",
+    "url": "https://link.coupang.com/a/ixbBYOh4dE",
+    "category_only": true
+  },
+  {
+    "category": "패션",
+    "title": "미리 준비하는 겨울 방한용품",
+    "through": "2026-11-15",
+    "url": "https://link.coupang.com/a/ixbFr17Ulg",
+    "category_only": true
+  },
+  {
+    "category": "패션",
+    "title": "WINTER SHOES",
+    "through": "2026-11-15",
+    "url": "https://link.coupang.com/a/ixbGFE29nw",
+    "category_only": true
+  },
+  {
+    "category": "가전",
+    "title": "나르왈",
+    "through": "2026-11-29",
+    "url": "https://link.coupang.com/a/ixbGIn86Xk",
+    "category_only": true
+  },
+  {
+    "category": "식품",
+    "title": "SWEET SHOP",
+    "through": "2026-11-18",
+    "url": "https://link.coupang.com/a/ixbGMEHgbs",
     "category_only": true
   }
 ]
