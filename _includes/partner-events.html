@@ -2,6 +2,7 @@
 {% assign offers = site.data.partner_events | where: "category", event_category %}
 {% if include.placement == 'article_campaigns' %}
 {% assign offers = offers | where_exp: "offer", "offer.category_only != true" %}
+{% assign offers = offers | where_exp: "offer", "offer.article_paths contains page.url" %}
 {% endif %}
 {% if offers.size > 0 %}
 <section hidden data-partner-events data-placement="{{ include.placement | default: 'category_campaigns' }}" class="hny-partner-events" aria-label="쿠팡 기획전">
