@@ -476,7 +476,9 @@
         "won": "15,000",
         "url": "https://cocodor.co.kr/product/코코도르-프리미엄-대용량-디퓨저-500ml-2개입/2625/?item_code=P0000DWZ000A",
         "affiliate": false,
-        "day": "2026-11-08"
+        "day": "2026-11-08",
+        "observedAt": "2026-11-08T01:16:45.768890+00:00",
+        "basis": "공개 할인판매가 · 배송비와 회원별 쿠폰 제외"
       },
       {
         "name": "캣브리띵 고양이 오브제 디퓨저",
@@ -486,7 +488,9 @@
         "won": "30,000",
         "url": "https://www.10x10.co.kr/shopping/category_prd.asp?itemid=7287890",
         "affiliate": false,
-        "day": "2026-11-08"
+        "day": "2026-11-08",
+        "observedAt": "2026-11-08T01:12:58.265Z",
+        "basis": "상품 상세의 판매가 · 배송비 별도"
       },
       {
         "name": "코코도르 레터 디퓨저 500ml 2개입",
@@ -496,7 +500,9 @@
         "won": "16,200",
         "url": "https://cocodor.co.kr/product/코코도르-레터-디퓨저-500ml-2개입/2815/?item_code=P0000EEH000D",
         "affiliate": false,
-        "day": "2026-11-08"
+        "day": "2026-11-08",
+        "observedAt": "2026-11-08T01:16:45.768890+00:00",
+        "basis": "공개 할인판매가 · 배송비와 회원별 쿠폰 제외"
       },
       {
         "name": "디퓨저 선물세트",
@@ -506,7 +512,33 @@
         "won": "19,800",
         "url": "https://www.10x10.co.kr/shopping/category_prd.asp?itemid=2821428",
         "affiliate": false,
-        "day": "2026-11-08"
+        "day": "2026-11-08",
+        "observedAt": "2026-11-08T01:12:58.265Z",
+        "basis": "상품 상세의 판매가 · 배송비 별도"
+      },
+      {
+        "name": "코코도르 라운드 디퓨저 200ml X 2개",
+        "variant": "라운드200/숲속새벽공기X2",
+        "merchant": "코코도르 공식몰",
+        "price": 13400,
+        "won": "13,400",
+        "url": "https://cocodor.co.kr/product/코코도르-라운드-디퓨저-200ml-x-2개/2855/?item_code=P0000EFV000C",
+        "affiliate": false,
+        "day": "2026-11-08",
+        "observedAt": "2026-11-08T01:16:46.351353+00:00",
+        "basis": "공개 할인판매가 · 배송비와 회원별 쿠폰 제외"
+      },
+      {
+        "name": "코코도르 메이플 디퓨저 200ml X 2개",
+        "variant": "메이플200/북스토어인더우드X2",
+        "merchant": "코코도르 공식몰",
+        "price": 13500,
+        "won": "13,500",
+        "url": "https://cocodor.co.kr/product/코코도르-메이플-디퓨저-200ml-x-2개/2642/?item_code=P0000DXQ000F",
+        "affiliate": false,
+        "day": "2026-11-08",
+        "observedAt": "2026-11-08T01:16:46.351353+00:00",
+        "basis": "공개 할인판매가 · 배송비와 회원별 쿠폰 제외"
       }
     ],
     "unavailable": []
@@ -7289,6 +7321,154 @@
         "url": "https://www.10x10.co.kr/shopping/category_prd.asp?itemid=4396936",
         "affiliate": false,
         "day": "2026-11-08"
+      }
+    ],
+    "unavailable": []
+  },
+  "2026-01-13-2026-01-외장하드.md": {
+    "day": "2026-11-09",
+    "options": [
+      {
+        "name": "LaCie 2TB Rugged USB-C Portable Hard Drive",
+        "variant": "휴대용 HDD",
+        "merchant": "Apple Store",
+        "price": 299000,
+        "won": "299,000",
+        "url": "https://www.apple.com/kr/shop/product/hkve2ru/a/lacie-2tb-rugged-usb-c-usb-30-portable-hard-drive",
+        "affiliate": false,
+        "day": "2026-11-09",
+        "observedAt": "2026-11-09T08:11:48.826278+00:00",
+        "basis": "Apple Store 선택 용량 표시가 · 판매처 배송 요율 0원",
+        "variantId": "HKVE2RU/A"
+      },
+      {
+        "name": "SanDisk Extreme® Portable SSD - 2TB",
+        "variant": "휴대용 SSD",
+        "merchant": "Apple Store",
+        "price": 999000,
+        "won": "999,000",
+        "url": "https://www.apple.com/kr/shop/product/hrq12zm/a/sandisk-extreme-portable-ssd-2tb",
+        "affiliate": false,
+        "day": "2026-11-09",
+        "observedAt": "2026-11-09T08:11:48.670277+00:00",
+        "basis": "Apple Store 선택 용량 표시가 · 판매처 배송 요율 0원",
+        "variantId": "HRQ12ZM/A"
+      },
+      {
+        "name": "SanDisk 256GB iXpand Flash Drive Go",
+        "variant": "USB 메모리",
+        "merchant": "Apple Store",
+        "price": 190000,
+        "won": "190,000",
+        "url": "https://www.apple.com/kr/shop/product/hntz2zm/b/sandisk-256gb-ixpand-flash-drive-go",
+        "affiliate": false,
+        "day": "2026-11-09",
+        "observedAt": "2026-11-09T08:11:49.454283+00:00",
+        "basis": "Apple Store 선택 용량 표시가 · 판매처 배송 요율 0원",
+        "variantId": "HNTZ2ZM/B"
+      }
+    ],
+    "unavailable": []
+  },
+  "2026-06-15-2026-06-화장지.md": {
+    "day": "2026-11-09",
+    "options": [
+      {
+        "name": "커클랜드 시그니춰 프리미엄 3겹화장지40m x 30롤",
+        "variant": "3겹 · 40m",
+        "merchant": "코스트코 코리아",
+        "price": 25990,
+        "won": "25,990",
+        "url": "https://www.costco.co.kr/BeautyHouseholdPersonal-Care/BathFacial-Tissue/BathFacial-Tissue/Kirkland-Signature-Premium-Bath-Tissue-40m-x-30/p/701285",
+        "affiliate": false,
+        "day": "2026-11-09",
+        "observedAt": "2026-11-09T08:11:46.167842+00:00",
+        "basis": "온라인몰 회원 구매가 · 배송비 포함 · 코스트코 리워드 현대카드 Edition2 결제 시 최대 3% 적립, 표시가에서 차감하지 않음",
+        "variantId": "701285"
+      },
+      {
+        "name": "크리넥스순수 3겹 화장지 35m x 24롤 x 2팩",
+        "variant": "3겹 · 35m",
+        "merchant": "코스트코 코리아",
+        "price": 38790,
+        "won": "38,790",
+        "url": "https://www.costco.co.kr/BeautyHouseholdPersonal-Care/BathFacial-Tissue/BathFacial-Tissue/Kleenex-Pure-Bath-Tissue-35m-x-24roll-x-2/p/618582",
+        "affiliate": false,
+        "day": "2026-11-09",
+        "observedAt": "2026-11-09T08:11:46.703429+00:00",
+        "basis": "온라인몰 회원 구매가 · 배송비 포함",
+        "variantId": "618582"
+      },
+      {
+        "name": "모나리자 자연이 좋은 3겹 화장지 30m x 30롤 x 3",
+        "variant": "3겹 · 30m",
+        "merchant": "코스트코 코리아",
+        "price": 46490,
+        "won": "46,490",
+        "url": "https://www.costco.co.kr/BeautyHouseholdPersonal-Care/BathFacial-Tissue/BathFacial-Tissue/Monalisa-Loving-Nature-Tissue-30m-x-30roll-x-3/p/627864",
+        "affiliate": false,
+        "day": "2026-11-09",
+        "observedAt": "2026-11-09T08:11:46.712792+00:00",
+        "basis": "온라인몰 회원 구매가 · 배송비 포함",
+        "variantId": "627864"
+      }
+    ],
+    "unavailable": []
+  },
+  "2026-06-26-2026-06-라면.md": {
+    "day": "2026-11-09",
+    "options": [
+      {
+        "name": "농심 신라면 120g x 30개",
+        "variant": "봉지 · 120g",
+        "merchant": "코스트코 코리아",
+        "price": 24990,
+        "won": "24,990",
+        "url": "https://www.costco.co.kr/Foods/Processed-Food/PastaNoodles/Nongshim-Shin-Ramyun-120g-x-30/p/524497",
+        "affiliate": false,
+        "day": "2026-11-09",
+        "observedAt": "2026-11-09T08:11:47.014189+00:00",
+        "basis": "온라인몰 회원 구매가 · 배송비 포함",
+        "variantId": "524497"
+      },
+      {
+        "name": "농심올리브짜파게티 140g x 20개",
+        "variant": "봉지 · 140g",
+        "merchant": "코스트코 코리아",
+        "price": 22490,
+        "won": "22,490",
+        "url": "https://www.costco.co.kr/Foods/Processed-Food/PastaNoodles/Nongshim-Chapaghetti-140g-x-20/p/523006",
+        "affiliate": false,
+        "day": "2026-11-09",
+        "observedAt": "2026-11-09T08:11:47.347276+00:00",
+        "basis": "온라인몰 회원 구매가 · 배송비 포함",
+        "variantId": "523006"
+      },
+      {
+        "name": "농심 신라면 컵65g x 30개",
+        "variant": "컵 · 65g",
+        "merchant": "코스트코 코리아",
+        "price": 32490,
+        "won": "32,490",
+        "url": "https://www.costco.co.kr/Nongshim/Nongshim-Shin-Cup-Noodle-Soup-65g-x-30/p/603548",
+        "affiliate": false,
+        "day": "2026-11-09",
+        "observedAt": "2026-11-09T08:11:47.334803+00:00",
+        "basis": "온라인몰 회원 구매가 · 배송비 포함",
+        "variantId": "603548"
+      },
+      {
+        "name": "농심 신라면 큰사발 114g x 16개",
+        "variant": "큰사발 · 114g",
+        "merchant": "코스트코 코리아",
+        "price": 22990,
+        "won": "22,990",
+        "url": "https://www.costco.co.kr/Foods/Processed-Food/PastaNoodles/Nongshim-Shin-Big-Bowl-Noodle-Soup-114g-x-16/p/530834",
+        "affiliate": false,
+        "day": "2026-11-09",
+        "observedAt": "2026-11-09T08:11:47.642555+00:00",
+        "basis": "온라인몰 회원 구매가 · 배송비 포함",
+        "variantId": "530834"
       }
     ],
     "unavailable": []
