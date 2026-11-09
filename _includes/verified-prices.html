@@ -2,6 +2,9 @@
 {% assign offer_check = site.data.verified_prices[price_file] %}
 {% if offer_check %}
   {% assign primary_date = page.price_checked_at | default: page.date | date: '%Y-%m-%d' %}
+  {% if page.independent_price_guide %}
+    {% assign primary_date = page.merchant_prices_reviewed_at | default: primary_date | date: '%Y-%m-%d' %}
+  {% endif %}
   {% if offer_check.day > primary_date or offer_check.day == primary_date and page.independent_price_guide != true %}
 <section class="hny-verified-prices" aria-labelledby="verified-prices-title" data-placement="verified_price_comparison" data-checked-at="{{ offer_check.day }}">
   <h2 id="verified-prices-title">판매처별 옵션과 가격</h2>
