@@ -246,73 +246,167 @@
     "unavailable": []
   },
   "2026-01-03-2026-01-샴푸.md": {
-    "day": "2026-11-08",
+    "day": "2026-11-09",
     "options": [
       {
-        "name": "밀크바오밥 오리지널 샴푸 화이트머스크",
-        "variant": "화이트머스크 1,000ml × 1개",
+        "name": "밀크바오밥 오리지널 샴푸",
+        "variant": "화이트머스크 · 1,000mL × 1병",
         "merchant": "밀크바오밥 공식몰",
         "price": 12900,
         "won": "12,900",
         "url": "https://www.tnshop.kr/product/detail.html?product_no=42",
         "affiliate": false,
-        "day": "2026-11-08"
+        "day": "2026-11-09",
+        "basis": "상품 판매가 · 기본 배송비 3,000원, 9,800원 이상 무료"
+      },
+      {
+        "name": "밀크바오밥 오리지널 샴푸",
+        "variant": "화이트머스크 · 1,000mL × 2병",
+        "merchant": "밀크바오밥 공식몰",
+        "price": 24800,
+        "won": "24,800",
+        "url": "https://www.tnshop.kr/product/밀크바오밥-오리지널-헤어바디-2종-세트-핸드크림-증정/1033/?item_code=P0000BNT00EB",
+        "affiliate": false,
+        "day": "2026-11-09",
+        "basis": "샴푸 두 병 선택가 · 기본 배송비 3,000원, 9,800원 이상 무료"
       },
       {
         "name": "더프트앤도프트 인리치드 퍼퓸 헤어 샴푸",
-        "variant": "소피소피 프로틴 · 1,020ml × 1개",
+        "variant": "소피소피 프로틴 · 1,020mL × 1병",
         "merchant": "더프트앤도프트 공식몰",
         "price": 17900,
         "won": "17,900",
-        "url": "https://duftndoft.com/product/detail.html?product_no=1935",
+        "url": "https://duftndoft.com/product/인리치드-퍼퓸-헤어-샴푸-1020ml/1935/?item_code=P0000CWL000A",
         "affiliate": false,
-        "day": "2026-11-08"
+        "day": "2026-11-09",
+        "basis": "상품 판매가 · 기본 배송비 3,000원, 20,000원 이상 무료"
       },
       {
-        "name": "알페신 카페인 C1 샴푸 900ml x 2",
-        "variant": "단일 구성 · 회원 구매가",
+        "name": "알페신 카페인 C1 샴푸",
+        "variant": "900mL × 2병",
         "merchant": "코스트코 코리아 온라인몰",
         "price": 59900,
         "won": "59,900",
         "url": "https://www.costco.co.kr/BeautyHouseholdPersonal-Care/Hair-Care/ShampooConditioner/Alpecin-Caffeine-C1-Shampoo-900ml-x-2/p/689628",
         "affiliate": false,
-        "day": "2026-11-08"
+        "day": "2026-11-09",
+        "basis": "온라인몰 회원 구매가 · 배송비 포함"
       }
     ],
     "unavailable": []
   },
   "2026-06-16-2026-06-시리얼.md": {
-    "day": "2026-11-08",
+    "day": "2026-11-09",
     "options": [
       {
-        "name": "켈로그 시리얼 리얼 그래놀라 400g x 2개 + 제로슈거 40g",
-        "variant": "단일 구성",
-        "merchant": "GS SHOP",
-        "price": 15500,
-        "won": "15,500",
-        "url": "https://www.gsshop.com/prd/prd.gs?prdid=1025816684",
-        "affiliate": false,
-        "day": "2026-11-08"
-      },
-      {
         "name": "켈로그 시리얼 리얼 그래놀라 400g+400g",
-        "variant": "단일 구성",
+        "variant": "400g × 2봉",
         "merchant": "GS SHOP",
         "price": 13500,
         "won": "13,500",
         "url": "https://www.gsshop.com/prd/prd.gs?prdid=1029177089",
         "affiliate": false,
-        "day": "2026-11-08"
+        "day": "2026-11-09",
+        "basis": "GS SHOP 표시 판매가 · 배송비는 결제 시 확인 · 쿠폰·카드·적립 혜택 미반영",
+        "observedAt": "2026-11-09T14:51:32.217173+00:00",
+        "selectedPackageGrams": [
+          400,
+          400
+        ]
+      },
+      {
+        "name": "켈로그 시리얼 리얼 그래놀라 400g x 2개 + 제로슈거 40g",
+        "variant": "400g × 2봉 + 제로슈거 40g",
+        "merchant": "GS SHOP",
+        "price": 12900,
+        "won": "12,900",
+        "url": "https://www.gsshop.com/prd/prd.gs?prdid=1025816684",
+        "affiliate": false,
+        "day": "2026-11-09",
+        "basis": "GS SHOP 표시 판매가 · 배송비는 결제 시 확인 · 쿠폰·카드·적립 혜택 미반영",
+        "observedAt": "2026-11-09T14:51:32.215942+00:00",
+        "selectedPackageGrams": [
+          400,
+          400,
+          40
+        ]
       },
       {
         "name": "켈로그 시리얼 프로틴 그래놀라 제로슈거 350g x 2개 + 제로슈거 40g",
-        "variant": "단일 구성",
+        "variant": "350g × 2봉 + 제로슈거 40g",
         "merchant": "GS SHOP",
-        "price": 15900,
-        "won": "15,900",
+        "price": 13900,
+        "won": "13,900",
         "url": "https://www.gsshop.com/prd/prd.gs?prdid=1028856186",
         "affiliate": false,
-        "day": "2026-11-08"
+        "day": "2026-11-09",
+        "basis": "GS SHOP 표시 판매가 · 배송비는 결제 시 확인 · 쿠폰·카드·적립 혜택 미반영",
+        "observedAt": "2026-11-09T14:51:32.215560+00:00",
+        "selectedPackageGrams": [
+          350,
+          350,
+          40
+        ]
+      },
+      {
+        "name": "켈로그리얼그래놀라400g x 3개입",
+        "variant": "400g × 3봉",
+        "merchant": "코스트코 코리아",
+        "price": 17990,
+        "won": "17,990",
+        "url": "https://www.costco.co.kr/Foods/RiceGrains/Cereal/Kelloggs-Real-Granola-400g-x-3/p/519365",
+        "affiliate": false,
+        "day": "2026-11-09",
+        "basis": "온라인몰 회원가 · 배송비 포함 · 카드 적립 미반영",
+        "observedAt": "2026-11-09T14:51:33.050492+00:00",
+        "selectedPackageGrams": [
+          400,
+          400,
+          400
+        ]
+      },
+      {
+        "name": "켈로그 아몬드 푸레이크 600g x 3개입",
+        "variant": "600g × 3봉",
+        "merchant": "코스트코 코리아",
+        "price": 17490,
+        "won": "17,490",
+        "url": "https://www.costco.co.kr/Foods/RiceGrains/Cereal/Kelloggs-Almond-Flakes-600g-x-3/p/621591",
+        "affiliate": false,
+        "day": "2026-11-09",
+        "basis": "온라인몰 회원가 · 배송비 포함 · 카드 적립 미반영",
+        "observedAt": "2026-11-09T14:51:32.898193+00:00",
+        "selectedPackageGrams": [
+          600,
+          600,
+          600
+        ]
+      },
+      {
+        "name": "켈로그 첵스초코 컵시리얼 40g x 12개 (1box)",
+        "variant": "40g × 12컵",
+        "merchant": "GS SHOP",
+        "price": 16500,
+        "won": "16,500",
+        "url": "https://www.gsshop.com/prd/prd.gs?prdid=1025816669",
+        "affiliate": false,
+        "day": "2026-11-09",
+        "basis": "GS SHOP 표시 판매가 · 배송비는 결제 시 확인 · 쿠폰·카드·적립 혜택 미반영",
+        "observedAt": "2026-11-09T14:52:46.896124+00:00",
+        "selectedPackageGrams": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ]
       }
     ],
     "unavailable": []
