@@ -33,7 +33,7 @@ post_class: post-template
 <!-- {% include featured-image.html %} -->
 
 {% include verified-prices.html %}
-{% include price-context.html %}
+{% unless page.independent_price_guide %}{% include price-context.html %}{% endunless %}
 
 <!-- Content -->
 {% include article.html %}
