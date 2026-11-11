@@ -6,12 +6,6 @@
     "url": "https://link.coupang.com/a/ioNGRqe16G"
   },
   {
-    "category": "반려동물",
-    "title": "펫스티벌",
-    "through": "2026-11-10",
-    "url": "https://link.coupang.com/a/ioNGUSuESa"
-  },
-  {
     "category": "주방",
     "title": "김장하는 날 주방용품",
     "through": "2026-11-29",
@@ -97,6 +91,20 @@
     "title": "K-뷰티 페스타",
     "through": "2026-11-15",
     "url": "https://link.coupang.com/a/iyQkUx8Y5A",
+    "category_only": true
+  },
+  {
+    "category": "레저",
+    "title": "올겨울 방한 준비",
+    "through": "2026-11-15",
+    "url": "https://link.coupang.com/a/iAvqHFdbSC",
+    "category_only": true
+  },
+  {
+    "category": "문구",
+    "title": "다이어리 & 캘린더",
+    "through": "2026-11-15",
+    "url": "https://link.coupang.com/a/iAvrUQSfN6",
     "category_only": true
   }
 ]
