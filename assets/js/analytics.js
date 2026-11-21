@@ -43,7 +43,56 @@
   };
   function attr(node, name) { return node && node.getAttribute ? node.getAttribute(name) || '' : ''; }
   function ancestor(node, selector) { return node && node.closest ? node.closest(selector) : null; }
+  // Only explicitly marked comparison pilots participate. IDs are editorial metadata,
+  // not calculator inputs, link query strings, or user-entered text.
+  function identifier(value) { return /^[a-z][a-z0-9_-]{0,63}$/.test(value) ? value : ''; }
+  function comparison(node) {
+    var section = ancestor(node, '[data-comparison-id]');
+    var name = attr(section, 'data-comparison-id');
+    if (!['shampoo', 'tissue', 'ramen', 'car_tent'].includes(name)) return null;
+    return { node: section, id: name, version: identifier(attr(section, 'data-content-version')) || 'ux-20261105' };
+  }
+  function trackComparisons() {
+    if (!enabled || !window.IntersectionObserver) return;
+    var observed = [], reported = {};
+    var observer = new window.IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var record = observed.find(function (item) { return item.node === entry.target; });
+        if (!record) return;
+        record.visible = entry.isIntersecting && entry.intersectionRatio >= 0.25;
+        schedule(record);
+      });
+    }, { threshold: [0, 0.25] });
+    function schedule(record) {
+      if (record.timer) window.clearTimeout(record.timer);
+      record.timer = null;
+      if (!record.visible || document.visibilityState !== 'visible' || reported[record.id]) return;
+      record.timer = window.setTimeout(function () {
+        record.timer = null;
+        if (!record.visible || document.visibilityState !== 'visible' || reported[record.id]) return;
+        reported[record.id] = true;
+        window.gtag('event', 'comparison_view', {
+          comparison_id: record.id, page_path: page.pathname, content_version: record.version
+        });
+        observed.filter(function (item) { return item.id === record.id; }).forEach(function (item) {
+          if (item.timer) window.clearTimeout(item.timer);
+          item.timer = null;
+          observer.unobserve(item.node);
+        });
+      }, 1000);
+    }
+    // A compact heading/sentinel stays measurable on mobile even when the table
+    // is taller than the viewport. A section alone does not imply a viewed table.
+    document.querySelectorAll('[data-comparison-observer]').forEach(function (node) {
+      var context = comparison(node);
+      if (!context) return;
+      observed.push({ node: node, id: context.id, version: context.version, visible: false, timer: null });
+      observer.observe(node);
+    });
+    document.addEventListener('visibilitychange', function () { observed.forEach(schedule); });
+  }
   document.addEventListener('DOMContentLoaded', function () {
+    trackComparisons();
     var status = document.getElementById('traffic-mode-status');
     if (status) status.textContent = internal ? '운영·점검 모드가 켜져 있습니다. 이 브라우저의 방문과 제휴 클릭은 GA4로 전송하지 않습니다.' : '일반 방문 모드입니다. 이 설정 페이지 자체는 집계하지 않습니다.';
     if (!internal) return;
@@ -65,21 +114,38 @@
     var url;
     try { url = new URL(a.href); } catch (_) { return; }
     var context = ancestor(a, '[data-placement]');
+    var pilot = comparison(a);
     var placement = attr(a, 'data-placement') || attr(context, 'data-placement') ||
       (ancestor(a, '.hny-comparison') ? 'comparison_table' : ancestor(a, '.hny-card') ? 'product_card' : 'article_link');
     if (url.origin === page.origin && /^\/(guides|tools)\//.test(url.pathname)) {
       window.gtag('event', 'guide_click', {destination_path: url.pathname, placement: placement, content_version: 'ux-20261105'});
       return;
     }
-    if (!/(^|\.)coupang\.com$/.test(url.hostname)) return;
-    window.gtag('event', 'affiliate_click', {
+    if (!/(^|\.)coupang\.com$/.test(url.hostname)) {
+      var merchant = identifier(attr(a, 'data-merchant-id'));
+      if (pilot && merchant && url.protocol === 'https:' && url.origin !== page.origin) {
+        window.gtag('event', 'merchant_click', {
+          merchant_id: merchant, merchant_domain: url.hostname,
+          option_id: identifier(attr(a, 'data-option-id')),
+          comparison_id: pilot.id, page_path: page.pathname,
+          content_version: pilot.version
+        });
+      }
+      return;
+    }
+    var affiliate = {
       link_url: a.href,
       product_id: url.searchParams.get('pageKey') || '',
       page_path: window.location.pathname,
       page_title: document.title,
       placement: placement,
       campaign_id: attr(a, 'data-campaign-id'),
-      content_version: 'ux-20261105'
-    });
+      content_version: pilot ? pilot.version : 'ux-20261105'
+    };
+    if (pilot) {
+      affiliate.comparison_id = pilot.id;
+      affiliate.option_id = identifier(attr(a, 'data-option-id'));
+    }
+    window.gtag('event', 'affiliate_click', affiliate);
   }, true);
 }());

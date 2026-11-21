@@ -85,3 +85,13 @@
 .hny-verified-prices tbody th { font-weight: 500; overflow-wrap: anywhere; }
 .hny-verified-prices th:last-child, .hny-verified-prices td { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .hny-verified-prices tbody th small { display: block; font-weight: 400; color: var(--hny-text-soft); margin-top: 3px; }
+
+/* Exact merchant options in the four purchase-path articles. */
+[data-comparison-id] .hny-option-link { display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box; padding: 7px 10px; margin-top: 7px; border: 1px solid currentColor; border-radius: 7px; line-height: 1.5; font-size: .9rem; font-weight: 600; text-decoration: none; white-space: normal; }
+[data-comparison-id] .hny-option-link:hover { text-decoration: underline; }
+[data-comparison-id] .hny-option-link:focus-visible { outline: 3px solid var(--hny-brand); outline-offset: 3px; }
+[data-comparison-id] .hny-offer-state { display: block; margin-top: 6px; font-size: .85rem; color: var(--hny-text-soft); white-space: normal; }
+[data-comparison-id] .hny-offer-state--soldout { color: var(--hny-text); font-weight: 650; }
+[data-comparison-id] .hny-verified-prices table { table-layout: fixed; }
+[data-comparison-id] .hny-verified-prices th:first-child { width: 67%; }
+[data-comparison-id] .hny-verified-prices td { white-space: normal; overflow-wrap: anywhere; }

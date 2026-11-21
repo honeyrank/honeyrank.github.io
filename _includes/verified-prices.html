@@ -7,13 +7,22 @@
   {% endif %}
   {% if offer_check.day > primary_date or offer_check.day == primary_date and page.independent_price_guide != true %}
 <section class="hny-verified-prices" aria-labelledby="verified-prices-title" data-placement="verified_price_comparison" data-checked-at="{{ offer_check.day }}">
-  <h2 id="verified-prices-title">판매처별 옵션과 가격</h2>
-  <p><time datetime="{{ offer_check.day }}">{{ offer_check.day | date: '%Y.%m.%d' }}</time>에 각 판매처에서 확인했습니다. 아래 금액은 표에 적힌 구성 기준이며 배송비와 회원 혜택은 결제 조건에 따라 달라집니다.</p>
+  <h2 id="verified-prices-title"{% if page.purchase_path_id %} data-comparison-observer{% endif %}>판매처별 옵션과 가격</h2>
+  {% if page.purchase_path_id %}<p>판매처별로 확인한 날짜와 구성을 적었습니다. 가격과 재고는 주문 시점에 다시 확인하세요. 아래 판매처 버튼은 해당 상품 페이지로 연결되며, 색상 선택이 필요한 옵션은 함께 표시했습니다.</p>{% else %}
+  <p><time datetime="{{ offer_check.day }}">{{ offer_check.day | date: '%Y.%m.%d' }}</time>에 각 판매처에서 확인했습니다. 아래 금액은 표에 적힌 구성 기준이며 배송비와 회원 혜택은 결제 조건에 따라 달라집니다.</p>{% endif %}
   {% assign affiliate_offers = offer_check.options | where: 'affiliate', true %}
   {% if affiliate_offers.size > 0 %}<p class="hny-price-disclosure">쿠팡 파트너스 링크를 통해 구매하면 꿀랭킹이 수수료를 받을 수 있습니다.</p>{% endif %}
   <table><thead><tr><th scope="col">상품·판매 옵션</th><th scope="col">확인 가격</th></tr></thead>
     <tbody>{% for offer in offer_check.options %}
+      {% if page.purchase_path_id %}
+      <tr><th scope="row">{{ offer.name | escape }}<small>{{ offer.merchant | escape }} · {{ offer.variant | escape }}</small>
+        <a class="hny-option-link" data-placement="comparison_option" data-option-id="{{ offer.purchaseOptionId | escape }}"{% unless offer.affiliate %} data-merchant-id="{{ offer.purchaseMerchantId | escape }}"{% endunless %} href="{{ offer.url | escape }}" rel="{% if offer.affiliate %}sponsored nofollow {% endif %}noopener" target="_blank">{% if offer.stock.state == 'out_of_stock' %}품절 옵션·재입고 확인{% elsif offer.affiliate %}쿠팡에서 이 옵션 확인{% else %}{{ offer.merchant | escape }}에서 이 구성 확인{% endif %}</a>
+        {% if offer.purchaseNote %}<span class="hny-offer-state{% if offer.stock.state == 'out_of_stock' %} hny-offer-state--soldout{% endif %}">{{ offer.purchaseNote | escape }}</span>{% endif %}
+        {% if offer.basis %}<small>{{ offer.basis | escape }}</small>{% endif %}
+      </th><td data-won="{{ offer.price }}">{{ offer.won | escape }}원<small class="hny-offer-state">{{ offer.day | date: '%Y.%m.%d' }} 표시가</small>{% if offer.stock.state == 'out_of_stock' %}<span class="hny-offer-state hny-offer-state--soldout">품절</span>{% endif %}</td></tr>
+      {% else %}
       <tr><th scope="row"><a href="{{ offer.url | escape }}" rel="{% if offer.affiliate %}sponsored nofollow {% endif %}noopener" target="_blank">{{ offer.name | escape }}</a><small>{{ offer.merchant | escape }} · {{ offer.variant | escape }}</small></th><td data-won="{{ offer.price }}">{{ offer.won | escape }}원</td></tr>
+      {% endif %}
     {% endfor %}</tbody>
   </table>
   {% for unavailable in offer_check.unavailable %}<p>{{ unavailable.day | date: '%Y.%m.%d' }} 쿠팡에서 <strong>{{ unavailable.name | escape }}</strong> 옵션은 품절로 표시되었습니다.</p>{% endfor %}

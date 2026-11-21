@@ -1,6 +1,6 @@
 {
   "2026-01-10-2026-01-차박텐트.md": {
-    "day": "2026-11-08",
+    "day": "2026-11-21",
     "options": [
       {
         "name": "아이두젠 차박캠프 방한 트렁크 이너 TC 면 텐트 L",
@@ -10,7 +10,11 @@
         "won": "79,000",
         "url": "https://link.coupang.com/re/AFFSDP?lptag=AF3899140&subid=honeyrank&pageKey=8096841850&itemId=22892836106&vendorItemId=89927390769&traceid=V0-153-e6b97df6f80434ba&clickBeacon=e4022980-ee1b-11f0-a0bc-d5dfdde82946%7E3&requestid=20260110210000518291263828&token=31850C%7CMIXED&landing_exp=APP_LANDING_A",
         "affiliate": true,
-        "day": "2026-11-08"
+        "day": "2026-11-08",
+        "purchaseOptionId": "car_tent-0520cb48d0b8",
+        "purchaseMerchantId": null,
+        "purchaseNote": "2026.11.08 확인 가격 · 현재 가격·재고 미확인",
+        "basis": "11월 8일 와우회원 화면 표시 가격. 현재 구매 조건은 판매 페이지에서 확인하세요."
       },
       {
         "name": "아이두젠 모빌리티 BASIC 차박 텐트 쉘터 도킹 스텔스 꼬리 트렁크 카텐트 M [웜그레이]",
@@ -20,7 +24,15 @@
         "won": "59,000",
         "url": "https://idoogen.com/product/아이두젠-모빌리티-basic-차박-텐트-쉘터-도킹-스텔스-꼬리-트렁크-카텐트-m-웜그레이/978/",
         "affiliate": false,
-        "day": "2026-11-08"
+        "day": "2026-11-21",
+        "basis": "무료배송 · 품절 상태의 표시 가격",
+        "stock": {
+          "state": "out_of_stock",
+          "checkedAt": "2026-11-21"
+        },
+        "purchaseOptionId": "car_tent-975633047987",
+        "purchaseMerchantId": "idoogen",
+        "purchaseNote": "2026.11.21 공식몰 품절 표시 · 구매 가능한 가격이 아닙니다."
       },
       {
         "name": "아이니 초간단꼬리텐트 원터치차박도킹텐트",
@@ -30,7 +42,15 @@
         "won": "283,000",
         "url": "https://www.10x10.co.kr/shopping/category_prd.asp?itemid=4290884",
         "affiliate": false,
-        "day": "2026-11-08"
+        "day": "2026-11-21",
+        "basis": "카키1 · 해외 구매대행 · 동일 판매자 30,000원 이상 무료배송, 도서산간 추가비용 가능",
+        "stock": {
+          "state": "merchant_reports_in_stock",
+          "checkedAt": "2026-11-21"
+        },
+        "purchaseOptionId": "car_tent-1c994e1df4af",
+        "purchaseMerchantId": "tenbyten",
+        "purchaseNote": "아이니샵 · 이동 후 카키1 선택 · 해외 구매대행"
       },
       {
         "name": "아이두젠 모빌리티 X 에코 도킹 카 쉘터 차량용 차박텐트 [초코브라운]",
@@ -40,7 +60,14 @@
         "won": "349,000",
         "url": "https://idoogen.com/product/아이두젠-모빌리티-x-에코-도킹-카-쉘터-차량용-차박텐트-초코브라운/3844/",
         "affiliate": false,
-        "day": "2026-11-08"
+        "day": "2026-11-21",
+        "basis": "초코브라운 · 무료배송 · TPU창 등 추가 구성품 별도",
+        "stock": {
+          "state": "merchant_reports_in_stock",
+          "checkedAt": "2026-11-21"
+        },
+        "purchaseOptionId": "car_tent-7581c02d25c8",
+        "purchaseMerchantId": "idoogen"
       },
       {
         "name": "르바디 카 차박텐트",
@@ -50,7 +77,15 @@
         "won": "329,000",
         "url": "https://www.10x10.co.kr/shopping/category_prd.asp?itemid=3288356",
         "affiliate": false,
-        "day": "2026-11-08"
+        "day": "2026-11-21",
+        "basis": "black · 업체무료배송 · 제주 3,000원, 도서산간 5,000원 추가",
+        "stock": {
+          "state": "merchant_reports_in_stock",
+          "checkedAt": "2026-11-21"
+        },
+        "purchaseOptionId": "car_tent-457e52f11ab3",
+        "purchaseMerchantId": "tenbyten",
+        "purchaseNote": "스노우아울 · 이동 후 black 선택"
       }
     ],
     "unavailable": []
@@ -246,7 +281,7 @@
     "unavailable": []
   },
   "2026-01-03-2026-01-샴푸.md": {
-    "day": "2026-11-09",
+    "day": "2026-11-21",
     "options": [
       {
         "name": "밀크바오밥 오리지널 샴푸",
@@ -254,10 +289,14 @@
         "merchant": "밀크바오밥 공식몰",
         "price": 12900,
         "won": "12,900",
-        "url": "https://www.tnshop.kr/product/detail.html?product_no=42",
+        "url": "https://www.tnshop.kr/product/밀크바오밥-오리지널-샴푸-화이트머스크-1000ml/42/",
         "affiliate": false,
-        "day": "2026-11-09",
-        "basis": "상품 판매가 · 기본 배송비 3,000원, 9,800원 이상 무료"
+        "day": "2026-11-21",
+        "basis": "일반 판매가 12,900원. 회원할인가 11,610원은 별도 조건부 가격이며 일반 비교가에 섞지 않음. 기본 배송비 3,000원, 9,800원 이상 무료.",
+        "stock": {
+          "state": "merchant_reports_in_stock",
+          "checkedAt": "2026-11-21"
+        }
       },
       {
         "name": "밀크바오밥 오리지널 샴푸",
@@ -265,10 +304,14 @@
         "merchant": "밀크바오밥 공식몰",
         "price": 24800,
         "won": "24,800",
-        "url": "https://www.tnshop.kr/product/밀크바오밥-오리지널-헤어바디-2종-세트-핸드크림-증정/1033/?item_code=P0000BNT00EB",
+        "url": "https://www.tnshop.kr/product/밀크바오밥-오리지널-헤어바디-2종-세트/1033/?item_code=P0000BNT00EB",
         "affiliate": false,
-        "day": "2026-11-09",
-        "basis": "샴푸 두 병 선택가 · 기본 배송비 3,000원, 9,800원 이상 무료"
+        "day": "2026-11-21",
+        "basis": "1+1 샴푸 1000mL·화이트머스크 선택 일반가 24,800원. 회원할인가 22,320원은 별도. 기본 배송비 3,000원, 9,800원 이상 무료. 이전 핸드크림 증정 문구는 현재 상품명에서 제거됨.",
+        "stock": {
+          "state": "merchant_reports_in_stock",
+          "checkedAt": "2026-11-21"
+        }
       },
       {
         "name": "더프트앤도프트 인리치드 퍼퓸 헤어 샴푸",
@@ -278,8 +321,12 @@
         "won": "17,900",
         "url": "https://duftndoft.com/product/인리치드-퍼퓸-헤어-샴푸-1020ml/1935/?item_code=P0000CWL000A",
         "affiliate": false,
-        "day": "2026-11-09",
-        "basis": "상품 판매가 · 기본 배송비 3,000원, 20,000원 이상 무료"
+        "day": "2026-11-21",
+        "basis": "소피소피 프로틴 1020mL 선택 판매가 17,900원. 배송비 3,000원, 20,000원 이상 무료.",
+        "stock": {
+          "state": "merchant_reports_in_stock",
+          "checkedAt": "2026-11-21"
+        }
       },
       {
         "name": "알페신 카페인 C1 샴푸",
@@ -289,8 +336,12 @@
         "won": "59,900",
         "url": "https://www.costco.co.kr/BeautyHouseholdPersonal-Care/Hair-Care/ShampooConditioner/Alpecin-Caffeine-C1-Shampoo-900ml-x-2/p/689628",
         "affiliate": false,
-        "day": "2026-11-09",
-        "basis": "온라인몰 회원 구매가 · 배송비 포함"
+        "day": "2026-11-21",
+        "basis": "코스트코 온라인몰 회원 구매가. 배송비 포함. 카드 적립은 가격에서 차감하지 않음.",
+        "stock": {
+          "state": "merchant_reports_in_stock",
+          "checkedAt": "2026-11-21"
+        }
       }
     ],
     "unavailable": []
@@ -7465,7 +7516,7 @@
     "unavailable": []
   },
   "2026-06-15-2026-06-화장지.md": {
-    "day": "2026-11-09",
+    "day": "2026-11-21",
     "options": [
       {
         "name": "커클랜드 시그니춰 프리미엄 3겹화장지40m x 30롤",
@@ -7475,10 +7526,14 @@
         "won": "25,990",
         "url": "https://www.costco.co.kr/BeautyHouseholdPersonal-Care/BathFacial-Tissue/BathFacial-Tissue/Kirkland-Signature-Premium-Bath-Tissue-40m-x-30/p/701285",
         "affiliate": false,
-        "day": "2026-11-09",
+        "day": "2026-11-21",
         "observedAt": "2026-11-09T08:11:46.167842+00:00",
-        "basis": "온라인몰 회원 구매가 · 배송비 포함 · 코스트코 리워드 현대카드 Edition2 결제 시 최대 3% 적립, 표시가에서 차감하지 않음",
-        "variantId": "701285"
+        "basis": "코스트코 온라인몰 회원 구매가. 배송비 포함. 카드 적립은 가격에서 차감하지 않음.",
+        "variantId": "701285",
+        "stock": {
+          "state": "merchant_reports_in_stock",
+          "checkedAt": "2026-11-21"
+        }
       },
       {
         "name": "크리넥스순수 3겹 화장지 35m x 24롤 x 2팩",
@@ -7488,10 +7543,14 @@
         "won": "38,790",
         "url": "https://www.costco.co.kr/BeautyHouseholdPersonal-Care/BathFacial-Tissue/BathFacial-Tissue/Kleenex-Pure-Bath-Tissue-35m-x-24roll-x-2/p/618582",
         "affiliate": false,
-        "day": "2026-11-09",
+        "day": "2026-11-21",
         "observedAt": "2026-11-09T08:11:46.703429+00:00",
-        "basis": "온라인몰 회원 구매가 · 배송비 포함",
-        "variantId": "618582"
+        "basis": "코스트코 온라인몰 회원 구매가. 배송비 포함. 카드 적립은 가격에서 차감하지 않음.",
+        "variantId": "618582",
+        "stock": {
+          "state": "merchant_reports_in_stock",
+          "checkedAt": "2026-11-21"
+        }
       },
       {
         "name": "모나리자 자연이 좋은 3겹 화장지 30m x 30롤 x 3",
@@ -7501,10 +7560,14 @@
         "won": "46,490",
         "url": "https://www.costco.co.kr/BeautyHouseholdPersonal-Care/BathFacial-Tissue/BathFacial-Tissue/Monalisa-Loving-Nature-Tissue-30m-x-30roll-x-3/p/627864",
         "affiliate": false,
-        "day": "2026-11-09",
+        "day": "2026-11-21",
         "observedAt": "2026-11-09T08:11:46.712792+00:00",
-        "basis": "온라인몰 회원 구매가 · 배송비 포함",
-        "variantId": "627864"
+        "basis": "코스트코 온라인몰 회원 구매가. 배송비 포함. 카드 적립은 가격에서 차감하지 않음.",
+        "variantId": "627864",
+        "stock": {
+          "state": "merchant_reports_in_stock",
+          "checkedAt": "2026-11-21"
+        }
       }
     ],
     "unavailable": []

@@ -32,11 +32,13 @@ post_class: post-template
 <!-- Featured Image -->
 <!-- {% include featured-image.html %} -->
 
+{% if page.purchase_path_id %}<div data-comparison-id="{{ page.purchase_path_id | escape }}" data-content-version="{{ page.purchase_path_version | escape }}">{% endif %}
 {% include verified-prices.html %}
 {% unless page.independent_price_guide %}{% include price-context.html %}{% endunless %}
 
 <!-- Content -->
 {% include article.html %}
+{% if page.purchase_path_id %}</div>{% endif %}
 
 {% if page.editorial_topic or page.editorial_kind == 'new_topic' or page.title contains '차박텐트' %}
 {% unless page.canonical_url %}
