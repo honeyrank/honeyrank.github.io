@@ -8,7 +8,7 @@
   {% if offer_check.day > primary_date or offer_check.day == primary_date and page.independent_price_guide != true %}
 <section class="hny-verified-prices" aria-labelledby="verified-prices-title" data-placement="verified_price_comparison" data-checked-at="{{ offer_check.day }}">
   <h2 id="verified-prices-title"{% if page.purchase_path_id %} data-comparison-observer{% endif %}>판매처별 옵션과 가격</h2>
-  {% if page.purchase_path_id %}<p>표의 금액은 각 판매처에서 확인한 날짜의 참고 가격입니다. 쿠팡 검색 버튼은 상품명·구성을 넣은 검색 결과로 연결됩니다. 판매자·옵션·가격·재고는 다를 수 있으므로 구매 전에 확인하세요. 원문은 각 상품의 가격 확인 근거에서 볼 수 있습니다.</p>{% else %}
+  {% if page.purchase_path_id %}<p>표의 금액은 각 판매처에서 확인한 날짜의 참고 가격입니다. 쿠팡에서 확인한 옵션은 별도 판매자·구성·조건을 표시했습니다. 검색 버튼은 상품명·구성을 넣은 검색 결과이며 판매자·옵션·가격·재고는 다를 수 있습니다. 구매 전에 다시 확인하세요. 원문은 각 상품의 가격 확인 근거에서 볼 수 있습니다.</p>{% else %}
   <p><time datetime="{{ offer_check.day }}">{{ offer_check.day | date: '%Y.%m.%d' }}</time>에 각 판매처에서 확인했습니다. 아래 금액은 표에 적힌 구성 기준이며 배송비와 회원 혜택은 결제 조건에 따라 달라집니다.</p>{% endif %}
   {% assign affiliate_offers = offer_check.options | where: 'affiliate', true %}
   {% if affiliate_offers.size > 0 or page.purchase_path_id %}<p class="hny-price-disclosure">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>{% endif %}
@@ -19,10 +19,17 @@
         {% if offer.affiliate %}<a class="hny-option-link" data-placement="comparison_option" data-option-id="{{ offer.purchaseOptionId | escape }}" href="{{ offer.url | escape }}" rel="sponsored nofollow noopener" target="_blank">쿠팡에서 이 옵션 확인</a>
         {% else %}
           {% assign purchase_catalog = site.data.purchase_links[price_file] %}
-          {% assign purchase_matches = purchase_catalog.options | where: 'sourceUrl', offer.url | where: 'optionId', offer.purchaseOptionId | where: 'type', 'search' %}
+          {% assign purchase_matches = purchase_catalog.options | where: 'sourceUrl', offer.url | where: 'optionId', offer.purchaseOptionId %}
           {% if purchase_catalog.version == page.purchase_path_version and purchase_matches.size == 1 %}
           {% assign purchase_link = purchase_matches | first %}
+          {% if purchase_link.type == 'exact' %}
+          <a class="hny-option-link" data-placement="comparison_option" data-option-id="{{ offer.purchaseOptionId | escape }}" href="{{ purchase_link.affiliateUrl | escape }}" rel="sponsored nofollow noopener" target="_blank">{% if purchase_link.availability == 'out_of_stock' %}쿠팡 품절 상태 확인{% else %}쿠팡에서 확인한 옵션 보기{% endif %}</a>
+          <small class="hny-coupang-offer">{% if purchase_link.couponDiscountKRW %}<strong>쿠팡 {{ purchase_link.couponLabel | escape }} {{ purchase_link.totalWon | escape }}원</strong><span>기준가 {{ purchase_link.baseWon | escape }}원 − 쿠폰 {{ purchase_link.couponWon | escape }}원 + 배송 {{ purchase_link.shippingWon | escape }}원</span>{% elsif purchase_link.shippingKRW == nil %}<strong>쿠팡 상품가 {{ purchase_link.priceWon | escape }}원</strong><span>배송비·단독 구매 총액 미확인</span>{% else %}<strong>쿠팡 {% if purchase_link.availability == 'out_of_stock' %}품절 시점 표시가{% else %}배송비 포함{% endif %} {{ purchase_link.totalWon | escape }}원</strong><span>상품 {{ purchase_link.priceWon | escape }}원 + 배송 {{ purchase_link.shippingWon | escape }}원</span>{% endif %}<span>쿠팡 상품명 {{ purchase_link.name | escape }}</span><span>판매자 {{ purchase_link.seller | escape }} · {{ purchase_link.variant | escape }}</span><span>{{ purchase_link.checkedDay | date: '%Y.%m.%d' }} 확인 · {% if purchase_link.availability == 'out_of_stock' %}확인 시 품절{% else %}확인 시 구매 가능{% endif %}</span><span>{{ purchase_link.priceContext | escape }}{% if purchase_link.stockQuantity == nil %} · 재고 수량 미공개{% else %} · 확인 시 잔여 {{ purchase_link.stockQuantity }}개 표시 (실시간 재고 아님){% endif %}</span></small>
+          {% elsif purchase_link.type == 'unavailable' %}
+          <small class="hny-offer-state" data-unavailable-option-id="{{ purchase_link.optionId | escape }}">{% if purchase_link.availability == 'out_of_stock' %}쿠팡 확인 시 품절 · {% endif %}이 옵션은 제휴 링크를 제공하지 않습니다.</small>
+          {% elsif purchase_link.type == 'search' %}
           <a class="hny-option-link" data-placement="comparison_affiliate_search" data-option-id="{{ offer.purchaseOptionId | escape }}" href="{{ purchase_link.affiliateUrl | escape }}" rel="sponsored nofollow noopener" target="_blank">쿠팡에서 이 상품 검색</a>
+          {% endif %}
           {% endif %}
           <small><a class="hny-price-source" data-placement="price_source" data-option-id="{{ offer.purchaseOptionId | escape }}" data-merchant-id="{{ offer.purchaseMerchantId | escape }}" href="{{ offer.url | escape }}" rel="noopener" target="_blank">가격 확인 근거</a></small>
         {% endif %}

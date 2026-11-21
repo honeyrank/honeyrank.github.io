@@ -98,3 +98,7 @@
 [data-comparison-id] .hny-verified-prices table { table-layout: fixed; }
 [data-comparison-id] .hny-verified-prices th:first-child { width: 67%; }
 [data-comparison-id] .hny-verified-prices td { white-space: normal; overflow-wrap: anywhere; }
+
+/* Dated Coupang offer observations stay separate from source-store unit prices. */
+[data-comparison-id] .hny-coupang-offer { display: block; margin: 8px 0; padding: 8px 10px; border-left: 2px solid var(--hny-brand); font-size: .82rem; font-weight: 400; line-height: 1.55; white-space: normal; }
+[data-comparison-id] .hny-coupang-offer strong, [data-comparison-id] .hny-coupang-offer span { display: block; }

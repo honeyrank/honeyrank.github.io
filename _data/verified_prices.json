@@ -10,11 +10,19 @@
         "won": "79,000",
         "url": "https://link.coupang.com/re/AFFSDP?lptag=AF3899140&subid=honeyrank&pageKey=8096841850&itemId=22892836106&vendorItemId=89927390769&traceid=V0-153-e6b97df6f80434ba&clickBeacon=e4022980-ee1b-11f0-a0bc-d5dfdde82946%7E3&requestid=20260110210000518291263828&token=31850C%7CMIXED&landing_exp=APP_LANDING_A",
         "affiliate": true,
-        "day": "2026-11-08",
+        "day": "2026-11-21",
         "purchaseOptionId": "car_tent-0520cb48d0b8",
         "purchaseMerchantId": null,
-        "purchaseNote": "2026.11.08 확인 가격 · 현재 가격·재고 미확인",
-        "basis": "11월 8일 와우회원 화면 표시 가격. 현재 구매 조건은 판매 페이지에서 확인하세요."
+        "purchaseNote": "2026.11.21 확인 시 구매 가능 · 재고 수량 미공개",
+        "basis": "와우회원 로그인 화면 표시가 · 무료배송 · 결제수단 적립 별도",
+        "observedAt": "2026-11-21T12:33:55.403Z",
+        "stock": {
+          "state": "purchase_button_enabled",
+          "checkedAt": "2026-11-21",
+          "observedAt": "2026-11-21T12:33:55.403Z",
+          "quantity": null
+        },
+        "sourceUrl": "https://www.coupang.com/vp/products/8096841850?itemId=22892836106&vendorItemId=89927390769"
       },
       {
         "name": "아이두젠 모빌리티 BASIC 차박 텐트 쉘터 도킹 스텔스 꼬리 트렁크 카텐트 M [웜그레이]",
@@ -7527,7 +7535,7 @@
         "url": "https://www.costco.co.kr/BeautyHouseholdPersonal-Care/BathFacial-Tissue/BathFacial-Tissue/Kirkland-Signature-Premium-Bath-Tissue-40m-x-30/p/701285",
         "affiliate": false,
         "day": "2026-11-21",
-        "observedAt": "2026-11-09T08:11:46.167842+00:00",
+        "observedAt": "2026-11-21T11:41:52.924451+00:00",
         "basis": "코스트코 온라인몰 회원 구매가. 배송비 포함. 카드 적립은 가격에서 차감하지 않음.",
         "variantId": "701285",
         "stock": {
@@ -7544,7 +7552,7 @@
         "url": "https://www.costco.co.kr/BeautyHouseholdPersonal-Care/BathFacial-Tissue/BathFacial-Tissue/Kleenex-Pure-Bath-Tissue-35m-x-24roll-x-2/p/618582",
         "affiliate": false,
         "day": "2026-11-21",
-        "observedAt": "2026-11-09T08:11:46.703429+00:00",
+        "observedAt": "2026-11-21T11:41:52.935159+00:00",
         "basis": "코스트코 온라인몰 회원 구매가. 배송비 포함. 카드 적립은 가격에서 차감하지 않음.",
         "variantId": "618582",
         "stock": {
@@ -7561,7 +7569,7 @@
         "url": "https://www.costco.co.kr/BeautyHouseholdPersonal-Care/BathFacial-Tissue/BathFacial-Tissue/Monalisa-Loving-Nature-Tissue-30m-x-30roll-x-3/p/627864",
         "affiliate": false,
         "day": "2026-11-21",
-        "observedAt": "2026-11-09T08:11:46.712792+00:00",
+        "observedAt": "2026-11-21T11:41:52.942550+00:00",
         "basis": "코스트코 온라인몰 회원 구매가. 배송비 포함. 카드 적립은 가격에서 차감하지 않음.",
         "variantId": "627864",
         "stock": {
