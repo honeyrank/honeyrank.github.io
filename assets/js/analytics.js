@@ -128,6 +128,7 @@
           merchant_id: merchant, merchant_domain: url.hostname,
           option_id: identifier(attr(a, 'data-option-id')),
           comparison_id: pilot.id, page_path: page.pathname,
+          placement: placement,
           content_version: pilot.version
         });
       }

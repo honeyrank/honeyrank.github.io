@@ -86,10 +86,13 @@
 .hny-verified-prices th:last-child, .hny-verified-prices td { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .hny-verified-prices tbody th small { display: block; font-weight: 400; color: var(--hny-text-soft); margin-top: 3px; }
 
-/* Exact merchant options in the four purchase-path articles. */
-[data-comparison-id] .hny-option-link { display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box; padding: 7px 10px; margin-top: 7px; border: 1px solid currentColor; border-radius: 7px; line-height: 1.5; font-size: .9rem; font-weight: 600; text-decoration: none; white-space: normal; }
+/* Affiliate purchase actions are distinct from independent price citations. */
+[data-comparison-id] .hny-option-link { display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box; padding: 7px 10px; margin-top: 7px; background: var(--hny-brand); color: var(--hny-bg); border: 1px solid var(--hny-brand); border-radius: 7px; line-height: 1.5; font-size: .9rem; font-weight: 700; text-decoration: none; white-space: normal; }
 [data-comparison-id] .hny-option-link:hover { text-decoration: underline; }
 [data-comparison-id] .hny-option-link:focus-visible { outline: 3px solid var(--hny-brand); outline-offset: 3px; }
+[data-comparison-id] .hny-price-source { display: inline-flex; align-items: center; min-height: 44px; color: var(--hny-text-soft); font-size: .82rem; font-weight: 400; text-decoration: underline; text-underline-offset: 3px; }
+[data-comparison-id] .hny-price-source:focus-visible { outline: 3px solid var(--hny-brand); outline-offset: 3px; }
+[data-comparison-id] .hny-purchase-context { margin: 18px 0 10px; font-size: .92rem; line-height: 1.7; }
 [data-comparison-id] .hny-offer-state { display: block; margin-top: 6px; font-size: .85rem; color: var(--hny-text-soft); white-space: normal; }
 [data-comparison-id] .hny-offer-state--soldout { color: var(--hny-text); font-weight: 650; }
 [data-comparison-id] .hny-verified-prices table { table-layout: fixed; }
